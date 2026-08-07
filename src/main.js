@@ -143,8 +143,8 @@ const I18N = {
       r5Text: 'Entwickeln Sie mit der Initiative ein Thema, eine Verbreitungspartnerschaft oder ein Format.',
       r5Cta: 'Partnerschaft anfragen',
       r6Title: 'Wir möchten fördern',
-      r6Text: 'Unterstützen Sie die gemeinsame Standortkommunikation als Fördermitglied.',
-      r6Cta: 'Fördermitgliedschaft prüfen',
+      r6Text: 'Unterstützen Sie die gemeinsame Standortkommunikation als außerordentliches Mitglied.',
+      r6Cta: 'Außerordentliche Mitgliedschaft prüfen',
       r7Title: 'Wir möchten Mitglied werden',
       r7Text: 'Ermöglichen und gestalten Sie die langfristige Standortkommunikation der Aachen Area.',
       r7Cta: 'Mitgliedschaft prüfen'
@@ -1533,12 +1533,12 @@ function renderMitmachenPage() {
   const tm = I18N[state.lang].mitgliedschaft;
   const de = state.lang === 'DE';
   const roles = [
+    { icon: '⭐', title: t.r7Title, text: t.r7Text, cta: t.r7Cta, page: 'mitgliedschaft' },
     { icon: '📖', title: t.r1Title, text: t.r1Text, cta: t.r1Cta, action: 'submit-story' },
     { icon: '🔗', title: t.r2Title, text: t.r2Text, cta: t.r2Cta, action: 'submit-story' },
-    { icon: '💎', title: de ? 'Ich möchte privat unterstützen' : 'I want to support privately', text: de ? 'Unterstützen Sie die Standortkommunikation der Aachen Area als Fördermitglied oder Privatperson (außerordentliche Mitgliedschaft, 1.000 € / Jahr).' : 'Support the location communication of the Aachen Area as a supporting member (associate membership, €1,000 / year).', cta: de ? 'Außerordentliche Mitgliedschaft beantragen' : 'Apply for associate membership', action: 'apply-membership', tier: 'ausserordentlich' },
+    { icon: '💎', title: de ? 'Ich möchte privat unterstützen' : 'I want to support privately', text: de ? 'Unterstützen Sie die Standortkommunikation der Aachen Area als außerordentliches Mitglied oder Privatperson (1.000 € / Jahr).' : 'Support the location communication of the Aachen Area as an associate member (€1,000 / year).', cta: de ? 'Außerordentliche Mitgliedschaft beantragen' : 'Apply for associate membership', action: 'apply-membership', tier: 'ausserordentlich' },
     { icon: '📊', title: t.r4Title, text: t.r4Text, cta: t.r4Cta, action: 'submit-story' },
-    { icon: '🤝', title: t.r5Title, text: t.r5Text, cta: t.r5Cta, action: 'submit-story' },
-    { icon: '⭐', title: t.r7Title, text: t.r7Text, cta: t.r7Cta, page: 'mitgliedschaft' }
+    { icon: '🤝', title: t.r5Title, text: t.r5Text, cta: t.r5Cta, action: 'submit-story' }
   ];
   return `
     <section class="section-wrapper">
@@ -1555,17 +1555,6 @@ function renderMitmachenPage() {
               ${r.page ? `<a href="#mitgliedschaft-rechner" class="btn btn-secondary">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}" ${r.tier ? `data-tier="${r.tier}"` : ''}>${r.cta}</button>`}
             </div>
           `).join('')}
-        </div>
-
-        <!-- Anträge & Formuläre -->
-        <div style="margin-top: 4rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md);">
-          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.3rem; margin-bottom: 1rem;">${de ? 'MITGLIEDSANTRÄGE & DOKUMENTE' : 'MEMBERSHIP APPLICATIONS & DOCUMENTS'}</h3>
-          <p class="text-body" style="margin-bottom: 1.5rem;">${de ? 'Laden Sie hier die offiziellen Aufnahmeanträge als ausfüllbares PDF herunter oder stellen Sie Ihre Beitrittsanfrage digital.' : 'Download the official application forms as fillable PDFs or inquire online.'}</p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="./docs/260206_Mitgliedsantrag_Ordentlich_PBAeV.pdf" target="_blank" class="btn btn-secondary">📄 ${de ? 'Antrag Ordentliche Mitgliedschaft (PDF)' : 'Application Regular Member (PDF)'} ↗</a>
-            <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="btn btn-secondary">📄 ${de ? 'Antrag Fördermitgliedschaft (PDF)' : 'Application Supporting Member (PDF)'} ↗</a>
-            <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-          </div>
         </div>
 
         <!-- MITGLIEDSCHAFT & BEITRAGSRECHNER -->
@@ -1621,7 +1610,7 @@ function renderMitmachenPage() {
                     <option value="C">${de ? 'C: über 50 bis 250 Mitarbeitende (3 Stimmen)' : 'C: 51 to 250 employees (3 votes)'}</option>
                     <option value="D">${de ? 'D: über 250 bis 750 Mitarbeitende (4 Stimmen)' : 'D: 251 to 750 employees (4 votes)'}</option>
                     <option value="E">${de ? 'E: über 750 Mitarbeitende (5 Stimmen)' : 'E: Over 750 employees (5 votes)'}</option>
-                    <option value="F">${de ? 'Fördermitglied / Außerordentlich (0 Stimmen)' : 'Supporting Member (0 votes)'}</option>
+                    <option value="F">${de ? 'Außerordentliche Mitgliedschaft (0 Stimmen)' : 'Associate Membership (0 votes)'}</option>
                   </select>
                 </div>
                 <div class="calc-form-group">
@@ -1705,7 +1694,7 @@ function renderMitmachenPage() {
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
               </a>
               <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
-                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🤝 Antrag Fördermitgliedschaft</div>
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🤝 Antrag Außerordentliche Mitgliedschaft</div>
                 <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
               </a>
             </div>
@@ -1863,7 +1852,33 @@ function bindPageTriggers() {
       'C': { votes: 3, bronze: 4000, silber: 7500, gold: 10000, label_de: '3 STIMMEN (STUFE C: 51-250 MA)', label_en: '3 VOTES (TIER C: 51-250 EMPLOYEES)' },
       'D': { votes: 4, bronze: 8000, silber: 12000, gold: 16000, label_de: '4 STIMMEN (STUFE D: 251-750 MA)', label_en: '4 VOTES (TIER D: 251-750 EMPLOYEES)' },
       'E': { votes: 5, bronze: 15000, silber: 20000, gold: 25000, label_de: '5 STIMMEN (STUFE E: ÜBER 750 MA)', label_en: '5 VOTES (TIER E: OVER 750 EMPLOYEES)' },
-      'F': { votes: 0, bronze: 1000, silber: 1000, gold: 1000, label_de: '0 STIMMEN (FÖRDERMITGLIED / AUSSERORDENTLICH)', label_en: '0 VOTES (SUPPORTING MEMBER)' }
+      'F': { votes: 0, bronze: 1000, silber: 1000, gold: 1000, label_de: '0 STIMMEN (AUSSERORDENTLICHE MITGLIEDSCHAFT)', label_en: '0 VOTES (ASSOCIATE MEMBERSHIP)' }
+    };
+
+    const syncOptions = (triggerSource) => {
+      const goldOpt = tier.querySelector('option[value="gold"]');
+      const optA = hc.querySelector('option[value="A"]');
+      const optB = hc.querySelector('option[value="B"]');
+
+      if (triggerSource === 'hc' || !triggerSource) {
+        if (hc.value === 'A' || hc.value === 'B') {
+          if (goldOpt) goldOpt.disabled = true;
+          if (tier.value === 'gold') tier.value = 'silber';
+        } else {
+          if (goldOpt) goldOpt.disabled = false;
+        }
+      }
+      
+      if (triggerSource === 'tier' || !triggerSource) {
+        if (tier.value === 'gold') {
+          if (optA) optA.disabled = true;
+          if (optB) optB.disabled = true;
+          if (hc.value === 'A' || hc.value === 'B') hc.value = 'C';
+        } else {
+          if (optA) optA.disabled = false;
+          if (optB) optB.disabled = false;
+        }
+      }
     };
 
     const calc = () => {
@@ -1882,8 +1897,15 @@ function bindPageTriggers() {
       priceDisplay.textContent = fee.toLocaleString('de-DE') + ' €';
     };
 
-    hc.addEventListener('change', calc);
-    tier.addEventListener('change', calc);
+    hc.addEventListener('change', () => {
+      syncOptions('hc');
+      calc();
+    });
+    tier.addEventListener('change', () => {
+      syncOptions('tier');
+      calc();
+    });
+    syncOptions();
     calc(); // initial run
   }
 }
@@ -1899,7 +1921,7 @@ function closeModal() { document.getElementById('modal-overlay').classList.add('
 function openApplicationModal(tier = 'silber') {
   const de = state.lang === 'DE';
   const displayTier = tier === 'ausserordentlich' 
-    ? (de ? 'Außerordentliche Mitgliedschaft / Fördermitglied (1.000 € / Jahr)' : 'Associate Membership / Supporter (€1,000 / year)')
+    ? (de ? 'Außerordentliche Mitgliedschaft (1.000 € / Jahr)' : 'Associate Membership (€1,000 / year)')
     : tier.toUpperCase();
 
   openModal(`
