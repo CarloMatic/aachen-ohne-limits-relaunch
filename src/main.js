@@ -830,6 +830,12 @@ function initEventListeners() {
       updateSponsorGridUI();
       startSponsorAutoRotate();
     }
+
+    const newsletterBtn = e.target.closest('[data-action="open-newsletter"]');
+    if (newsletterBtn) {
+      e.preventDefault();
+      openNewsletterModal();
+    }
   });
 }
 
@@ -859,6 +865,7 @@ function renderCurrentPage() {
     'thema-europa': renderThemaEuropa,
     'news': renderNewsPage,
     'initiative': renderInitiativePage,
+    'entstehung': renderEntstehungPage,
     'mitglieder': renderMitgliederPage,
     'mitmachen': renderMitmachenPage,
     'mitgliedschaft': renderMitgliedschaftPage,
@@ -1406,6 +1413,66 @@ function renderInitiativePage() {
 
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.organeTitle}</h3>
           <p class="text-body">${t.organeText}</p>
+
+          <!-- Vorstand & Geschäftsführung -->
+          <div style="margin-top: 3.5rem;">
+            <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.3rem; margin-bottom: 1.5rem;">${state.lang === 'DE' ? 'VORSTAND & GESCHÄFTSFÜHRUNG' : 'BOARD & MANAGEMENT'}</h3>
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="team-avatar">CM</div>
+                <div class="team-name">Carlo Matic</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Vorstandsvorsitzender' : 'Chairman of the Board'}</div>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar">AS</div>
+                <div class="team-name">Andreas Schneider</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Stellvertretender Vorsitzender' : 'Deputy Chairman'}</div>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar">DR</div>
+                <div class="team-name">Dirk Reuters</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Kassenwart' : 'Treasurer'}</div>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar">SK</div>
+                <div class="team-name">Stefan Kiefer</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Geschäftsführer' : 'Managing Director'}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    ${renderFooter()}
+  `;
+}
+
+// ─── ENTSTEHUNG PAGE ─────────────────────────────────────────────────────────
+function renderEntstehungPage() {
+  const de = state.lang === 'DE';
+  return `
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-header">
+          <div class="subline-caps" style="color: var(--brand-accent);">${de ? 'GESCHICHTE & HINTERGRUND' : 'ORIGIN & HISTORY'}</div>
+          <h1 class="headline-3deg">${de ? 'ENTSTEHUNG DER INITIATIVE' : 'ORIGIN OF THE INITIATIVE'}</h1>
+          <div class="direct-answer-card" style="margin-top: 1.5rem; max-width: 800px;">
+            <p>${de ? '„Aachen ohne Limits" wurde ins Leben gerufen, um die belegbaren Spitzenleistungen, Forschungsdurchbrüche und europäischen Kooperationen der Aachen Area in ein starkes, gemeinsames Standortbild zu übersetzen.' : '"Aachen without Limits" was launched to translate the verifiable top achievements, research breakthroughs, and European collaborations of the Aachen Area into a strong, shared regional identity.'}</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; max-width: 800px;">
+          <div class="wireframe-placeholder" style="min-height: 200px; margin-bottom: 2rem;">
+            <span>[ ${de ? 'INHALTE ZUR ENTSTEHUNGSGESCHICHTE FOLGEN IN KÜRZE' : 'CONTENT ON ORIGIN HISTORY COMING SOON'} ]</span>
+          </div>
+
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin-bottom: 1rem;">${de ? 'VOM VEREIN ZUM STANDORTMEDIUM' : 'FROM ASSOCIATION TO REGIONAL MEDIUM'}</h3>
+          <p class="text-body" style="margin-bottom: 1.5rem;">${de ? 'Der Place Branding Aachen e. V. wurde von engagierten Akteuren aus Wirtschaft, Wissenschaft und Gesellschaft gegründet, um Standortkommunikation frei von Kirchturmdenken und mit Fokus auf Substanz zu etablieren.' : 'Place Branding Aachen e. V. was founded by dedicated actors from business, academia, and society to establish regional communication focused on substance.'}</p>
+
+          <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+            <a href="#initiative" class="btn btn-primary" data-page="initiative">${de ? 'Zur Initiative & Governance' : 'To Initiative & Governance'}</a>
+            <a href="#mitgliedschaft" class="btn btn-secondary" data-page="mitgliedschaft">${de ? 'Antrag anfragen' : 'Inquire Membership'}</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1460,6 +1527,7 @@ function renderMitmachenPage() {
     { icon: '🤝', title: t.r5Title, text: t.r5Text, cta: t.r5Cta, action: 'submit-story' },
     { icon: '⭐', title: t.r7Title, text: t.r7Text, cta: t.r7Cta, page: 'mitgliedschaft' }
   ];
+  const de = state.lang === 'DE';
   return `
     <section class="section-wrapper">
       <div class="container">
@@ -1476,6 +1544,17 @@ function renderMitmachenPage() {
             </div>
           `).join('')}
         </div>
+
+        <!-- Anträge & Formuläre -->
+        <div style="margin-top: 4rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md);">
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.3rem; margin-bottom: 1rem;">${de ? 'MITGLIEDSANTRÄGE & DOKUMENTE' : 'MEMBERSHIP APPLICATIONS & DOCUMENTS'}</h3>
+          <p class="text-body" style="margin-bottom: 1.5rem;">${de ? 'Laden Sie hier die offiziellen Aufnahmeanträge als ausfüllbares PDF herunter oder stellen Sie Ihre Beitrittsanfrage digital.' : 'Download the official application forms as fillable PDFs or inquire online.'}</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="./docs/260206_Mitgliedsantrag_Ordentlich_PBAeV.pdf" target="_blank" class="btn btn-secondary">📄 ${de ? 'Antrag Ordentliche Mitgliedschaft (PDF)' : 'Application Regular Member (PDF)'} ↗</a>
+            <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="btn btn-secondary">📄 ${de ? 'Antrag Fördermitgliedschaft (PDF)' : 'Application Supporting Member (PDF)'} ↗</a>
+            <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+          </div>
+        </div>
       </div>
     </section>
     ${renderFooter()}
@@ -1485,6 +1564,7 @@ function renderMitmachenPage() {
 // ─── MITGLIEDSCHAFT PAGE ─────────────────────────────────────────────────────
 function renderMitgliedschaftPage() {
   const t = I18N[state.lang].mitgliedschaft;
+  const de = state.lang === 'DE';
   return `
     <section class="section-wrapper">
       <div class="container">
@@ -1502,7 +1582,7 @@ function renderMitgliedschaftPage() {
               <li>${state.lang === 'DE' ? 'Logo-Präsenz in der Mitgliederübersicht' : 'Logo presence in member directory'}</li>
               <li>${state.lang === 'DE' ? 'Zugang zu Netzwerk-Events' : 'Access to networking events'}</li>
             </ul>
-            <button class="btn btn-secondary" data-action="apply-membership" data-tier="bronze">${t.btnApply}</button>
+            <button class="btn btn-secondary" data-action="apply-membership" data-tier="bronze">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
           </div>
           <div class="tier-card featured">
             <div class="tier-badge" style="color: var(--ac-purple);">${t.silberSubtitle}</div>
@@ -1512,7 +1592,7 @@ function renderMitgliedschaftPage() {
               <li>${state.lang === 'DE' ? 'Story-Vorschläge einreichen' : 'Submit story suggestions'}</li>
               <li>${state.lang === 'DE' ? 'Themen mitgestalten' : 'Co-shape topics'}</li>
             </ul>
-            <button class="btn btn-primary" data-action="apply-membership" data-tier="silber">${t.btnApply}</button>
+            <button class="btn btn-primary" data-action="apply-membership" data-tier="silber">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
           </div>
           <div class="tier-card">
             <div class="tier-badge" style="color: var(--ac-yellow);">${t.goldSubtitle}</div>
@@ -1522,11 +1602,11 @@ function renderMitgliedschaftPage() {
               <li>${state.lang === 'DE' ? 'Strategische Mitwirkung' : 'Strategic participation'}</li>
               <li>${state.lang === 'DE' ? 'Vorstandsebene' : 'Board-level involvement'}</li>
             </ul>
-            <button class="btn btn-secondary" data-action="apply-membership" data-tier="gold">${t.btnApply}</button>
+            <button class="btn btn-secondary" data-action="apply-membership" data-tier="gold">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
           </div>
         </div>
 
-        <!-- Beitragsrechner -->
+        <!-- Beitragsrechner gemäß Beitragsordnung (§ 6) -->
         <div class="calculator-card">
           <div class="calculator-grid">
             <div class="calc-inputs">
@@ -1534,10 +1614,12 @@ function renderMitgliedschaftPage() {
               <div class="calc-form-group">
                 <label class="calc-label">${t.calcLabelHeadcount}</label>
                 <select id="calc-headcount" class="calc-select">
-                  <option value="<10">${state.lang === 'DE' ? 'Unter 10 Mitarbeitende' : 'Under 10 employees'}</option>
-                  <option value="10-49" selected>${state.lang === 'DE' ? '10 bis 49 Mitarbeitende' : '10 to 49 employees'}</option>
-                  <option value="50-249">${state.lang === 'DE' ? '50 bis 249 Mitarbeitende' : '50 to 249 employees'}</option>
-                  <option value="250+">${state.lang === 'DE' ? 'Ab 250 Mitarbeitende' : '250+ employees'}</option>
+                  <option value="A">${de ? 'A: bis 10 Mitarbeitende (1 Stimme)' : 'A: Up to 10 employees (1 vote)'}</option>
+                  <option value="B" selected>${de ? 'B: über 10 bis 50 Mitarbeitende (2 Stimmen)' : 'B: 11 to 50 employees (2 votes)'}</option>
+                  <option value="C">${de ? 'C: über 50 bis 250 Mitarbeitende (3 Stimmen)' : 'C: 51 to 250 employees (3 votes)'}</option>
+                  <option value="D">${de ? 'D: über 250 bis 750 Mitarbeitende (4 Stimmen)' : 'D: 251 to 750 employees (4 votes)'}</option>
+                  <option value="E">${de ? 'E: über 750 Mitarbeitende (5 Stimmen)' : 'E: Over 750 employees (5 votes)'}</option>
+                  <option value="F">${de ? 'Fördermitglied / Außerordentlich (0 Stimmen)' : 'Supporting Member (0 votes)'}</option>
                 </select>
               </div>
               <div class="calc-form-group">
@@ -1550,10 +1632,10 @@ function renderMitgliedschaftPage() {
               </div>
             </div>
             <div class="calc-result-box">
-              <div class="subline-caps" style="color:#fff;">${t.calcPriceTitle}</div>
-              <div class="calc-price" id="calc-price-display">2.400 €</div>
+              <div class="subline-caps" style="color:#fff;" id="calc-votes-display">2 STIMMEN (MITARBEITENDESTUFE B)</div>
+              <div class="calc-price" id="calc-price-display">4.000 €</div>
               <div class="calc-period">${t.calcPeriod}</div>
-              <button class="btn btn-primary" style="margin-top: 1.5rem; width:100%; justify-content:center;" data-action="apply-membership">${t.btnApply}</button>
+              <button class="btn btn-primary" style="margin-top: 1.5rem; width:100%; justify-content:center;" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
             </div>
           </div>
         </div>
@@ -1596,35 +1678,50 @@ function renderMitgliedschaftPage() {
           </div>
         </div>
 
-        <!-- Dokumente -->
+        <!-- Offizielle Dokumente (PDFs) -->
         <div style="margin-top: 3rem;">
           <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1.5rem;">${t.dokumenteTitle}</h3>
           <div class="download-grid">
-            <div class="download-card">
-              <div style="font-weight:700; font-size:0.95rem;">${t.dokumenteSatzung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">${t.dokumentePlaceholder}</div>
-            </div>
-            <div class="download-card">
-              <div style="font-weight:700; font-size:0.95rem;">${t.dokumenteBeitragsordnung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">${t.dokumentePlaceholder}</div>
-            </div>
-            <div class="download-card">
-              <div style="font-weight:700; font-size:0.95rem;">${t.dokumenteLeistungen}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">${t.dokumentePlaceholder}</div>
-            </div>
-            <div class="download-card">
-              <div style="font-weight:700; font-size:0.95rem;">${t.dokumenteMarkenordnung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">${t.dokumentePlaceholder}</div>
-            </div>
+            <a href="./docs/260611_Satzung_PBA.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📜 ${t.dokumenteSatzung}</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 11. Juni 2026 (PDF) ↗</div>
+            </a>
+            <a href="./docs/260128_Beitragsordnung_PBA.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📊 ${t.dokumenteBeitragsordnung}</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+            </a>
+            <a href="./docs/260128_Leistungsuebersicht_PBA.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">⭐ ${t.dokumenteLeistungen}</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+            </a>
+            <a href="./docs/260128_Markenordnung_PBA.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🏷️ ${t.dokumenteMarkenordnung}</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+            </a>
+            <a href="./docs/260206_Mitgliedsantrag_Ordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📝 Antrag Ordentliche Mitgliedschaft</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
+            </a>
+            <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
+              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🤝 Antrag Fördermitgliedschaft</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
+            </a>
           </div>
         </div>
 
-        <!-- Ansprechpartner -->
-        <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-secondary); border-radius: var(--radius-md);">
-          <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.2rem; margin-bottom:1rem;">${t.ansprechpartnerTitle}</h3>
-          <p class="text-body">${t.ansprechpartnerText}</p>
-          <p class="text-body" style="margin-top: 1rem;"><a href="mailto:sk@aachenohnelimits.de" style="color: var(--brand-accent); font-weight: 700;">sk@aachenohnelimits.de</a></p>
-          <button class="btn btn-secondary" style="margin-top: 1rem;" data-action="apply-membership">${t.btnTalk}</button>
+        <!-- Ansprechpartner Stefan Kiefer -->
+        <div style="margin-top: 3rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+          <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--ac-purple), var(--ac-blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; flex-shrink: 0;">SK</div>
+          <div style="flex: 1; min-width: 260px;">
+            <div class="subline-caps" style="color: var(--ac-purple);">${de ? 'IHR PERSÖNLICHER ANSPRECHPARTNER' : 'YOUR PERSONAL CONTACT'}</div>
+            <h3 style="font-family:var(--font-headline); font-size:1.4rem; text-transform:uppercase; margin: 0.25rem 0;">Stefan Kiefer</h3>
+            <div style="font-weight:700; font-size:0.95rem; color:var(--text-muted); margin-bottom: 0.75rem;">${de ? 'Geschäftsführer, Place Branding Aachen e. V.' : 'Managing Director, Place Branding Aachen e. V.'}</div>
+            <p class="text-body" style="font-size: 0.95rem;">${de ? 'Für ein persönliches Gespräch zur Mitgliedschaft, zu Beitragspaketen oder strategischen Kooperationen stehe ich Ihnen jederzeit gern zur Verfügung.' : 'I am happy to arrange a personal conversation regarding membership, fee tiers, or strategic partnerships.'}</p>
+            <p class="text-body" style="margin-top: 0.75rem;"><a href="mailto:sk@aachenohnelimits.de" style="color: var(--ac-purple); font-weight: 700;">sk@aachenohnelimits.de</a></p>
+          </div>
+          <div>
+            <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+          </div>
         </div>
       </div>
     </section>
@@ -1679,56 +1776,55 @@ function renderPressePage() {
 function renderFooter() {
   const t = I18N[state.lang].footer;
   const n = I18N[state.lang].nav;
+  const de = state.lang === 'DE';
   return `
     <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <div class="logo-img-wrapper" style="height: 52px;">
-              <img src="/logos/ACoL_RGB_White.svg" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto;" />
+            <div class="logo-img-wrapper" style="height: 54px;">
+              <img src="./logos/ACoL_RGB_White.svg" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto;" />
             </div>
+            <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); margin-top:1rem; max-width:280px;">${de ? 'Trägerinitiative Place Branding Aachen e. V. – Standortkommunikation für die Aachen Area.' : 'Place Branding Aachen e. V. – Regional positioning for the Aachen Area.'}</p>
           </div>
 
           <div class="footer-col">
             <h4>${t.col1Title}</h4>
             <ul class="footer-links">
               <li><a href="#stories" data-page="stories">${n.stories}</a></li>
-              <li><a href="#themen" data-page="themen">${n.themen}</a></li>
               <li><a href="#news" data-page="news">${n.news}</a></li>
-              <li><a href="#presse" data-page="presse">${state.lang === 'DE' ? 'Presse' : 'Press'}</a></li>
+              <li><a href="#presse" data-page="presse">${de ? 'Presse & Mediakit' : 'Press & Kit'}</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <h4>${t.col2Title}</h4>
             <ul class="footer-links">
-              <li><a href="#initiative" data-page="initiative">${state.lang === 'DE' ? 'Mission & Arbeitsweise' : 'Mission & Approach'}</a></li>
-              <li><a href="#" data-page="#">${state.lang === 'DE' ? 'Entstehung' : 'Origin'}</a></li>
-              <li><a href="#initiative" data-page="initiative">${state.lang === 'DE' ? 'Vorstand/GF/Beirat' : 'Board/Management/Advisory'}</a></li>
-              <li><a href="#" data-page="#">${state.lang === 'DE' ? 'Satzung' : 'Statutes'}</a></li>
-              <li><a href="#" data-page="#">${state.lang === 'DE' ? 'Beitragsordnung' : 'Fee Schedule'}</a></li>
-              <li><a href="#" data-page="#">${state.lang === 'DE' ? 'Markenordnung' : 'Brand Guidelines'}</a></li>
-              <li><a href="#" data-page="#">${state.lang === 'DE' ? 'Leistungsübersicht' : 'Service Overview'}</a></li>
+              <li><a href="#initiative" data-page="initiative">${de ? 'Mission & Arbeitsweise' : 'Mission & Approach'}</a></li>
+              <li><a href="#entstehung" data-page="entstehung">${de ? 'Entstehung' : 'Origin'}</a></li>
+              <li><a href="#initiative" data-page="initiative">${de ? 'Vorstand & Geschäftsführung' : 'Board & Management'}</a></li>
+              <li><a href="./docs/260611_Satzung_PBA.pdf" target="_blank">${de ? 'Satzung (PDF)' : 'Statutes (PDF)'} ↗</a></li>
+              <li><a href="./docs/260128_Beitragsordnung_PBA.pdf" target="_blank">${de ? 'Beitragsordnung (PDF)' : 'Fee Schedule (PDF)'} ↗</a></li>
+              <li><a href="./docs/260128_Markenordnung_PBA.pdf" target="_blank">${de ? 'Markenordnung (PDF)' : 'Brand Guidelines (PDF)'} ↗</a></li>
+              <li><a href="./docs/260128_Leistungsuebersicht_PBA.pdf" target="_blank">${de ? 'Leistungsübersicht (PDF)' : 'Services (PDF)'} ↗</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <h4>${t.col3Title}</h4>
             <ul class="footer-links">
-              <li><a href="#" data-action="submit-story">${state.lang === 'DE' ? 'Story vorschlagen' : 'Suggest a story'}</a></li>
-              <li><a href="#mitgliedschaft" data-page="mitgliedschaft">${state.lang === 'DE' ? 'Mitgliedschaft' : 'Membership'}</a></li>
-              <li><a href="#mitgliedschaft" data-page="mitgliedschaft">${state.lang === 'DE' ? 'Beiträge & Leistungen' : 'Fees & Benefits'}</a></li>
-              <li><a href="#" data-action="apply-membership">${state.lang === 'DE' ? 'Anträge' : 'Applications'}</a></li>
+              <li><a href="#" data-action="submit-story">${de ? 'Story vorschlagen' : 'Suggest a story'}</a></li>
+              <li><a href="#mitgliedschaft" data-page="mitgliedschaft">${de ? 'Mitgliedschaft & Rechner' : 'Membership & Calculator'}</a></li>
+              <li><a href="#mitmachen" data-page="mitmachen">${de ? 'Mitgliedsanträge (PDF)' : 'Applications (PDF)'}</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <h4>${t.col4Title}</h4>
             <ul class="footer-links">
-              <li><a href="mailto:sk@aachenohnelimits.de">${t.kontakt}</a></li>
-              <li>${t.newsletter}</li>
-              <li><a href="#presse" data-page="presse">${state.lang === 'DE' ? 'Mediakit' : 'Media Kit'}</a></li>
-              <li>${t.barrierefreiheit}</li>
+              <li><a href="mailto:sk@aachenohnelimits.de">Stefan Kiefer (GF)</a></li>
+              <li><a href="#" data-action="open-newsletter">${de ? 'Newsletter Anmelden' : 'Newsletter Signup'}</a></li>
+              <li><a href="#presse" data-page="presse">${de ? 'Mediakit' : 'Media Kit'}</a></li>
             </ul>
           </div>
         </div>
@@ -1746,28 +1842,46 @@ function renderFooter() {
   `;
 }
 
-// ─── INTERACTIVE CALCULATOR ──────────────────────────────────────────────────
+// ─── INTERACTIVE CALCULATOR (BEITRAGSORDNUNG § 6) ───────────────────────────
 function bindPageTriggers() {
   const hc = document.getElementById('calc-headcount');
   const tier = document.getElementById('calc-tier');
-  const price = document.getElementById('calc-price-display');
+  const priceDisplay = document.getElementById('calc-price-display');
+  const votesDisplay = document.getElementById('calc-votes-display');
 
-  if (hc && tier && price) {
-    const calc = () => {
-      let base = 1200;
-      if (hc.value === '10-49') base = 2400;
-      if (hc.value === '50-249') base = 4800;
-      if (hc.value === '250+') base = 9600;
-      if (tier.value === 'silber') base = Math.round(base * 1.5);
-      if (tier.value === 'gold') base = Math.round(base * 2.5);
-      price.textContent = base.toLocaleString('de-DE') + ' €';
+  if (hc && tier && priceDisplay) {
+    const feeMatrix = {
+      'A': { votes: 1, bronze: 800, silber: 1200, gold: null, label_de: '1 STIMME (STUFE A: BIS 10 MA)', label_en: '1 VOTE (TIER A: UP TO 10 EMPLOYEES)' },
+      'B': { votes: 2, bronze: 2500, silber: 4000, gold: null, label_de: '2 STIMMEN (STUFE B: 11-50 MA)', label_en: '2 VOTES (TIER B: 11-50 EMPLOYEES)' },
+      'C': { votes: 3, bronze: 4000, silber: 7500, gold: 10000, label_de: '3 STIMMEN (STUFE C: 51-250 MA)', label_en: '3 VOTES (TIER C: 51-250 EMPLOYEES)' },
+      'D': { votes: 4, bronze: 8000, silber: 12000, gold: 16000, label_de: '4 STIMMEN (STUFE D: 251-750 MA)', label_en: '4 VOTES (TIER D: 251-750 EMPLOYEES)' },
+      'E': { votes: 5, bronze: 15000, silber: 20000, gold: 25000, label_de: '5 STIMMEN (STUFE E: ÜBER 750 MA)', label_en: '5 VOTES (TIER E: OVER 750 EMPLOYEES)' },
+      'F': { votes: 0, bronze: 1000, silber: 1000, gold: 1000, label_de: '0 STIMMEN (FÖRDERMITGLIED / AUSSERORDENTLICH)', label_en: '0 VOTES (SUPPORTING MEMBER)' }
     };
+
+    const calc = () => {
+      const hcVal = hc.value || 'B';
+      const tierVal = tier.value || 'silber';
+      const row = feeMatrix[hcVal] || feeMatrix['B'];
+
+      let fee = row[tierVal];
+      if (fee === null) {
+        fee = row['silber']; // Fallback if Gold is not available for small tiers
+      }
+
+      if (votesDisplay) {
+        votesDisplay.textContent = state.lang === 'DE' ? row.label_de : row.label_en;
+      }
+      priceDisplay.textContent = fee.toLocaleString('de-DE') + ' €';
+    };
+
     hc.addEventListener('change', calc);
     tier.addEventListener('change', calc);
+    calc(); // initial run
   }
 }
 
-// ─── MODALS ──────────────────────────────────────────────────────────────────
+// ─── MODALS & NEWSLETTER ─────────────────────────────────────────────────────
 function openModal(html) {
   const o = document.getElementById('modal-overlay');
   document.getElementById('modal-body').innerHTML = html;
@@ -1775,25 +1889,25 @@ function openModal(html) {
 }
 function closeModal() { document.getElementById('modal-overlay').classList.add('hidden'); }
 
-function openApplicationModal(tier) {
+function openApplicationModal(tier = 'silber') {
   const de = state.lang === 'DE';
   openModal(`
-    <h2 class="headline-3deg" style="font-size:1.8rem;">${de ? 'MITGLIEDSCHAFT' : 'MEMBERSHIP'} <span class="accent-word">${de ? 'BEANTRAGEN' : 'APPLICATION'}</span></h2>
+    <h2 class="headline-3deg" style="font-size:1.8rem;">${de ? 'MITGLIEDSCHAFT' : 'MEMBERSHIP'} <span class="accent-word">${de ? 'ANFRAGEN' : 'INQUIRY'}</span></h2>
     <p class="text-body" style="font-size:0.95rem; margin-bottom:1.5rem;">${de ? 'Gewähltes Paket' : 'Selected tier'}: <strong>${tier.toUpperCase()}</strong></p>
-    <form onsubmit="event.preventDefault(); alert('${de ? 'Vielen Dank! Ihr Antrag wurde zur Vorprüfung übermittelt.' : 'Thank you! Your application has been submitted for review.'}'); closeModal();">
+    <form onsubmit="event.preventDefault(); alert('${de ? 'Vielen Dank! Ihre Beitrittsanfrage wurde an die Geschäftsführung übermittelt. Wir melden uns innerhalb von 14 Tagen.' : 'Thank you! Your application inquiry has been submitted.'}'); closeModal();">
       <div style="margin-bottom:1rem;">
         <label class="calc-label" style="color:var(--text-primary);">${de ? 'Unternehmen / Organisation' : 'Company / Organization'}</label>
         <input type="text" class="calc-input" required style="color:#000; background:#f0f4f8;" />
       </div>
       <div style="margin-bottom:1rem;">
-        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Name & Funktion' : 'Name & Title'}</label>
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Name & Funktion des Ansprechpartners' : 'Name & Title of Contact'}</label>
         <input type="text" class="calc-input" required style="color:#000; background:#f0f4f8;" />
       </div>
       <div style="margin-bottom:1.5rem;">
         <label class="calc-label" style="color:var(--text-primary);">E-Mail</label>
         <input type="email" class="calc-input" required style="color:#000; background:#f0f4f8;" />
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${de ? 'Antrag einreichen' : 'Submit Application'}</button>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${de ? 'Antrag anfragen' : 'Submit Inquiry'}</button>
     </form>
   `);
 }
@@ -1855,4 +1969,45 @@ function openStorySubmissionModal() {
   `);
 }
 
+function openNewsletterModal() {
+  const de = state.lang === 'DE';
+  openModal(`
+    <h2 class="headline-3deg" style="font-size:1.8rem;">${de ? 'STANDORT-NEWSLETTER' : 'NEWSLETTER'} <span class="accent-word">${de ? 'ABONNIEREN' : 'SUBSCRIBE'}</span></h2>
+    <p class="text-body" style="font-size:0.95rem; margin-bottom:1.5rem;">${de ? 'Erhalten Sie regelmäßig kuratierte Stories, Fakten und Signale aus der Aachen Area direkt in Ihr Postfach.' : 'Receive curated stories, facts, and signals from the Aachen Area directly to your inbox.'}</p>
+    <div id="newsletter-form-container">
+      <form onsubmit="event.preventDefault(); window.handleNewsletterSubmit();">
+        <div style="margin-bottom:1.25rem;">
+          <label class="calc-label" style="color:var(--text-primary);">E-Mail-Adresse</label>
+          <input type="email" class="calc-input" required placeholder="ihre.email@organisation.de" style="color:#000; background:#f0f4f8;" />
+        </div>
+        <div style="margin-bottom:1.5rem;">
+          <label style="display:flex; align-items:flex-start; gap:0.75rem; font-size:0.85rem; color:var(--text-muted); cursor:pointer;">
+            <input type="checkbox" required style="margin-top:0.2rem; flex-shrink:0;" />
+            <span>${de ? 'Ich willige in den Empfang des Newsletters und die Verarbeitung meiner E-Mail-Adresse ein.' : 'I consent to receiving the newsletter and the processing of my email address.'}</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${de ? 'Kostenlos anmelden' : 'Subscribe Now'}</button>
+      </form>
+    </div>
+  `);
+}
+
+function handleNewsletterSubmit() {
+  const de = state.lang === 'DE';
+  const container = document.getElementById('newsletter-form-container');
+  if (container) {
+    container.innerHTML = `
+      <div class="newsletter-success-msg">
+        <span style="font-size:1.5rem;">✓</span>
+        <div>
+          <div style="font-weight:800; font-size:1.05rem;">${de ? 'Vielen Dank für Ihre Anmeldung!' : 'Thank you for subscribing!'}</div>
+          <div style="font-size:0.9rem; margin-top:0.25rem;">${de ? 'Sie haben sich erfolgreich für den Standort-Newsletter von „Aachen ohne Limits" registriert. Sie erhalten in Kürze eine Bestätigungs-E-Mail.' : 'You have successfully subscribed to the Aachen without Limits newsletter.'}</div>
+        </div>
+      </div>
+      <button onclick="closeModal()" class="btn btn-secondary" style="margin-top:1.5rem; width:100%; justify-content:center;">${de ? 'Schließen' : 'Close'}</button>
+    `;
+  }
+}
+
 window.closeModal = closeModal;
+window.handleNewsletterSubmit = handleNewsletterSubmit;
