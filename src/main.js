@@ -25,7 +25,7 @@ const I18N = {
     directAnswer: {
       title: 'Was ist Aachen ohne Limits?',
       text: 'Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area. Getragen vom Place Branding Aachen e. V. macht die Initiative belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft sichtbar. Sie entwickelt daraus professionelle Geschichten und verbreitet diese – abhängig von Thema und Zielgruppe – über die eigene Plattform, Social Media, Presse- und Medienarbeit, Partnernetzwerke, Veranstaltungen und weitere geeignete nationale und internationale Kanäle.',
-      addendum: 'Die Aachen Area bezeichnet in diesem Zusammenhang Aachen einschließlich eines Radius von 75 Kilometern. Sie ist der Bezugsraum der Initiative, keine amtliche Gebietskörperschaft.',
+      addendum: 'Die Aachen Area bezeichnet den Lebensraum der Menschen, die im Urlaub sagen, dass sie aus der Nähe von Aachen kommen. Sie ist der Bezugsraum der Initiative, keine amtliche Gebietskörperschaft.',
       cta: 'Wie die Initiative arbeitet'
     },
     montage: {
@@ -252,7 +252,7 @@ const I18N = {
     directAnswer: {
       title: 'What is Aachen Without Limits?',
       text: 'Aachen Without Limits is the shared location brand for Aachen and the Aachen Area. Backed by Place Branding Aachen e. V., the initiative highlights verifiable achievements from business, science, technology, and society. It develops professional stories from these and distributes them – depending on topic and target audience – via its own platform, social media, press and media relations, partner networks, events, and other suitable national and international channels.',
-      addendum: 'In this context, the Aachen Area refers to Aachen including a radius of 75 kilometers. It is the reference area of the initiative, not an official administrative district.',
+      addendum: 'The Aachen Area refers to the living space of people who say on vacation that they come from near Aachen. It is the reference area of the initiative, not an official administrative district.',
       cta: 'How the initiative works'
     },
     montage: {
