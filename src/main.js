@@ -1191,7 +1191,32 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 8. News -->
+    <!-- 8. Newsletter-Anmeldung Teaser -->
+    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08);">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3.5rem 2rem; border-radius: var(--radius-md); backdrop-filter: blur(10px);">
+          <span style="color: var(--brand-accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">${state.lang === 'DE' ? 'IMMER INFORMIERT BLEIBEN' : 'STAY INFORMED'}</span>
+          <h2 class="headline-3deg" style="font-size: 2rem; margin: 0.75rem 0 1rem; color: #fff;">${state.lang === 'DE' ? 'STANDORT-IMPULSE DIREKT IN IHRE INBOX' : 'REGIONAL INSIGHTS DIRECT TO YOUR INBOX'}</h2>
+          <p class="text-body" style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2rem;">
+            ${state.lang === 'DE' ? 'Erhalten Sie regelmäßig kuratierte Erfolge, Hintergründe und Entwicklungen aus der Aachen Area. Kein Spam – jederzeit abbestellbar.' : 'Receive curated achievements, backgrounds, and developments from the Aachen Area. No spam — unsubscribe anytime.'}
+          </p>
+
+          <div id="home-newsletter-container">
+            <form onsubmit="event.preventDefault(); window.handleHomeNewsletterSubmit();" style="display: flex; gap: 0.75rem; max-width: 550px; margin: 0 auto; flex-wrap: wrap;">
+              <input type="email" required placeholder="${state.lang === 'DE' ? 'Ihre E-Mail-Adresse eingeben...' : 'Enter your email address...'}" style="flex: 1; min-width: 240px; padding: 0.85rem 1.25rem; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; font-size: 0.95rem;" />
+              <button type="submit" class="btn btn-primary" style="white-space: nowrap;">
+                <span>${state.lang === 'DE' ? 'Newsletter abonnieren' : 'Subscribe'}</span>
+              </button>
+            </form>
+            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1rem;">
+              ${state.lang === 'DE' ? 'Mit der Anmeldung willigen Sie in die Datenverarbeitung gemäß unserer Datenschutzerklärung ein.' : 'By subscribing, you agree to our data processing terms.'}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. News -->
     <section class="section-wrapper section-dark">
       <div class="container">
         <div class="section-header">
@@ -1331,18 +1356,8 @@ function renderStoriesPage() {
           </div>
         </div>
 
-        <!-- Status Legend -->
-        <div class="status-legend">
-          <div class="legend-item"><span class="status-label externe-quelle" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span><span>${t.stories.legendExtern}</span></div>
-          <div class="legend-item"><span class="status-label story-vorbereitung" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'In Vorbereitung' : 'In Progress'}</span><span>${t.stories.legendVorbereitung}</span></div>
-          <div class="legend-item"><span class="status-label eigene-story" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'Eigene Story' : 'Our Story'}</span><span>${t.stories.legendEigen}</span></div>
-          <div class="legend-item"><span class="status-label aachen-signal" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'Aachen-Signal' : 'Aachen Signal'}</span><span>${t.stories.legendSignal}</span></div>
-          <div class="legend-item"><span class="status-label projektverweis" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'Projektverweis' : 'Project Reference'}</span><span>${t.stories.legendProjekt}</span></div>
-          <div class="legend-item"><span class="status-label fundstueck" style="font-size: 0.65rem;">${state.lang === 'DE' ? 'Fundstück' : 'Discovery'}</span><span>${t.stories.legendFundstueck}</span></div>
-        </div>
-
         <!-- Filter -->
-        <div class="filter-bar">
+        <div class="filter-bar" style="margin-top: 2rem;">
           <button class="filter-btn ${state.activeFilter === 'all' ? 'active' : ''}" data-filter="all">${t.stories.filterAll}</button>
           <button class="filter-btn ${state.activeFilter === 'technologie' ? 'active' : ''}" data-filter="technologie">${t.themenraeume.t1Title}</button>
           <button class="filter-btn ${state.activeFilter === 'wissen' ? 'active' : ''}" data-filter="wissen">${t.themenraeume.t2Title}</button>
@@ -1369,6 +1384,37 @@ function renderStoriesPage() {
         <!-- Story vorschlagen CTA -->
         <div style="text-align: center; margin-top: 3rem;">
           <button class="btn btn-primary" data-action="submit-story">${t.stories.ctaStory}</button>
+        </div>
+
+        <!-- Transparenz & Status-Legende (Unten platziert & strukturiert) -->
+        <div class="status-legend-box" style="margin-top: 4.5rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; letter-spacing: 0.05em; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'TRANSPARENZ & STATUS-KENNZEICHNUNGEN' : 'TRANSPARENCY & STATUS LABELS'}</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">${state.lang === 'DE' ? 'Jeder Beitrag auf dieser Plattform ist eindeutig gekennzeichnet, damit Herkunft und Veröffentlichungsstatus transparent nachvollziehbar sind.' : 'Every contribution on this platform is clearly labeled so that origin and publication status are transparently understandable.'}</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+            <div style="padding: 1.25rem; background: var(--card-bg); border-radius: var(--radius-sm); border: var(--card-border);">
+              <div style="margin-bottom: 0.5rem;">
+                <span class="status-label eigene-story">${state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story'}</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">${t.stories.legendEigen}</p>
+            </div>
+
+            <div style="padding: 1.25rem; background: var(--card-bg); border-radius: var(--radius-sm); border: var(--card-border);">
+              <div style="margin-bottom: 0.5rem;">
+                <span class="status-label story-vorbereitung">${state.lang === 'DE' ? 'In Vorbereitung' : 'In Progress'}</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">${t.stories.legendVorbereitung}</p>
+            </div>
+
+            <div style="padding: 1.25rem; background: var(--card-bg); border-radius: var(--radius-sm); border: var(--card-border);">
+              <div style="margin-bottom: 0.5rem;">
+                <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">${t.stories.legendExtern}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2251,5 +2297,21 @@ function handleNewsletterSubmit() {
   }
 }
 
+function handleHomeNewsletterSubmit() {
+  const de = state.lang === 'DE';
+  const container = document.getElementById('home-newsletter-container');
+  if (container) {
+    container.innerHTML = `
+      <div style="padding: 1.5rem; background: rgba(172,240,0,0.1); border: 1px solid var(--brand-accent); border-radius: var(--radius-md); text-align: center; color: #fff; max-width: 550px; margin: 0 auto;">
+        <div style="font-size: 1.25rem; font-weight: 700; color: var(--brand-accent);">✓ ${de ? 'Fast geschafft!' : 'Almost done!'}</div>
+        <div style="font-size: 0.95rem; margin-top: 0.5rem; color: rgba(255,255,255,0.9);">
+          ${de ? 'Vielen Dank für Ihre Anmeldung. Bitte bestätigen Sie Ihre Registrierung in der E-Mail, die wir Ihnen soeben gesendet haben.' : 'Thank you for subscribing. Please confirm your registration in the email we just sent you.'}
+        </div>
+      </div>
+    `;
+  }
+}
+
 window.closeModal = closeModal;
 window.handleNewsletterSubmit = handleNewsletterSubmit;
+window.handleHomeNewsletterSubmit = handleHomeNewsletterSubmit;
