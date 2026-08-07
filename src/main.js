@@ -818,6 +818,10 @@ function initEventListeners() {
   const mainNav = document.getElementById('main-nav');
   mobileBtn.addEventListener('click', () => mainNav.classList.toggle('open'));
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
   document.addEventListener('click', (e) => {
     const link = e.target.closest('[data-page]');
     if (link) { e.preventDefault(); navigateTo(link.dataset.page); mainNav.classList.remove('open'); }
@@ -945,7 +949,27 @@ function updateMetaTags() {
     canonical.rel = 'canonical';
     document.head.appendChild(canonical);
   }
-  canonical.href = `${baseUrl}${currentPath}`;
+  // Open Graph & Twitter Meta Tags
+  const setMetaProperty = (prop, val, isName = false) => {
+    let el = document.querySelector(isName ? `meta[name="${prop}"]` : `meta[property="${prop}"]`);
+    if (!el) {
+      el = document.createElement('meta');
+      if (isName) el.name = prop; else el.setAttribute('property', prop);
+      document.head.appendChild(el);
+    }
+    el.content = val;
+  };
+
+  setMetaProperty('og:title', curr.title);
+  setMetaProperty('og:description', curr.desc);
+  setMetaProperty('og:type', 'website');
+  setMetaProperty('og:url', `${baseUrl}${currentPath}`);
+  setMetaProperty('og:image', `${baseUrl}/logos/logo_header_purple.png`);
+
+  setMetaProperty('twitter:card', 'summary_large_image', true);
+  setMetaProperty('twitter:title', curr.title, true);
+  setMetaProperty('twitter:description', curr.desc, true);
+  setMetaProperty('twitter:image', `${baseUrl}/logos/logo_header_purple.png`, true);
 
   // JSON-LD Structured Data
   let jsonLd = document.getElementById('json-ld-schema');
@@ -1028,6 +1052,7 @@ function renderHomePage() {
               <iframe 
                 src="https://www.youtube.com/embed/jbbHinXzIuU?rel=0&modestbranding=1" 
                 title="Aachen ohne Limits" 
+                loading="lazy"
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen

@@ -6,15 +6,23 @@
   <title>Aachen ohne Limits | Geschichten aus der Aachen Area</title>
   <meta name="description" content="Entdecken Sie Menschen, Unternehmen und Forschung aus der Aachen Area, die technologische, unternehmerische und europäische Grenzen verschieben." />
   
-  <!-- Structured Data: Organization (not NGO – the association is not a charitable organization) -->
+  <!-- Performance: Resource Preconnect -->
+  <link rel="preconnect" href="https://www.youtube.com" />
+  <link rel="dns-prefetch" href="https://www.youtube.com" />
+
+  <!-- Security Meta Tags -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Structured Data: Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Place Branding Aachen e. V.",
     "alternateName": "Aachen ohne Limits",
-    "url": "https://aachenohnelimits.de",
-    "logo": "https://aachenohnelimits.de/logos/ACoL_RGB_Violett.svg",
+    "url": "https://carlomatic.github.io/aachen-ohne-limits-relaunch/",
+    "logo": "https://carlomatic.github.io/aachen-ohne-limits-relaunch/logos/logo_header_purple.png",
     "description": "Der Place Branding Aachen e. V. entwickelt und trägt die Standortmarke „Aachen ohne Limits". Gemeinsam mit Unternehmen und Institutionen macht die Initiative belegbare Leistungen, Menschen und Kooperationen aus der Aachen Area sichtbar.",
     "address": {
       "@type": "PostalAddress",
@@ -35,6 +43,8 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body class="theme-light">
+  <!-- Accessibility: Skip Link -->
+  <a href="#app-root" class="sr-only focus:not-sr-only" style="position: absolute; top: -9999px; left: 1rem; z-index: 9999; padding: 0.5rem 1rem; background: var(--brand-accent); color: var(--bg-dark); font-weight: 700; border-radius: var(--radius-sm);" onfocus="this.style.top='1rem'" onblur="this.style.top='-9999px'">Zum Hauptinhalt springen</a>
 
   <!-- Header / Navigation -->
   <header id="site-header" class="site-header">
