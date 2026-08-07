@@ -2215,3 +2215,19 @@ body.theme-light .btn-primary:hover {
   border-color: var(--ac-purple);
   box-shadow: 0 8px 24px rgba(172, 10, 192, 0.1);
 }
+
+/* Aachen-Signal status pill: uniform size with custom blue color */
+.status-label.aachen-signal {
+  font-size: 0.7rem !important;
+  padding: 0.25em 0.75em !important;
+  border-radius: var(--radius-full) !important;
+  background: rgba(106, 176, 202, 0.15) !important;
+  color: #1a738c !important;
+  border: 1px solid rgba(106, 176, 202, 0.3) !important;
+}
+
+body.theme-dark .status-label.aachen-signal {
+  background: rgba(106, 176, 202, 0.22) !important;
+  color: var(--ac-blue) !important;
+  border-color: rgba(106, 176, 202, 0.4) !important;
+}

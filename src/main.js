@@ -118,7 +118,7 @@ const I18N = {
       t3: 'Fremde Leistungen werden nicht als eigene ausgegeben.',
       t4: 'Externe Quellen und Interessenbindungen werden transparent gemacht.',
       organeTitle: 'Organe & Governance',
-      organeText: 'Vorstand, Geschäftsführung und Beirat lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
+      organeText: 'Vorstand und Geschäftsführung lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
     },
     mitglieder: {
       h1: 'WER AACHEN OHNE LIMITS MÖGLICH MACHT',
@@ -320,7 +320,7 @@ const I18N = {
       t3: 'Third-party achievements are not presented as our own.',
       t4: 'External sources and interests are disclosed transparently.',
       organeTitle: 'Governance & Leadership',
-      organeText: 'Board, management, and advisory council guide the strategic and editorial direction. Governance ensures editorial independence and transparent decision-making.'
+      organeText: 'Board and management guide the strategic and editorial direction. Governance ensures editorial independence and transparent decision-making.'
     },
     mitglieder: {
       h1: 'WHO MAKES AACHEN WITHOUT LIMITS POSSIBLE',
@@ -1414,10 +1414,15 @@ function renderInitiativePage() {
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.organeTitle}</h3>
           <p class="text-body">${t.organeText}</p>
 
-          <!-- Vorstand & Geschäftsführung -->
+          <!-- Team -->
           <div style="margin-top: 3.5rem;">
-            <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.3rem; margin-bottom: 1.5rem;">${state.lang === 'DE' ? 'VORSTAND & GESCHÄFTSFÜHRUNG' : 'BOARD & MANAGEMENT'}</h3>
+            <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.3rem; margin-bottom: 1.5rem;">TEAM</h3>
             <div class="team-grid">
+              <div class="team-card">
+                <div class="team-avatar">SK</div>
+                <div class="team-name">Stefan Kiefer</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Geschäftsführer' : 'Managing Director'}</div>
+              </div>
               <div class="team-card">
                 <div class="team-avatar">CM</div>
                 <div class="team-name">Carlo Matic</div>
@@ -1434,9 +1439,14 @@ function renderInitiativePage() {
                 <div class="team-role">${state.lang === 'DE' ? 'Kassenwart' : 'Treasurer'}</div>
               </div>
               <div class="team-card">
-                <div class="team-avatar">SK</div>
-                <div class="team-name">Stefan Kiefer</div>
-                <div class="team-role">${state.lang === 'DE' ? 'Geschäftsführer' : 'Managing Director'}</div>
+                <div class="team-avatar">TE</div>
+                <div class="team-name">Tobias Ell</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Kassenprüfer' : 'Auditor'}</div>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar">ZP</div>
+                <div class="team-name">Zeljko Pezely</div>
+                <div class="team-role">${state.lang === 'DE' ? 'Stellvertretender Kassenprüfer' : 'Deputy Auditor'}</div>
               </div>
             </div>
           </div>
