@@ -551,6 +551,38 @@ const APP_DATA = {
       `
     },
     {
+      id: 'laser-ki-makerthon',
+      status: 'externe-quelle',
+      thema: 'technologie',
+      title_de: 'Wenn Lasertechnik und KI gemeinsam lernen',
+      title_en: 'When Laser Technology and AI Learn Together',
+      teaser_de: 'Die LASER.region.AACHEN bündelt mehr als 60 Industrie- und Forschungspartner. Der Makerthon 2026 verbindet Lasertechnik mit KI und Nachwuchsförderung.',
+      teaser_en: 'LASER.region.AACHEN unites over 60 industry and research partners. The 2026 Makerthon combines laser technology with AI and youth development.',
+      aachenBezug_de: 'Eines der dichtesten Laser- und Photonikkompetenz-Netzwerke Europas.',
+      aachenBezug_en: 'One of Europe\'s densest laser and photonics expertise networks.',
+      organisation: 'LASER.region.AACHEN / RWTH',
+      externalUrl: 'https://laserregionaachen.de/aktuelles-2/makerthon',
+      ctaLabel_de: 'Makerthon bei LASER.region.AACHEN ansehen ↗',
+      ctaLabel_en: 'View Makerthon at LASER.region.AACHEN ↗',
+      featured: true
+    },
+    {
+      id: 'fraunhofer-ilt-transfer',
+      status: 'externe-quelle',
+      thema: 'technologie',
+      title_de: 'Wo Deep Tech nicht im Labor endet',
+      title_en: 'Where Deep Tech Doesn\'t End in the Lab',
+      teaser_de: 'Fraunhofer ILT positioniert Aachen mit Anwendungen rund um Laser, Elektromobilität, Photonik und industrielle Innovation als Transferstandort von internationaler Bedeutung.',
+      teaser_en: 'Fraunhofer ILT positions Aachen as an internationally significant transfer location with applications in laser technology, electromobility, photonics, and industrial innovation.',
+      aachenBezug_de: 'Forschungstransfer als systematische Standortstärke.',
+      aachenBezug_en: 'Research transfer as a systematic regional strength.',
+      organisation: 'Fraunhofer ILT',
+      externalUrl: 'https://www.ilt.fraunhofer.de/',
+      ctaLabel_de: 'Fraunhofer ILT entdecken ↗',
+      ctaLabel_en: 'Discover Fraunhofer ILT ↗',
+      featured: true
+    },
+    {
       id: 'startup-week-aachen',
       status: 'externe-quelle',
       thema: 'wissen',
@@ -564,7 +596,7 @@ const APP_DATA = {
       externalUrl: 'https://www.aachen.digital/',
       ctaLabel_de: 'digitalHUB Aachen besuchen ↗',
       ctaLabel_en: 'Visit digitalHUB Aachen ↗',
-      featured: false
+      featured: true
     },
     {
       id: 'rwth-innovation-transfer',
@@ -580,7 +612,7 @@ const APP_DATA = {
       externalUrl: 'https://www.rwth-aachen.de/cms/root/transfer/gruendungsunterstuetzung/~iibzo/start-up-gruenden/',
       ctaLabel_de: 'Transfer bei RWTH Aachen ansehen ↗',
       ctaLabel_en: 'View transfer at RWTH Aachen ↗',
-      featured: false
+      featured: true
     },
     {
       id: 'interreg-foerderprogramme',
@@ -968,7 +1000,7 @@ function L(key) { return key + '_' + state.lang.toLowerCase(); }
 // ─── HOME PAGE ───────────────────────────────────────────────────────────────
 function renderHomePage() {
   const t = I18N[state.lang];
-  const featured = APP_DATA.storyTeaser.filter(s => s.featured);
+  const externalFeatured = APP_DATA.storyTeaser.filter(s => s.status === 'externe-quelle').slice(0, 4);
   const homeNews = APP_DATA.news.slice(0, 3);
   const membersWithQuotes = APP_DATA.members.filter(m => m[L('quote')]);
 
@@ -1037,7 +1069,7 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 4. Story-Teaser -->
+    <!-- 4. Story-Teaser (GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN) -->
     <section class="section-wrapper section-dark">
       <div class="container">
         <div class="section-header">
@@ -1045,27 +1077,27 @@ function renderHomePage() {
           <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.storyTeaser.intro}</p>
         </div>
 
-        ${featured.length > 0 ? `
-          <div class="featured-story-card" ${featured[0].status === 'eigene-story' || featured[0].article_de ? `data-story-id="${featured[0].id}"` : `data-external-url="${featured[0].externalUrl}"`} style="cursor: pointer;">
+        ${externalFeatured.length > 0 ? `
+          <div class="featured-story-card" data-external-url="${externalFeatured[0].externalUrl}" style="cursor: pointer;">
             <div class="featured-story-image" style="background: var(--wireframe-bg); border: 2px dashed var(--wireframe-border); display:flex; align-items:center; justify-content:center; min-height:200px;">
               <div style="padding: 2rem; color: #fff;">
-                <span class="status-label ${featured[0].status === 'eigene-story' ? 'eigene-story' : 'externe-quelle'}">${featured[0].status === 'eigene-story' ? (state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story') : (state.lang === 'DE' ? 'Externe Quelle' : 'External Source')}</span>
-                <span class="story-category-tag" style="position:static; margin-left: 0.5rem;">${featured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : featured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
+                <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
+                <span class="story-category-tag" style="position:static; margin-left: 0.5rem;">${externalFeatured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : externalFeatured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
               </div>
             </div>
             <div class="featured-story-content">
-              <div class="story-meta"><span>${featured[0].organisation}</span></div>
-              <h3 class="story-card-title" style="font-size: 1.6rem;">${featured[0][L('title')]}</h3>
-              <p class="story-card-excerpt">${featured[0][L('teaser')]}</p>
-              <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 0.75rem;">${featured[0][L('aachenBezug')]}</p>
+              <div class="story-meta"><span>${externalFeatured[0].organisation}</span></div>
+              <h3 class="story-card-title" style="font-size: 1.6rem;">${externalFeatured[0][L('title')]}</h3>
+              <p class="story-card-excerpt">${externalFeatured[0][L('teaser')]}</p>
+              <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 0.75rem;">${externalFeatured[0][L('aachenBezug')]}</p>
               <div style="margin-top: 1.5rem;">
-                <span class="${featured[0].status === 'eigene-story' ? 'btn btn-secondary' : 'external-link-indicator'}">${featured[0][L('ctaLabel')]}</span>
+                <span class="external-link-indicator">${externalFeatured[0][L('ctaLabel')]}</span>
               </div>
             </div>
           </div>
 
           <div class="story-grid" style="margin-top: 2rem;">
-            ${featured.slice(1, 4).map(s => renderTeaserCard(s)).join('')}
+            ${externalFeatured.slice(1, 4).map(s => renderTeaserCard(s)).join('')}
           </div>
         ` : ''}
 
