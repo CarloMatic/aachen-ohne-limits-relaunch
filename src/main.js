@@ -1045,13 +1045,6 @@ function renderHomePage() {
                 <span>${t.hero.btnSecondary}</span>
               </a>
             </div>
-            
-            <div class="direct-answer-hero" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-              <h2 style="font-size: 1.2rem; font-family: var(--font-headline); margin-bottom: 0.5rem; color: #fff;">${t.directAnswer.title}</h2>
-              <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">${t.directAnswer.text}</p>
-              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem;">${t.directAnswer.addendum}</p>
-              <a href="#initiative" class="btn btn-text" data-page="initiative" style="margin-top: 1rem; color: var(--brand-accent); padding: 0;">${t.directAnswer.cta} →</a>
-            </div>
           </div>
           <div class="hero-media">
             <div class="hero-video-wrapper">
@@ -1069,9 +1062,18 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 3. Kuratierte Montage -->
+    <!-- 2. Direct Answer & Kuratierte Montage -->
     <section class="section-wrapper section-light">
       <div class="container">
+        <div class="direct-answer-card" style="margin-bottom: 3.5rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border-left: 4px solid var(--brand-accent);">
+          <h2 class="headline-3deg" style="font-size: 1.6rem; margin-bottom: 1rem; text-transform: uppercase;">${t.directAnswer.title}</h2>
+          <p class="text-body" style="font-size: 1.05rem; line-height: 1.7;">${t.directAnswer.text}</p>
+          <p class="text-body" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem;">${t.directAnswer.addendum}</p>
+          <div style="margin-top: 1.25rem;">
+            <a href="#initiative" class="btn btn-secondary" data-page="initiative">${t.directAnswer.cta} →</a>
+          </div>
+        </div>
+
         <div class="section-header">
           <h2 class="headline-3deg">${t.montage.title}</h2>
           <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.montage.intro}</p>
