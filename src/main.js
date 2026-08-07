@@ -126,14 +126,8 @@ const I18N = {
       sectionAText: 'Die Initiative identifiziert und prüft relevante Geschichten aus der Aachen Area. Ausgewählte Cases werden mit passend ausgewählten Spezialisten entwickelt, produziert und für deutsche sowie internationale Zielgruppen adaptiert. Für jede priorisierte Geschichte entsteht eine geeignete Kombination aus Plattform, Social Media, Presse- und Medienarbeit, Fachmedien, Partner- und Alumni-Netzwerken, Veranstaltungen und – wenn sinnvoll und finanziert – bezahlter Verstärkung. Die erzielte Wirkung wird ausgewertet und fließt in die weitere Arbeit ein.',
       sectionBTitle: 'Ein Jahresbudget von 1 Million Euro aufbauen',
       sectionBText: 'Das langfristige Ziel ist ein Jahresbudget von 1 Million Euro, das eine kontinuierliche professionelle Standortkommunikation ermöglicht. Finanziert werden sollen damit insbesondere Recherche, Redaktion, kreative Produktion, Übersetzung, PR, Social Media, nationale und internationale Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung. Das Ziel ist noch kein bereits verfügbares Budget.',
-      transparenzTitle: 'Transparenz & Governance',
-      t1: 'Der Verein ist kein gemeinnütziger Verein.',
-      t2: 'Mitgliedschaft begründet keinen automatischen Veröffentlichungsanspruch.',
-      t3: 'Finanzierung und redaktionelle Auswahl bleiben getrennt.',
-      t4: 'Externe Leistungen werden nicht als eigene ausgegeben.',
-      t5: 'Quellen, Interessenbindungen und Absender werden transparent gemacht.',
       organeTitle: 'Organe & Governance',
-      organeText: 'Vorstand und Geschäftsführung lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
+      organeText: 'Die Mitglieder sind das höchste Organ im Verein, Vorstand und Geschäftsführung lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
     },
     mitglieder: {
       h1: 'WER AACHEN OHNE LIMITS MÖGLICH MACHT',
@@ -353,14 +347,8 @@ const I18N = {
       sectionAText: 'The initiative identifies and reviews relevant stories from the Aachen Area. Selected cases are developed, produced, and adapted for German and international audiences with carefully chosen specialists. For each prioritized story, a tailored combination of platform, social media, press relations, trade press, partner and alumni networks, events, and – when appropriate and funded – paid amplification is created. The achieved impact is evaluated and feeds into future work.',
       sectionBTitle: 'Building an Annual Budget of 1 Million Euros',
       sectionBText: 'The long-term goal is an annual budget of 1 million euros, enabling continuous professional location communication. This budget is intended to fund research, editing, creative production, translation, PR, social media, national and international distribution, partnerships, platform operations, and impact measurement. This target is not a budget currently available.',
-      transparenzTitle: 'Transparency & Governance',
-      t1: 'The association is not a charitable organization.',
-      t2: 'Membership does not create an automatic right to publication.',
-      t3: 'Funding and editorial selection remain separate.',
-      t4: 'Third-party achievements are not presented as our own.',
-      t5: 'Sources, interests, and senders are disclosed transparently.',
       organeTitle: 'Governance & Leadership',
-      organeText: 'Board and management guide the strategic and editorial direction. Governance ensures editorial independence and transparent decision-making.'
+      organeText: 'The members are the highest body of the association; the board and management guide the strategic and editorial direction. Governance ensures editorial independence and transparent decision-making.'
     },
     mitglieder: {
       h1: 'WHO MAKES AACHEN WITHOUT LIMITS POSSIBLE',
@@ -714,18 +702,46 @@ const APP_DATA = {
 
   // Mitglieder mit korrekter Bronze/Silber/Gold-Klassifizierung
   members: [
-    { name: 'RWTH Aachen University', tier: 'Gold', category_de: 'Wissenschaft', category_en: 'Academia', quote_de: 'Aachens Stärke entsteht aus der Verbindung von Forschung, Unternehmen und internationalem Netzwerk.', quote_en: 'Aachen\'s strength stems from the connection of research, enterprise, and international networks.' },
-    { name: 'FH Aachen', tier: 'Gold', category_de: 'Wissenschaft', category_en: 'Academia' },
-    { name: 'digitalHUB Aachen', tier: 'Gold', category_de: 'Netzwerk', category_en: 'Network Hub' },
-    { name: 'NetAachen GmbH', tier: 'Gold', category_de: 'Telekommunikation', category_en: 'Telecom' },
-    { name: 'IHK Aachen', tier: 'Gold', category_de: 'Kammer', category_en: 'Chamber of Commerce' },
-    { name: 'Prospex GmbH', tier: 'Silber', category_de: 'Wirtschaft', category_en: 'Enterprise' },
-    { name: 'Stadt Aachen', tier: 'Gold', category_de: 'Kommune', category_en: 'Municipality', quote_de: 'Ein starkes Standortbild nützt allen – Wirtschaft, Wissenschaft und den Menschen, die hier leben.', quote_en: 'A strong regional identity benefits everyone — business, science, and the people who live here.' },
-    { name: 'Belvedere Drehturm GmbH', tier: 'Bronze', category_de: 'Gastronomie', category_en: 'Hospitality' },
-    { name: 'FutureLab Aachen', tier: 'Bronze', category_de: 'Initiative', category_en: 'Initiative' },
-    { name: 'DeepTech Aachen e.V.', tier: 'Bronze', category_de: 'Verein', category_en: 'Association' },
-    { name: 'BioMed Euregio', tier: 'Silber', category_de: 'Gesundheit', category_en: 'Health' },
-    { name: 'Euregio Innovation Labs', tier: 'Bronze', category_de: 'Netzwerk', category_en: 'Network' }
+    // GOLD
+    { name: 'digitalHUB Aachen', tier: 'Gold', category_de: 'Netzwerk & Digitalisierung', category_en: 'Digital Ecosystem & Network', quote_de: 'Eine starke Standortmarke macht die gebündelte Innovationskraft der Aachen Area international sichtbar.', quote_en: 'A strong regional brand makes the pooled innovation power of the Aachen Area visible internationally.' },
+    { name: 'CARPUS+PARTNER', tier: 'Gold', category_de: 'Architektur & Beratung', category_en: 'Architecture & Consulting' },
+    { name: 'INFORM', tier: 'Gold', category_de: 'Software & Logistik-KI', category_en: 'Software & Logistics AI' },
+    { name: 'Johnson & Johnson MedTech', tier: 'Gold', category_de: 'Medizintechnik & Gesundheit', category_en: 'Medical Technology & Health' },
+    { name: 'NetAachen', tier: 'Gold', category_de: 'Telekommunikation & IT', category_en: 'Telecommunications & IT', quote_de: 'Starke Netzwerke und moderne Infrastruktur sind das Rückgrat einer zukunftsfähigen Region.', quote_en: 'Strong networks and modern infrastructure are the backbone of a future-proof region.' },
+    { name: 'regio iT', tier: 'Gold', category_de: 'IT-Dienstleistungen & Kommunen', category_en: 'IT Services & Public Sector' },
+    { name: 'IHK Aachen', tier: 'Gold', category_de: 'Wirtschaftskammer', category_en: 'Chamber of Commerce', quote_de: 'Ein starkes Standortbild nützt allen – Wirtschaft, Wissenschaft und den Menschen, die hier leben.', quote_en: 'A strong regional identity benefits everyone — business, science, and the people who live here.' },
+    { name: 'Interactive Pioneers', tier: 'Gold', category_de: 'Digitalagentur & Technologie', category_en: 'Digital Agency & Tech' },
+    { name: 'Landmarken Group', tier: 'Gold', category_de: 'Projektentwicklung & Immobilien', category_en: 'Real Estate & Development' },
+    { name: 'Mayersche', tier: 'Gold', category_de: 'Kultur & Handel', category_en: 'Culture & Retail' },
+    { name: 'Schrittmacher', tier: 'Gold', category_de: 'Marke & Kommunikation', category_en: 'Branding & Communications' },
+    { name: 'Aachener Bank', tier: 'Gold', category_de: 'Finanzwesen & Regionale Bank', category_en: 'Banking & Financial Services' },
+    { name: 'CHIO Aachen', tier: 'Gold', category_de: 'Sport & Internationales Event', category_en: 'Sports & International Event' },
+    { name: 'Schaps Steuerberatung', tier: 'Gold', category_de: 'Steuerberatung & Wirtschaft', category_en: 'Tax & Business Advisory' },
+    { name: 'S-UBG', tier: 'Gold', category_de: 'Beteiligungskapital', category_en: 'Venture Capital & Private Equity' },
+    { name: 'URBAL networks', tier: 'Gold', category_de: 'Netzwerke & Kommunikation', category_en: 'Networks & Communications' },
+    { name: 'yukawa', tier: 'Gold', category_de: 'Digitalisierung & Innovation', category_en: 'Digitalization & Innovation' },
+    { name: 'SustainGuard Group', tier: 'Gold', category_de: 'Nachhaltigkeit & Technologie', category_en: 'Sustainability & Tech' },
+
+    // SILBER
+    { name: 'aachen tourist service', tier: 'Silber', category_de: 'Tourismus & Marketing', category_en: 'Tourism & Regional Marketing' },
+    { name: 'Alabon Business Development', tier: 'Silber', category_de: 'Unternehmensberatung', category_en: 'Business Development' },
+    { name: 'e.mobility hub', tier: 'Silber', category_de: 'Elektromobilität & Energie', category_en: 'Electromobility & Energy' },
+    { name: 'RelAix Networks', tier: 'Silber', category_de: 'Telekommunikation & Netze', category_en: 'Telecommunications & Networks' },
+    { name: 'FRINGS', tier: 'Silber', category_de: 'IT & Systemhaus', category_en: 'IT & Enterprise Solutions' },
+    { name: 'AMO', tier: 'Silber', category_de: 'Nanotechnologie & Forschung', category_en: 'Nanotechnology & Research' },
+    { name: 'GOLDBECK', tier: 'Silber', category_de: 'Bauen & Immobilien', category_en: 'Construction & Real Estate' },
+    { name: 'gpe', tier: 'Silber', category_de: 'Entwicklung & Produktion', category_en: 'Development & Production' },
+    { name: 'Peterhoff Gebäudedienste', tier: 'Silber', category_de: 'Dienstleistung & Infrastruktur', category_en: 'Facility Services' },
+    { name: 'POWER+RADACH', tier: 'Silber', category_de: 'Marke & Kommunikation', category_en: 'Brand & Communications' },
+
+    // BRONZE
+    { name: 'R.E.G.I.N.A', tier: 'Bronze', category_de: 'Regionales Netzwerk', category_en: 'Regional Network' },
+    { name: 'courté', tier: 'Bronze', category_de: 'Dienstleistung & Beratung', category_en: 'Services & Advisory' },
+    { name: 'MOQO', tier: 'Bronze', category_de: 'Shared Mobility Software', category_en: 'Shared Mobility Software' },
+    { name: 'ADVANTEAM', tier: 'Bronze', category_de: 'Software & Beratung', category_en: 'Software & Consulting' },
+    { name: 'Dialego', tier: 'Bronze', category_de: 'Marktforschung & Innovation', category_en: 'Market Research & Innovation' },
+    { name: 'Wienand Ausstatter', tier: 'Bronze', category_de: 'Handwerk & Gestaltung', category_en: 'Crafts & Design' },
+    { name: 'Carolus Thermen Bad Aachen', tier: 'Bronze', category_de: 'Gesundheit & Erholung', category_en: 'Health & Wellness' }
   ]
 };
 
@@ -1654,15 +1670,6 @@ function renderInitiativePage() {
 
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.sectionBTitle}</h3>
           <p class="text-body">${t.sectionBText}</p>
-
-          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.transparenzTitle}</h3>
-          <ul style="line-height: 1.8; color: var(--text-muted); margin-left: 1.25rem;">
-            <li>${t.t1}</li>
-            <li>${t.t2}</li>
-            <li>${t.t3}</li>
-            <li>${t.t4}</li>
-            <li>${t.t5}</li>
-          </ul>
 
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.organeTitle}</h3>
           <p class="text-body">${t.organeText}</p>
