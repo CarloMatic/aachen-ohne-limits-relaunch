@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aachen ohne Limits | Geschichten aus der Aachen Area</title>
+  <meta name="description" content="Entdecken Sie Menschen, Unternehmen und Forschung aus der Aachen Area, die technologische, unternehmerische und europäische Grenzen verschieben." />
+  
+  <!-- Structured Data: Organization (not NGO – the association is not a charitable organization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Place Branding Aachen e. V.",
+    "alternateName": "Aachen ohne Limits",
+    "url": "https://aachenohnelimits.de",
+    "logo": "https://aachenohnelimits.de/logos/ACoL_RGB_Violett.svg",
+    "description": "Der Place Branding Aachen e. V. entwickelt und trägt die Standortmarke „Aachen ohne Limits". Gemeinsam mit Unternehmen und Institutionen macht die Initiative belegbare Leistungen, Menschen und Kooperationen aus der Aachen Area sichtbar.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Grüner Weg 106",
+      "addressLocality": "Aachen",
+      "postalCode": "52070",
+      "addressCountry": "DE"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/aachen-ohne-limits",
+      "https://www.instagram.com/aachenohnelimits",
+      "https://www.facebook.com/aachenohnelimits",
+      "https://www.youtube.com/@aachenohnelimits"
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="theme-light">
+
+  <!-- Header / Navigation -->
+  <header id="site-header" class="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand-logo-link" id="logo-link">
+        <!-- Official Logo SVG Switch (Violett for Light, Green for Dark) -->
+        <div class="logo-img-wrapper">
+          <img src="/logos/ACoL_RGB_Violett.svg" alt="Aachen ohne Limits Logo" class="logo-img logo-img-light" />
+          <img src="/logos/ACoL_RGB_Green.svg" alt="Aachen ohne Limits Logo" class="logo-img logo-img-dark" />
+        </div>
+      </a>
+
+      <!-- Navigation Links – Phase 1 Launch Architecture -->
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#stories" class="nav-link" data-page="stories">Stories</a></li>
+          <li><a href="#news" class="nav-link" data-page="news">News</a></li>
+          <li><a href="#initiative" class="nav-link" data-page="initiative">Initiative</a></li>
+          <li><a href="#mitglieder" class="nav-link" data-page="mitglieder">Mitglieder</a></li>
+          <li><a href="#mitmachen" class="nav-link" data-page="mitmachen">Mitmachen</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Items & Primary CTA -->
+      <div class="header-actions">
+        <!-- Language Switch DE / EN -->
+        <button id="lang-switch" class="btn-lang" title="Sprache wechseln / Switch Language">
+          <span class="lang-code active">DE</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-code">EN</span>
+        </button>
+
+
+        <!-- Primary Conversion CTA – "Antrag starten" (not "Mitglied werden", as the board decides on admission) -->
+        <a href="#mitgliedschaft" class="btn btn-primary" data-page="mitgliedschaft">
+          <span class="btn-text">Antrag starten</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menü öffnen">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container for Single Page Navigation & Views -->
+  <main id="app-root">
+    <!-- View content rendered via main.js -->
+  </main>
+
+  <!-- Global Modals Container -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-card" id="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Schließen">&times;</button>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
