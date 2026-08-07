@@ -13,19 +13,19 @@ const I18N = {
       initiative: 'Initiative',
       mitglieder: 'Mitglieder',
       mitmachen: 'Mitmachen',
-      antrag: 'Antrag starten'
+      antrag: 'Mitgliedschaft'
     },
     hero: {
       eyebrow: 'STANDORTGESCHICHTEN AUS DER AACHEN AREA',
       title: 'AACHEN VERSCHIEBT GRENZEN.',
-      subline: 'Menschen, Unternehmen und Forschungseinrichtungen der Aachen Area machen möglich, was vorher nicht möglich war. Wir finden diese Entwicklungen, verbinden sie und tragen ihre Geschichten weiter.',
+      subline: 'Menschen, Unternehmen und Forschungseinrichtungen der Aachen Area machen möglich, was vorher nicht möglich war. Aachen ohne Limits findet die stärksten Geschichten, entwickelt sie mit ausgewiesenen Spezialisten und bringt sie national wie international zu den Zielgruppen, für die sie relevant sind.',
       btnPrimary: 'Stories entdecken',
       btnSecondary: 'Die Idee dahinter'
     },
     directAnswer: {
       title: 'Was ist Aachen ohne Limits?',
-      text: '„Aachen ohne Limits" ist die gemeinsame Standortmarke der Aachen Area. Die Plattform macht belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft sichtbar, ordnet sie in größere Zusammenhänge ein und entwickelt daraus schrittweise eigene Standortgeschichten.',
-      addendum: 'Herausgeber und Ermöglicher ist der Place Branding Aachen e. V. – getragen von Unternehmen und Institutionen, die Aachens Wahrnehmung gemeinsam stärken wollen.',
+      text: 'Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area. Getragen vom Place Branding Aachen e. V. macht die Initiative belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft sichtbar. Sie entwickelt daraus professionelle Geschichten und verbreitet diese – abhängig von Thema und Zielgruppe – über die eigene Plattform, Social Media, Presse- und Medienarbeit, Partnernetzwerke, Veranstaltungen und weitere geeignete nationale und internationale Kanäle.',
+      addendum: 'Die Aachen Area bezeichnet in diesem Zusammenhang Aachen einschließlich eines Radius von 75 Kilometern. Sie ist der Bezugsraum der Initiative, keine amtliche Gebietskörperschaft.',
       cta: 'Wie die Initiative arbeitet'
     },
     montage: {
@@ -50,28 +50,38 @@ const I18N = {
       t3Cta: 'Zusammenarbeit über Grenzen entdecken'
     },
     arbeitsweise: {
-      title: 'AUS STARKEN EINZELFÄLLEN WIRD EIN GEMEINSAMES BILD.',
-      s1Title: 'Finden',
-      s1Desc: 'Wir identifizieren Leistungen, Menschen und Zusammenhänge mit Bedeutung für die Aachen Area.',
-      s2Title: 'Prüfen',
-      s2Desc: 'Wir bewerten Relevanz, Fakten, Quellen, Rechte und internationales Potenzial.',
-      s3Title: 'Priorisieren',
-      s3Desc: 'Wir ordnen einzelne Themen nach strategischer Bedeutung für den Standort und Story-Potenzial.',
-      s4Title: 'Einbinden',
-      s4Desc: 'Wir gewinnen Menschen und Quellen, führen Interviews und sichern Rechte und Freigaben.',
-      s5Title: 'Produzieren',
-      s5Desc: 'Wir entwickeln verständliche, menschliche und belegbare Geschichten – auf Deutsch und Englisch.',
-      s6Title: 'Verbreiten',
-      s6Desc: 'Mitglieder, Partner, Alumni und Botschafter tragen die Inhalte in ihre Netzwerke.',
+      title: 'EINE GUTE GESCHICHTE REICHT NICHT. SIE MUSS DIE RICHTIGEN MENSCHEN ERREICHEN.',
+      intro: 'Sichtbarkeit entsteht nicht durch das bloße Veröffentlichen eines Textes. Für jede priorisierte Geschichte verbinden wir redaktionelle Qualität mit einer passenden Produktions- und Distributionsstrategie.',
+      s1Title: 'Finden und prüfen',
+      s1Desc: 'Wir identifizieren relevante Leistungen, Menschen und Kooperationen und prüfen Fakten, Quellen, Rechte und ihre Bedeutung für die Aachen Area.',
+      s2Title: 'Strategisch entwickeln',
+      s2Desc: 'Wir definieren Zielgruppen, Kernbotschaft, Dramaturgie, Märkte und die Wirkung, die eine Geschichte erzielen soll.',
+      s3Title: 'Passend produzieren',
+      s3Desc: 'Je nach Case stellen wir das geeignete Team aus Redaktion, Film, Fotografie, Design, Daten, Audio, Übersetzung und weiteren Disziplinen zusammen.',
+      s4Title: 'Für Märkte und Kanäle adaptieren',
+      s4Desc: 'Wir entwickeln deutsche und englische Fassungen sowie die Formate, die unterschiedliche Zielgruppen und Kanäle benötigen.',
+      s5Title: 'National und international distribuieren',
+      s5Desc: 'Wir kombinieren die eigene Plattform mit Social Media, Presse- und Medienarbeit, Fach- und Wirtschaftsmedien, Partner- und Alumni-Netzwerken, Veranstaltungen und – wenn strategisch sinnvoll und finanziert – bezahlter Verstärkung.',
+      s6Title: 'Wirkung messen und lernen',
+      s6Desc: 'Wir werten Reichweite, relevante Zielgruppen, Medienresonanz, Nutzung, Weiterverbreitung und qualitative Rückmeldungen aus und verbessern damit die nächsten Produktionen.',
+      closing: 'Nicht jede Story braucht jeden Kanal. Entscheidend ist, für jede Geschichte die passenden Zielgruppen, Märkte, Formate und Distributionswege zu wählen.',
       cta: 'Mehr über unsere Arbeitsweise'
+    },
+    ambition: {
+      eyebrow: 'UNSER LANGFRISTIGES ZIELBILD',
+      title: 'DAMIT AACHEN DAUERHAFT GEHÖRT WIRD: 1 MILLION EURO JAHRESBUDGET.',
+      mainText: 'Internationale Wahrnehmung entsteht nicht durch einzelne Posts oder eine einmalige Kampagne. Unser langfristiges Ziel ist deshalb, gemeinsam mit Mitgliedern und Partnern ein Jahresbudget von 1 Million Euro aufzubauen. Dieses Budget soll eine kontinuierliche, professionelle Standortkommunikation ermöglichen: von Recherche und Redaktion über Film, Fotografie, Design und Übersetzung bis zu PR, Social Media, internationaler Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung.',
+      specialistsText: 'Dafür soll jede Geschichte das Team bekommen, das sie braucht. Je nach Case will Aachen ohne Limits ausgewiesene Fachleute aus Redaktion, Strategie, Film, Fotografie, Design, Animation, Daten, Übersetzung, PR, Social Media und Distribution zusammenbringen. Entscheidend sind nachweisbare Qualität, Themenkompetenz, Zielgruppenverständnis und internationale Erfahrung.',
+      transparencyText: 'Die 1 Million Euro ist ein strategisches Ausbauziel – kein bereits verfügbares Budget und kein Versprechen, jede eingereichte Geschichte zu produzieren. Mit wachsender Finanzierung wächst die Fähigkeit, mehr relevante Cases hochwertig zu erzählen, für unterschiedliche Märkte aufzubereiten und dort zu verbreiten, wo sie für Aachen Wirkung entfalten können.',
+      cta: 'Was Mitglieder gemeinsam ermöglichen'
     },
     storyGesucht: {
       title: 'WELCHE GESCHICHTE AUS DER AACHEN AREA SOLLTE DIE WELT KENNEN?',
-      text: 'Wir suchen belegbare Leistungen, mutige Menschen und Kooperationen, die Grenzen verschieben. Ein Vorschlag ist keine Veröffentlichungsgarantie – aber vielleicht der Anfang einer Geschichte, die Aachen größer sichtbar macht.',
+      text: 'Wir suchen belegbare Leistungen, mutige Menschen und Kooperationen, die Grenzen verschieben. Ein Vorschlag ist keine Veröffentlichungsgarantie. Er ist der mögliche Anfang einer redaktionellen Prüfung. Auswahl, Produktionsumfang und Distribution richten sich nach Relevanz, Quellenlage, Rechten, Zielgruppenpotenzial, redaktioneller Priorität und verfügbaren Ressourcen.',
       c1: 'Klarer Bezug zur Aachen Area',
-      c2: 'Besondere Leistung oder Wirkung',
-      c3: 'Nachvollziehbare Quellen',
-      c4: 'Menschen, die die Geschichte erzählen können',
+      c2: 'Relevanz über die einzelne Organisation hinaus',
+      c3: 'Potenzial für mindestens zwei relevante Zielgruppen',
+      c4: 'Nachvollziehbare Quellen und Ansprechpartner',
       cta: 'Geschichte vorschlagen'
     },
     newsHome: {
@@ -80,8 +90,8 @@ const I18N = {
     },
     traeger: {
       title: 'GEMEINSAM WIRD AUS SICHTBARKEIT WIRKUNG.',
-      text: 'Diese Unternehmen und Institutionen ermöglichen, dass aus einzelnen Leistungen ein gemeinsames Standortbild entsteht – langfristig, professionell und international anschlussfähig.',
-      cta: 'Wer die Initiative trägt'
+      text: 'Mitglieder finanzieren keine garantierte Einzelwerbung. Sie bauen gemeinsam die redaktionelle, kreative und distributive Infrastruktur auf, mit der relevante Geschichten der Aachen Area professionell produziert und national wie international sichtbar gemacht werden können.',
+      cta: 'Mitgliedschaft verstehen'
     },
     beteiligung: {
       title: 'MACHEN SIE AACHENS STÄRKEN GEMEINSAM SICHTBAR.',
@@ -112,11 +122,16 @@ const I18N = {
       missionText: 'Die Aachen Area verfügt über eine außergewöhnliche Dichte an wissenschaftlicher, wirtschaftlicher und technologischer Kompetenz. Was bisher fehlt, ist eine langfristige gemeinsame Erzählung, die herausragende Einzelfälle verbindet und daraus ein glaubwürdiges Standortbild entstehen lässt. „Aachen ohne Limits" schließt diese Lücke.',
       arbeitTitle: 'Arbeitsweise',
       arbeitText: 'Die Initiative identifiziert außergewöhnliche Leistungen, prüft Fakten und Quellen, ordnet einzelne Entwicklungen in größere Zusammenhänge ein und erzählt die stärksten Geschichten verständlich, menschlich, belegbar und international anschlussfähig.',
-      transparenzTitle: 'Transparenz',
+      sectionATitle: 'Von der Auswahl bis zur Wirkung',
+      sectionAText: 'Die Initiative identifiziert und prüft relevante Geschichten aus der Aachen Area. Ausgewählte Cases werden mit passend ausgewählten Spezialisten entwickelt, produziert und für deutsche sowie internationale Zielgruppen adaptiert. Für jede priorisierte Geschichte entsteht eine geeignete Kombination aus Plattform, Social Media, Presse- und Medienarbeit, Fachmedien, Partner- und Alumni-Netzwerken, Veranstaltungen und – wenn sinnvoll und finanziert – bezahlter Verstärkung. Die erzielte Wirkung wird ausgewertet und fließt in die weitere Arbeit ein.',
+      sectionBTitle: 'Ein Jahresbudget von 1 Million Euro aufbauen',
+      sectionBText: 'Das langfristige Ziel ist ein Jahresbudget von 1 Million Euro, das eine kontinuierliche professionelle Standortkommunikation ermöglicht. Finanziert werden sollen damit insbesondere Recherche, Redaktion, kreative Produktion, Übersetzung, PR, Social Media, nationale und internationale Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung. Das Ziel ist noch kein bereits verfügbares Budget.',
+      transparenzTitle: 'Transparenz & Governance',
       t1: 'Der Verein ist kein gemeinnütziger Verein.',
-      t2: 'Mitgliedschaft erzeugt keinen automatischen redaktionellen Anspruch.',
-      t3: 'Fremde Leistungen werden nicht als eigene ausgegeben.',
-      t4: 'Externe Quellen und Interessenbindungen werden transparent gemacht.',
+      t2: 'Mitgliedschaft begründet keinen automatischen Veröffentlichungsanspruch.',
+      t3: 'Finanzierung und redaktionelle Auswahl bleiben getrennt.',
+      t4: 'Externe Leistungen werden nicht als eigene ausgegeben.',
+      t5: 'Quellen, Interessenbindungen und Absender werden transparent gemacht.',
       organeTitle: 'Organe & Governance',
       organeText: 'Vorstand und Geschäftsführung lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
     },
@@ -151,6 +166,16 @@ const I18N = {
     },
     mitgliedschaft: {
       h1: 'GEMEINSAM MEHR WIRKUNG FÜR AACHEN',
+      directAnswer: 'Mitglieder des Place Branding Aachen e. V. finanzieren und gestalten eine gemeinsame professionelle Standortkommunikation für die Aachen Area. Ihre Beiträge ermöglichen Recherche, Redaktion, Medienproduktion, Übersetzung, PR, Social Media, nationale und internationale Distribution, Plattformbetrieb und Wirkungsmessung. Eine Mitgliedschaft ist kein Kauf einer Story oder garantierter Reichweite.',
+      enablesTitle: 'Was Mitglieder gemeinsam ermöglichen',
+      e1: 'Glaubwürdige gemeinsame Stimme für die Aachen Area',
+      e2: 'Hochwertige Standortgeschichten mit kollektiver Legitimation',
+      e3: 'Professionelle nationale und internationale Distribution',
+      e4: 'Inhalte und Argumente für Recruiting, Reputation und Standortkommunikation',
+      e5: 'Netzwerk aus Wirtschaft, Wissenschaft, Institutionen, Alumni und Multiplikatoren',
+      e6: 'Mitwirkung an Strategie und Themen im Rahmen der geltenden Regeln',
+      e7: 'Transparentes Reporting über Aufbau, Produktionen, Distribution und Wirkung',
+      budgetNote: 'Das langfristige Ziel ist der Aufbau eines Jahresbudgets von 1 Million Euro. Es soll die kontinuierliche professionelle Produktion und Distribution von Standortgeschichten ermöglichen. Der Betrag ist ein Ausbauziel und kein bereits verfügbares Budget.',
       leitgedanke: 'Die Mitgliedschaft ist kein Kauf von Werbefläche. Sie ermöglicht die professionelle Entwicklung, Produktion und Verbreitung einer gemeinsamen Standortkommunikation, von der die Aachen Area und ihre Akteure langfristig profitieren.',
       bronzeTitle: 'Mittragen',
       bronzeSubtitle: 'Bronze',
@@ -158,7 +183,7 @@ const I18N = {
       silberSubtitle: 'Silber',
       goldTitle: 'Mitprägen',
       goldSubtitle: 'Gold',
-      btnApply: 'Mitgliedschaft beantragen',
+      btnApply: 'Antrag starten',
       btnCheck: 'Beiträge und Leistungen prüfen',
       btnTalk: 'Persönliches Gespräch vereinbaren',
       calcTitle: 'BERECHNEN SIE IHREN BEITRAG',
@@ -215,19 +240,19 @@ const I18N = {
       initiative: 'Initiative',
       mitglieder: 'Members',
       mitmachen: 'Engage',
-      antrag: 'Apply Now'
+      antrag: 'Membership'
     },
     hero: {
       eyebrow: 'LOCATION STORIES FROM THE AACHEN AREA',
       title: 'AACHEN PUSHES BOUNDARIES.',
-      subline: 'People, companies, and research institutions across the Aachen Area make possible what wasn\'t possible before. We find these developments, connect them, and carry their stories further.',
+      subline: 'People, companies, and research institutions in the Aachen Area make possible what was previously impossible. Aachen Without Limits finds the strongest stories, develops them with proven specialists, and delivers them nationally and internationally to the target audiences for whom they are relevant.',
       btnPrimary: 'Discover Aachen',
       btnSecondary: 'The Idea Behind It'
     },
     directAnswer: {
       title: 'What is Aachen Without Limits?',
-      text: '"Aachen Without Limits" is the joint location brand of the Aachen Area. The platform makes verifiable achievements from business, science, technology, and society visible, places them in broader context, and gradually develops them into original location stories.',
-      addendum: 'Published and enabled by Place Branding Aachen e. V. – supported by companies and institutions that want to strengthen the perception of Aachen together.',
+      text: 'Aachen Without Limits is the shared location brand for Aachen and the Aachen Area. Backed by Place Branding Aachen e. V., the initiative highlights verifiable achievements from business, science, technology, and society. It develops professional stories from these and distributes them – depending on topic and target audience – via its own platform, social media, press and media relations, partner networks, events, and other suitable national and international channels.',
+      addendum: 'In this context, the Aachen Area refers to Aachen including a radius of 75 kilometers. It is the reference area of the initiative, not an official administrative district.',
       cta: 'How the initiative works'
     },
     montage: {
@@ -252,28 +277,38 @@ const I18N = {
       t3Cta: 'Discover cross-border cooperation'
     },
     arbeitsweise: {
-      title: 'FROM STRONG INDIVIDUAL CASES TO A SHARED PICTURE.',
-      s1Title: 'Find',
-      s1Desc: 'We identify achievements, people, and connections of significance to the Aachen Area.',
-      s2Title: 'Verify',
-      s2Desc: 'We evaluate relevance, facts, sources, rights, and international potential.',
-      s3Title: 'Prioritize',
-      s3Desc: 'We rank topics by strategic importance for the region and story potential.',
-      s4Title: 'Engage',
-      s4Desc: 'We involve people and sources, conduct interviews, and secure rights and approvals.',
-      s5Title: 'Produce',
-      s5Desc: 'We develop understandable, human, and verifiable stories — in German and English.',
-      s6Title: 'Amplify',
-      s6Desc: 'Members, partners, alumni, and ambassadors carry the content into their networks.',
+      title: 'A GOOD STORY IS NOT ENOUGH. IT MUST REACH THE RIGHT PEOPLE.',
+      intro: 'Visibility is not created by merely publishing a text. For every prioritized story, we combine editorial quality with a tailored production and distribution strategy.',
+      s1Title: 'Find and verify',
+      s1Desc: 'We identify relevant achievements, people, and collaborations, verifying facts, sources, rights, and their significance for the Aachen Area.',
+      s2Title: 'Develop strategically',
+      s2Desc: 'We define target audiences, core message, narrative structure, markets, and the intended impact of each story.',
+      s3Title: 'Produce to match',
+      s3Desc: 'Depending on the case, we assemble the ideal team across editorial, film, photography, design, data, audio, translation, and other disciplines.',
+      s4Title: 'Adapt for markets and channels',
+      s4Desc: 'We create German and English versions as well as the formats required by different target audiences and channels.',
+      s5Title: 'Distribute nationally and internationally',
+      s5Desc: 'We combine our own platform with social media, PR and media relations, specialized and business press, partner and alumni networks, events, and – when strategically sound and funded – paid amplification.',
+      s6Title: 'Measure impact and learn',
+      s6Desc: 'We analyze reach, relevant target audiences, media coverage, engagement, sharing, and qualitative feedback to improve future productions.',
+      closing: 'Not every story needs every channel. The key is choosing the right target groups, markets, formats, and distribution paths for each story.',
       cta: 'More about how we work'
+    },
+    ambition: {
+      eyebrow: 'OUR LONG-TERM VISION',
+      title: 'SO THAT AACHEN IS HEARD PERMANENTLY: 1 MILLION EURO ANNUAL BUDGET.',
+      mainText: 'International perception is not built through individual posts or a one-time campaign. Our long-term goal is therefore to build an annual budget of 1 million euros together with members and partners. This budget will enable continuous, professional location communication: from research and editing to film, photography, design, and translation, through to PR, social media, international distribution, partnerships, platform operation, and impact measurement.',
+      specialistsText: 'To achieve this, every story should get the team it needs. Depending on the case, Aachen Without Limits aims to bring together proven experts from editorial, strategy, film, photography, design, animation, data, translation, PR, social media, and distribution. What matters is proven quality, topic expertise, audience understanding, and international experience.',
+      transparencyText: 'The 1 million euros is a strategic growth target – not a budget currently available and not a promise to produce every submitted story. As funding grows, our capacity grows to tell more relevant cases with high quality, prepare them for different markets, and distribute them where they generate real impact for Aachen.',
+      cta: 'What members make possible together'
     },
     storyGesucht: {
       title: 'WHICH STORY FROM THE AACHEN AREA SHOULD THE WORLD KNOW?',
-      text: 'We\'re looking for verifiable achievements, courageous people, and collaborations that push boundaries. A suggestion is not a publication guarantee — but perhaps the beginning of a story that makes Aachen more visible.',
+      text: 'We are looking for verifiable achievements, courageous people, and collaborations that push boundaries. A suggestion is not a publication guarantee. It is the potential start of an editorial review. Selection, production scope, and distribution depend on relevance, source situation, rights, audience potential, editorial priority, and available resources.',
       c1: 'Clear connection to the Aachen Area',
-      c2: 'Outstanding achievement or impact',
-      c3: 'Verifiable sources',
-      c4: 'People who can tell the story',
+      c2: 'Relevance beyond the individual organization',
+      c3: 'Potential for at least two relevant target audiences',
+      c4: 'Verifiable sources and contact persons',
       cta: 'Suggest a story'
     },
     newsHome: {
@@ -282,8 +317,8 @@ const I18N = {
     },
     traeger: {
       title: 'TOGETHER, VISIBILITY BECOMES IMPACT.',
-      text: 'These companies and institutions make it possible for individual achievements to become a shared regional identity — long-term, professional, and internationally connected.',
-      cta: 'Who supports the initiative'
+      text: 'Members do not fund guaranteed individual advertising. Together, they build the editorial, creative, and distribution infrastructure through which relevant stories of the Aachen Area can be professionally produced and made visible nationally and internationally.',
+      cta: 'Understand membership'
     },
     beteiligung: {
       title: 'MAKE AACHEN\'S STRENGTHS VISIBLE TOGETHER.',
@@ -314,11 +349,16 @@ const I18N = {
       missionText: 'The Aachen Area has an extraordinary density of scientific, economic, and technological expertise. What has been missing is a long-term shared narrative that connects outstanding individual cases into a credible regional identity. "Aachen Without Limits" closes this gap.',
       arbeitTitle: 'How We Work',
       arbeitText: 'The initiative identifies extraordinary achievements, verifies facts and sources, places individual developments in broader context, and tells the strongest stories in a way that is understandable, human, verifiable, and internationally relevant.',
-      transparenzTitle: 'Transparency',
+      sectionATitle: 'From Selection to Impact',
+      sectionAText: 'The initiative identifies and reviews relevant stories from the Aachen Area. Selected cases are developed, produced, and adapted for German and international audiences with carefully chosen specialists. For each prioritized story, a tailored combination of platform, social media, press relations, trade press, partner and alumni networks, events, and – when appropriate and funded – paid amplification is created. The achieved impact is evaluated and feeds into future work.',
+      sectionBTitle: 'Building an Annual Budget of 1 Million Euros',
+      sectionBText: 'The long-term goal is an annual budget of 1 million euros, enabling continuous professional location communication. This budget is intended to fund research, editing, creative production, translation, PR, social media, national and international distribution, partnerships, platform operations, and impact measurement. This target is not a budget currently available.',
+      transparenzTitle: 'Transparency & Governance',
       t1: 'The association is not a charitable organization.',
       t2: 'Membership does not create an automatic right to publication.',
-      t3: 'Third-party achievements are not presented as our own.',
-      t4: 'External sources and interests are disclosed transparently.',
+      t3: 'Funding and editorial selection remain separate.',
+      t4: 'Third-party achievements are not presented as our own.',
+      t5: 'Sources, interests, and senders are disclosed transparently.',
       organeTitle: 'Governance & Leadership',
       organeText: 'Board and management guide the strategic and editorial direction. Governance ensures editorial independence and transparent decision-making.'
     },
@@ -345,14 +385,24 @@ const I18N = {
       r5Text: 'Develop a topic, distribution partnership, or format with the initiative.',
       r5Cta: 'Inquire about partnership',
       r6Title: 'We want to support',
-      r6Text: 'Support the shared location communication as a supporting member.',
-      r6Cta: 'Explore supporting membership',
+      r6Text: 'Support the shared location communication as an associate member.',
+      r6Cta: 'Explore associate membership',
       r7Title: 'We want to become members',
       r7Text: 'Enable and shape the long-term location communication of the Aachen Area.',
       r7Cta: 'Explore membership'
     },
     mitgliedschaft: {
       h1: 'GREATER IMPACT FOR AACHEN — TOGETHER',
+      directAnswer: 'Members of Place Branding Aachen e. V. finance and shape a shared professional location communication for the Aachen Area. Their contributions enable research, editing, media production, translation, PR, social media, national and international distribution, platform operation, and impact measurement. Membership is not a purchase of a story or guaranteed reach.',
+      enablesTitle: 'What members make possible together',
+      e1: 'Credible shared voice for the Aachen Area',
+      e2: 'High-quality location stories with collective legitimacy',
+      e3: 'Professional national and international distribution',
+      e4: 'Content and arguments for recruiting, reputation, and regional positioning',
+      e5: 'Network of business, science, institutions, alumni, and multipliers',
+      e6: 'Participation in strategy and topics within established rules',
+      e7: 'Transparent reporting on growth, productions, distribution, and impact',
+      budgetNote: 'The long-term goal is to build an annual budget of 1 million euros. It is intended to enable continuous professional production and distribution of location stories. The amount is a growth target, not a budget currently available.',
       leitgedanke: 'Membership is not buying advertising space. It enables the professional development, production, and distribution of shared location communication that benefits the Aachen Area and its stakeholders long-term.',
       bronzeTitle: 'Support',
       bronzeSubtitle: 'Bronze',
@@ -360,7 +410,7 @@ const I18N = {
       silberSubtitle: 'Silver',
       goldTitle: 'Lead',
       goldSubtitle: 'Gold',
-      btnApply: 'Apply for membership',
+      btnApply: 'Apply Now',
       btnCheck: 'Review fees & benefits',
       btnTalk: 'Schedule a personal conversation',
       calcTitle: 'CALCULATE YOUR CONTRIBUTION',
@@ -853,6 +903,96 @@ function updateLanguageUI() {
   if (joinBtn) joinBtn.textContent = t.antrag;
 }
 
+// ─── SEO & META TAG ENGINE ───────────────────────────────────────────────────
+function updateMetaTags() {
+  const page = state.activePage || 'home';
+  const lang = state.lang.toLowerCase();
+  const de = state.lang === 'DE';
+  const baseUrl = 'https://carlomatic.github.io/aachen-ohne-limits-relaunch';
+
+  const metaData = {
+    home: {
+      title: de ? 'Aachen ohne Limits — Standortmarke für die Aachen Area' : 'Aachen Without Limits — Location Brand for the Aachen Area',
+      desc: de ? 'Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area. Wir finden belegbare Standortgeschichten und verbreiten sie national wie international.' : 'Aachen Without Limits is the joint location brand for the Aachen Area. We find verifiable location stories and distribute them nationally and internationally.'
+    },
+    stories: {
+      title: de ? 'Stories aus der Aachen Area — Aachen ohne Limits' : 'Stories from the Aachen Area — Aachen Without Limits',
+      desc: de ? 'Kuratierte Standortgeschichten, Projektsignale und Entwicklungen aus Wirtschaft, Wissenschaft und Innovation in der Aachen Area.' : 'Curated location stories, project signals, and developments from business, science, and innovation in the Aachen Area.'
+    },
+    themen: {
+      title: de ? 'Strategische Themenräume — Aachen ohne Limits' : 'Strategic Topic Spaces — Aachen Without Limits',
+      desc: de ? 'Drei Perspektiven auf die Standortstärken der Aachen Area: Technologie wird Wirkung, Aus Wissen wird Unternehmen, Europa wird Praxis.' : 'Three perspectives on the Aachen Area\'s strengths: Technology Becomes Impact, Knowledge Becomes Enterprise, Europe Becomes Practice.'
+    },
+    news: {
+      title: de ? 'News & Aktuelles — Aachen ohne Limits' : 'News & Updates — Aachen Without Limits',
+      desc: de ? 'Aktuelle Nachrichten, Standortentwicklungen und Fortschritte der Initiative Aachen ohne Limits.' : 'Latest news, location developments, and progress of the Aachen Without Limits initiative.'
+    },
+    initiative: {
+      title: de ? 'Die Initiative — Place Branding Aachen e. V.' : 'The Initiative — Place Branding Aachen e. V.',
+      desc: de ? 'Der Place Branding Aachen e. V. entwickelt und trägt die gemeinsame Standortmarke Aachen ohne Limits.' : 'Place Branding Aachen e. V. develops and carries the joint location brand Aachen Without Limits.'
+    },
+    mitglieder: {
+      title: de ? 'Mitglieder & Träger — Aachen ohne Limits' : 'Members & Partners — Aachen Without Limits',
+      desc: de ? 'Unternehmen und Institutionen, die die Standortkommunikation der Aachen Area gemeinsam ermöglichen.' : 'Companies and institutions enabling joint location communication for the Aachen Area.'
+    },
+    mitmachen: {
+      title: de ? 'Mitmachen & Mitgliedschaft — Aachen ohne Limits' : 'Engage & Membership — Aachen Without Limits',
+      desc: de ? 'Werden Sie Mitglied im Place Branding Aachen e. V. und gestalten Sie die Standortkommunikation der Aachen Area aktiv mit.' : 'Become a member of Place Branding Aachen e. V. and actively shape location communication for the Aachen Area.'
+    },
+    mitgliedschaft: {
+      title: de ? 'Mitgliedschaft & Beiträge — Aachen ohne Limits' : 'Membership & Fees — Aachen Without Limits',
+      desc: de ? 'Beitragsrechner, Mitgliedschaftsmodelle und Unterlagen des Place Branding Aachen e. V.' : 'Fee calculator, membership tiers, and documents of Place Branding Aachen e. V.'
+    },
+    presse: {
+      title: de ? 'Presse & Medien — Aachen ohne Limits' : 'Press & Media — Aachen Without Limits',
+      desc: de ? 'Pressemitteilungen, Ansprechpartner, Boilerplate und offizielle Logos von Aachen ohne Limits.' : 'Press releases, contacts, boilerplate, and official logos of Aachen Without Limits.'
+    }
+  };
+
+  const curr = metaData[page] || metaData.home;
+  document.title = curr.title;
+
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) {
+    metaDesc = document.createElement('meta');
+    metaDesc.name = 'description';
+    document.head.appendChild(metaDesc);
+  }
+  metaDesc.content = curr.desc;
+
+  // Canonical & hreflang
+  const currentPath = `/${lang}/${page === 'home' ? '' : page + '/'}`;
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = `${baseUrl}${currentPath}`;
+
+  // JSON-LD Structured Data
+  let jsonLd = document.getElementById('json-ld-schema');
+  if (!jsonLd) {
+    jsonLd = document.createElement('script');
+    jsonLd.id = 'json-ld-schema';
+    jsonLd.type = 'application/ld+json';
+    document.head.appendChild(jsonLd);
+  }
+  jsonLd.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    'name': 'Place Branding Aachen e. V.',
+    'alternateName': 'Aachen ohne Limits',
+    'url': baseUrl,
+    'logo': `${baseUrl}/logos/logo_header_purple.png`,
+    'description': curr.desc,
+    'areaServed': {
+      '@type': 'AdministrativeArea',
+      'name': 'Aachen Area'
+    }
+  });
+}
+
 // ─── PAGE ROUTER ─────────────────────────────────────────────────────────────
 function renderCurrentPage() {
   const root = document.getElementById('app-root');
@@ -873,6 +1013,7 @@ function renderCurrentPage() {
   };
   root.innerHTML = (pages[state.activePage] || renderHomePage)();
   updateLanguageUI();
+  updateMetaTags();
   bindPageTriggers();
 }
 
@@ -1018,6 +1159,7 @@ function renderHomePage() {
       <div class="container">
         <div class="section-header">
           <h2 class="headline-3deg">${t.arbeitsweise.title}</h2>
+          <p class="text-body" style="margin-top: 1rem; max-width: 750px; color: rgba(255,255,255,0.85);">${t.arbeitsweise.intro}</p>
         </div>
         <div class="arbeitsweise-grid">
           ${[1,2,3,4,5,6].map(n => `
@@ -1028,8 +1170,29 @@ function renderHomePage() {
             </div>
           `).join('')}
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
+        <p class="text-body" style="text-align: center; margin-top: 2.5rem; font-style: italic; color: rgba(255,255,255,0.7); max-width: 700px; margin-left: auto; margin-right: auto;">${t.arbeitsweise.closing}</p>
+        <div style="text-align: center; margin-top: 2rem;">
           <a href="#initiative" class="btn btn-secondary" data-page="initiative">${t.arbeitsweise.cta}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6b. Ambitionsblock (Zielbild 1 Million Euro) -->
+    <section class="section-wrapper section-light" id="ambition">
+      <div class="container">
+        <div class="section-header">
+          <div class="subline-caps" style="color: var(--brand-accent); margin-bottom: 0.5rem; letter-spacing: 0.15em; font-size: 0.8rem;">${t.ambition.eyebrow}</div>
+          <h2 class="headline-3deg">${t.ambition.title}</h2>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; font-size: 1.05rem; line-height: 1.7;">
+          <p class="text-body">${t.ambition.mainText}</p>
+          <p class="text-body">${t.ambition.specialistsText}</p>
+          <div style="background: rgba(172,10,192,0.05); padding: 1.5rem 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--brand-accent); font-size: 0.95rem;">
+            ${t.ambition.transparencyText}
+          </div>
+          <div style="margin-top: 1rem; text-align: center;">
+            <a href="#mitmachen" class="btn btn-primary" data-page="mitmachen">${t.ambition.cta} →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1408,8 +1571,20 @@ function renderInitiativePage() {
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin-bottom: 1rem;">${t.missionTitle}</h3>
           <p class="text-body">${t.missionText}</p>
 
-          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.arbeitTitle}</h3>
-          <p class="text-body">${t.arbeitText}</p>
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.sectionATitle}</h3>
+          <p class="text-body">${t.sectionAText}</p>
+
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.sectionBTitle}</h3>
+          <p class="text-body">${t.sectionBText}</p>
+
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.transparenzTitle}</h3>
+          <ul style="line-height: 1.8; color: var(--text-muted); margin-left: 1.25rem;">
+            <li>${t.t1}</li>
+            <li>${t.t2}</li>
+            <li>${t.t3}</li>
+            <li>${t.t4}</li>
+            <li>${t.t5}</li>
+          </ul>
 
           <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 2rem 0 1rem;">${t.organeTitle}</h3>
           <p class="text-body">${t.organeText}</p>
@@ -1561,7 +1736,34 @@ function renderMitmachenPage() {
         <div id="mitgliedschaft-rechner" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
           <div class="section-header">
             <h2 class="headline-3deg">${tm.h1}</h2>
-            <p class="text-body" style="margin-top: 1rem; max-width: 700px; font-style: italic;">${tm.leitgedanke}</p>
+            
+            <div class="direct-answer-card" style="margin-top: 1.5rem; max-width: 850px;">
+              <p>${tm.directAnswer}</p>
+            </div>
+
+            <div style="margin-top: 2.5rem; max-width: 850px; text-align: left;">
+              <h3 style="font-family: var(--font-headline); font-size: 1.2rem; text-transform: uppercase; margin-bottom: 1rem;">${tm.enablesTitle}</h3>
+              <ul style="line-height: 1.8; color: var(--text-muted); padding-left: 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.5rem 1.5rem;">
+                <li>${tm.e1}</li>
+                <li>${tm.e2}</li>
+                <li>${tm.e3}</li>
+                <li>${tm.e4}</li>
+                <li>${tm.e5}</li>
+                <li>${tm.e6}</li>
+                <li>${tm.e7}</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: 1.5rem; background: rgba(172,10,192,0.05); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); border-left: 4px solid var(--brand-accent); max-width: 850px; text-align: left; font-size: 0.95rem;">
+              ${tm.budgetNote}
+            </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+              <a href="mailto:verein@aachenohnelimits.de" class="btn btn-primary">${tm.btnTalk}</a>
+              <button class="btn btn-secondary" data-action="apply-membership">${tm.btnApply}</button>
+            </div>
+
+            <p class="text-body" style="margin-top: 2rem; max-width: 700px; font-style: italic;">${tm.leitgedanke}</p>
           </div>
 
           <div class="tier-grid">
