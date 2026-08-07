@@ -1520,6 +1520,7 @@ function renderMitgliederPage() {
 // ─── MITMACHEN PAGE ──────────────────────────────────────────────────────────
 function renderMitmachenPage() {
   const t = I18N[state.lang].mitmachen;
+  const tm = I18N[state.lang].mitgliedschaft;
   const de = state.lang === 'DE';
   const roles = [
     { icon: '📖', title: t.r1Title, text: t.r1Text, cta: t.r1Cta, action: 'submit-story' },
@@ -1541,7 +1542,7 @@ function renderMitmachenPage() {
               <div class="role-icon">${r.icon}</div>
               <div class="role-title">${r.title}</div>
               <p class="role-desc">${r.text}</p>
-              ${r.page ? `<a href="#${r.page}" class="btn btn-secondary" data-page="${r.page}">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}" ${r.tier ? `data-tier="${r.tier}"` : ''}>${r.cta}</button>`}
+              ${r.page ? `<a href="#mitgliedschaft-rechner" class="btn btn-secondary">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}" ${r.tier ? `data-tier="${r.tier}"` : ''}>${r.cta}</button>`}
             </div>
           `).join('')}
         </div>
@@ -1556,178 +1557,173 @@ function renderMitmachenPage() {
             <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
           </div>
         </div>
+
+        <!-- MITGLIEDSCHAFT & BEITRAGSRECHNER -->
+        <div id="mitgliedschaft-rechner" style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+          <div class="section-header">
+            <h2 class="headline-3deg">${tm.h1}</h2>
+            <p class="text-body" style="margin-top: 1rem; max-width: 700px; font-style: italic;">${tm.leitgedanke}</p>
+          </div>
+
+          <div class="tier-grid">
+            <div class="tier-card">
+              <div class="tier-badge">${tm.bronzeSubtitle}</div>
+              <h3 class="tier-title">${tm.bronzeTitle}</h3>
+              <ul class="tier-features">
+                <li>${de ? 'Nutzung des Member-Badges' : 'Use of member badge'}</li>
+                <li>${de ? 'Logo-Präsenz in der Mitgliederübersicht' : 'Logo presence in member directory'}</li>
+                <li>${de ? 'Zugang zu Netzwerk-Events' : 'Access to networking events'}</li>
+              </ul>
+              <button class="btn btn-secondary" data-action="apply-membership" data-tier="bronze">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+            </div>
+            <div class="tier-card featured">
+              <div class="tier-badge" style="color: var(--ac-purple);">${tm.silberSubtitle}</div>
+              <h3 class="tier-title">${tm.silberTitle}</h3>
+              <ul class="tier-features">
+                <li>${de ? 'Alle Bronze-Vorteile' : 'All Bronze benefits'}</li>
+                <li>${de ? 'Story-Vorschläge einreichen' : 'Submit story suggestions'}</li>
+                <li>${de ? 'Themen mitgestalten' : 'Co-shape topics'}</li>
+              </ul>
+              <button class="btn btn-primary" data-action="apply-membership" data-tier="silber">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+            </div>
+            <div class="tier-card">
+              <div class="tier-badge" style="color: var(--ac-yellow);">${tm.goldSubtitle}</div>
+              <h3 class="tier-title">${tm.goldTitle}</h3>
+              <ul class="tier-features">
+                <li>${de ? 'Alle Silber-Vorteile' : 'All Silver benefits'}</li>
+                <li>${de ? 'Strategische Mitwirkung' : 'Strategic participation'}</li>
+                <li>${de ? 'Vorstandsebene' : 'Board-level involvement'}</li>
+              </ul>
+              <button class="btn btn-secondary" data-action="apply-membership" data-tier="gold">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+            </div>
+          </div>
+
+          <!-- Beitragsrechner gemäß Beitragsordnung (§ 6) -->
+          <div class="calculator-card" style="margin-top: 3rem;">
+            <div class="calculator-grid">
+              <div class="calc-inputs">
+                <h3 style="font-family:var(--font-headline); font-size:1.8rem; text-transform:uppercase; margin-bottom:1.5rem; color:#fff;">${tm.calcTitle}</h3>
+                <div class="calc-form-group">
+                  <label class="calc-label">${tm.calcLabelHeadcount}</label>
+                  <select id="calc-headcount" class="calc-select">
+                    <option value="A">${de ? 'A: bis 10 Mitarbeitende (1 Stimme)' : 'A: Up to 10 employees (1 vote)'}</option>
+                    <option value="B" selected>${de ? 'B: über 10 bis 50 Mitarbeitende (2 Stimmen)' : 'B: 11 to 50 employees (2 votes)'}</option>
+                    <option value="C">${de ? 'C: über 50 bis 250 Mitarbeitende (3 Stimmen)' : 'C: 51 to 250 employees (3 votes)'}</option>
+                    <option value="D">${de ? 'D: über 250 bis 750 Mitarbeitende (4 Stimmen)' : 'D: 251 to 750 employees (4 votes)'}</option>
+                    <option value="E">${de ? 'E: über 750 Mitarbeitende (5 Stimmen)' : 'E: Over 750 employees (5 votes)'}</option>
+                    <option value="F">${de ? 'Fördermitglied / Außerordentlich (0 Stimmen)' : 'Supporting Member (0 votes)'}</option>
+                  </select>
+                </div>
+                <div class="calc-form-group">
+                  <label class="calc-label">${tm.calcLabelTier}</label>
+                  <select id="calc-tier" class="calc-select">
+                    <option value="bronze">Bronze (${tm.bronzeTitle})</option>
+                    <option value="silber" selected>Silber (${tm.silberTitle})</option>
+                    <option value="gold">Gold (${tm.goldTitle})</option>
+                  </select>
+                </div>
+              </div>
+              <div class="calc-result-box">
+                <div class="subline-caps" style="color:#fff;" id="calc-votes-display">2 STIMMEN (MITARBEITENDESTUFE B)</div>
+                <div class="calc-price" id="calc-price-display">4.000 €</div>
+                <div class="calc-period">${tm.calcPeriod}</div>
+                <button class="btn btn-primary" style="margin-top: 1.5rem; width:100%; justify-content:center;" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aufnahmeprozess -->
+          <div style="margin-top: 4rem;">
+            <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1rem;">${tm.aufnahmeTitle}</h3>
+            <div class="arbeitsweise-grid" style="margin-top: 1.5rem;">
+              ${tm.aufnahmeSteps.split(' → ').map((step, i) => `
+                <div class="arbeitsweise-step">
+                  <div class="step-number">${i + 1}</div>
+                  <div class="step-title">${step}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Stimmrechte -->
+          <div style="margin-top: 3rem;">
+            <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1rem;">${tm.stimmrechteTitle}</h3>
+            <p class="text-body">${tm.stimmrechteText}</p>
+          </div>
+
+          <!-- FAQ -->
+          <div style="margin-top: 4rem;">
+            <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:2rem;">${tm.faqTitle}</h3>
+            <div style="max-width: 800px;">
+              <div style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                <h4 style="font-weight:700; margin-bottom:0.75rem;">${tm.faq1Q}</h4>
+                <p class="text-body" style="color: var(--text-muted);">${tm.faq1A}</p>
+              </div>
+              <div style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
+                <h4 style="font-weight:700; margin-bottom:0.75rem;">${tm.faq2Q}</h4>
+                <p class="text-body" style="color: var(--text-muted);">${tm.faq2A}</p>
+              </div>
+              <div style="padding: 1.5rem 0;">
+                <h4 style="font-weight:700; margin-bottom:0.75rem;">${tm.faq3Q}</h4>
+                <p class="text-body" style="color: var(--text-muted);">${tm.faq3A}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offizielle Dokumente (PDFs) -->
+          <div style="margin-top: 3rem;">
+            <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1.5rem;">${tm.dokumenteTitle}</h3>
+            <div class="download-grid">
+              <a href="./docs/260611_Satzung_PBA.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📜 ${tm.dokumenteSatzung}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 11. Juni 2026 (PDF) ↗</div>
+              </a>
+              <a href="./docs/260128_Beitragsordnung_PBA.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📊 ${tm.dokumenteBeitragsordnung}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+              </a>
+              <a href="./docs/260128_Leistungsuebersicht_PBA.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">⭐ ${tm.dokumenteLeistungen}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+              </a>
+              <a href="./docs/260128_Markenordnung_PBA.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🏷️ ${tm.dokumenteMarkenordnung}</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
+              </a>
+              <a href="./docs/260206_Mitgliedsantrag_Ordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📝 Antrag Ordentliche Mitgliedschaft</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
+              </a>
+              <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
+                <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🤝 Antrag Fördermitgliedschaft</div>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Ansprechpartner Stefan Kiefer -->
+          <div style="margin-top: 3rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+            <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--ac-purple), var(--ac-blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; flex-shrink: 0;">SK</div>
+            <div style="flex: 1; min-width: 260px;">
+              <div class="subline-caps" style="color: var(--ac-purple);">${de ? 'IHR PERSÖNLICHER ANSPRECHPARTNER' : 'YOUR PERSONAL CONTACT'}</div>
+              <h3 style="font-family:var(--font-headline); font-size:1.4rem; text-transform:uppercase; margin: 0.25rem 0;">Stefan Kiefer</h3>
+              <div style="font-weight:700; font-size:0.95rem; color:var(--text-muted); margin-bottom: 0.75rem;">${de ? 'Geschäftsführer, Place Branding Aachen e. V.' : 'Managing Director, Place Branding Aachen e. V.'}</div>
+              <p class="text-body" style="font-size: 0.95rem;">${de ? 'Für ein persönliches Gespräch zur Mitgliedschaft, zu Beitragspaketen oder strategischen Kooperationen stehe ich Ihnen jederzeit gern zur Verfügung.' : 'I am happy to arrange a personal conversation regarding membership, fee tiers, or strategic partnerships.'}</p>
+              <p class="text-body" style="margin-top: 0.75rem;"><a href="mailto:verein@aachenohnelimits.de" style="color: var(--ac-purple); font-weight: 700;">verein@aachenohnelimits.de</a></p>
+            </div>
+            <div>
+              <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     ${renderFooter()}
   `;
 }
 
-// ─── MITGLIEDSCHAFT PAGE ─────────────────────────────────────────────────────
 function renderMitgliedschaftPage() {
-  const t = I18N[state.lang].mitgliedschaft;
-  const de = state.lang === 'DE';
-  return `
-    <section class="section-wrapper">
-      <div class="container">
-        <div class="section-header">
-          <h1 class="headline-3deg">${t.h1}</h1>
-          <p class="text-body" style="margin-top: 1rem; max-width: 700px; font-style: italic;">${t.leitgedanke}</p>
-        </div>
-
-        <div class="tier-grid">
-          <div class="tier-card">
-            <div class="tier-badge">${t.bronzeSubtitle}</div>
-            <h3 class="tier-title">${t.bronzeTitle}</h3>
-            <ul class="tier-features">
-              <li>${state.lang === 'DE' ? 'Nutzung des Member-Badges' : 'Use of member badge'}</li>
-              <li>${state.lang === 'DE' ? 'Logo-Präsenz in der Mitgliederübersicht' : 'Logo presence in member directory'}</li>
-              <li>${state.lang === 'DE' ? 'Zugang zu Netzwerk-Events' : 'Access to networking events'}</li>
-            </ul>
-            <button class="btn btn-secondary" data-action="apply-membership" data-tier="bronze">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-          </div>
-          <div class="tier-card featured">
-            <div class="tier-badge" style="color: var(--ac-purple);">${t.silberSubtitle}</div>
-            <h3 class="tier-title">${t.silberTitle}</h3>
-            <ul class="tier-features">
-              <li>${state.lang === 'DE' ? 'Alle Bronze-Vorteile' : 'All Bronze benefits'}</li>
-              <li>${state.lang === 'DE' ? 'Story-Vorschläge einreichen' : 'Submit story suggestions'}</li>
-              <li>${state.lang === 'DE' ? 'Themen mitgestalten' : 'Co-shape topics'}</li>
-            </ul>
-            <button class="btn btn-primary" data-action="apply-membership" data-tier="silber">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-          </div>
-          <div class="tier-card">
-            <div class="tier-badge" style="color: var(--ac-yellow);">${t.goldSubtitle}</div>
-            <h3 class="tier-title">${t.goldTitle}</h3>
-            <ul class="tier-features">
-              <li>${state.lang === 'DE' ? 'Alle Silber-Vorteile' : 'All Silver benefits'}</li>
-              <li>${state.lang === 'DE' ? 'Strategische Mitwirkung' : 'Strategic participation'}</li>
-              <li>${state.lang === 'DE' ? 'Vorstandsebene' : 'Board-level involvement'}</li>
-            </ul>
-            <button class="btn btn-secondary" data-action="apply-membership" data-tier="gold">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-          </div>
-        </div>
-
-        <!-- Beitragsrechner gemäß Beitragsordnung (§ 6) -->
-        <div class="calculator-card">
-          <div class="calculator-grid">
-            <div class="calc-inputs">
-              <h3 style="font-family:var(--font-headline); font-size:1.8rem; text-transform:uppercase; margin-bottom:1.5rem; color:#fff;">${t.calcTitle}</h3>
-              <div class="calc-form-group">
-                <label class="calc-label">${t.calcLabelHeadcount}</label>
-                <select id="calc-headcount" class="calc-select">
-                  <option value="A">${de ? 'A: bis 10 Mitarbeitende (1 Stimme)' : 'A: Up to 10 employees (1 vote)'}</option>
-                  <option value="B" selected>${de ? 'B: über 10 bis 50 Mitarbeitende (2 Stimmen)' : 'B: 11 to 50 employees (2 votes)'}</option>
-                  <option value="C">${de ? 'C: über 50 bis 250 Mitarbeitende (3 Stimmen)' : 'C: 51 to 250 employees (3 votes)'}</option>
-                  <option value="D">${de ? 'D: über 250 bis 750 Mitarbeitende (4 Stimmen)' : 'D: 251 to 750 employees (4 votes)'}</option>
-                  <option value="E">${de ? 'E: über 750 Mitarbeitende (5 Stimmen)' : 'E: Over 750 employees (5 votes)'}</option>
-                  <option value="F">${de ? 'Fördermitglied / Außerordentlich (0 Stimmen)' : 'Supporting Member (0 votes)'}</option>
-                </select>
-              </div>
-              <div class="calc-form-group">
-                <label class="calc-label">${t.calcLabelTier}</label>
-                <select id="calc-tier" class="calc-select">
-                  <option value="bronze">Bronze (${t.bronzeTitle})</option>
-                  <option value="silber" selected>Silber (${t.silberTitle})</option>
-                  <option value="gold">Gold (${t.goldTitle})</option>
-                </select>
-              </div>
-            </div>
-            <div class="calc-result-box">
-              <div class="subline-caps" style="color:#fff;" id="calc-votes-display">2 STIMMEN (MITARBEITENDESTUFE B)</div>
-              <div class="calc-price" id="calc-price-display">4.000 €</div>
-              <div class="calc-period">${t.calcPeriod}</div>
-              <button class="btn btn-primary" style="margin-top: 1.5rem; width:100%; justify-content:center;" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aufnahmeprozess -->
-        <div style="margin-top: 4rem;">
-          <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1rem;">${t.aufnahmeTitle}</h3>
-          <div class="arbeitsweise-grid" style="margin-top: 1.5rem;">
-            ${t.aufnahmeSteps.split(' → ').map((step, i) => `
-              <div class="arbeitsweise-step">
-                <div class="step-number">${i + 1}</div>
-                <div class="step-title">${step}</div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
-        <!-- Stimmrechte -->
-        <div style="margin-top: 3rem;">
-          <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1rem;">${t.stimmrechteTitle}</h3>
-          <p class="text-body">${t.stimmrechteText}</p>
-        </div>
-
-        <!-- FAQ -->
-        <div style="margin-top: 4rem;">
-          <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:2rem;">${t.faqTitle}</h3>
-          <div style="max-width: 800px;">
-            <div style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
-              <h4 style="font-weight:700; margin-bottom:0.75rem;">${t.faq1Q}</h4>
-              <p class="text-body" style="color: var(--text-muted);">${t.faq1A}</p>
-            </div>
-            <div style="border-bottom: 1px solid var(--border-color); padding: 1.5rem 0;">
-              <h4 style="font-weight:700; margin-bottom:0.75rem;">${t.faq2Q}</h4>
-              <p class="text-body" style="color: var(--text-muted);">${t.faq2A}</p>
-            </div>
-            <div style="padding: 1.5rem 0;">
-              <h4 style="font-weight:700; margin-bottom:0.75rem;">${t.faq3Q}</h4>
-              <p class="text-body" style="color: var(--text-muted);">${t.faq3A}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Offizielle Dokumente (PDFs) -->
-        <div style="margin-top: 3rem;">
-          <h3 style="font-family:var(--font-headline); text-transform:uppercase; font-size:1.3rem; margin-bottom:1.5rem;">${t.dokumenteTitle}</h3>
-          <div class="download-grid">
-            <a href="./docs/260611_Satzung_PBA.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📜 ${t.dokumenteSatzung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 11. Juni 2026 (PDF) ↗</div>
-            </a>
-            <a href="./docs/260128_Beitragsordnung_PBA.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📊 ${t.dokumenteBeitragsordnung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
-            </a>
-            <a href="./docs/260128_Leistungsuebersicht_PBA.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">⭐ ${t.dokumenteLeistungen}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
-            </a>
-            <a href="./docs/260128_Markenordnung_PBA.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🏷️ ${t.dokumenteMarkenordnung}</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Stand 28. Jan 2026 (PDF) ↗</div>
-            </a>
-            <a href="./docs/260206_Mitgliedsantrag_Ordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">📝 Antrag Ordentliche Mitgliedschaft</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
-            </a>
-            <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" class="document-download-card">
-              <div style="font-weight:700; font-size:1rem; color:#0a0c00;">🤝 Antrag Fördermitgliedschaft</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Ausfüllbares PDF ↗</div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Ansprechpartner Stefan Kiefer -->
-        <div style="margin-top: 3rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-          <div style="width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--ac-purple), var(--ac-blue)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; flex-shrink: 0;">SK</div>
-          <div style="flex: 1; min-width: 260px;">
-            <div class="subline-caps" style="color: var(--ac-purple);">${de ? 'IHR PERSÖNLICHER ANSPRECHPARTNER' : 'YOUR PERSONAL CONTACT'}</div>
-            <h3 style="font-family:var(--font-headline); font-size:1.4rem; text-transform:uppercase; margin: 0.25rem 0;">Stefan Kiefer</h3>
-            <div style="font-weight:700; font-size:0.95rem; color:var(--text-muted); margin-bottom: 0.75rem;">${de ? 'Geschäftsführer, Place Branding Aachen e. V.' : 'Managing Director, Place Branding Aachen e. V.'}</div>
-            <p class="text-body" style="font-size: 0.95rem;">${de ? 'Für ein persönliches Gespräch zur Mitgliedschaft, zu Beitragspaketen oder strategischen Kooperationen stehe ich Ihnen jederzeit gern zur Verfügung.' : 'I am happy to arrange a personal conversation regarding membership, fee tiers, or strategic partnerships.'}</p>
-            <p class="text-body" style="margin-top: 0.75rem;"><a href="mailto:sk@aachenohnelimits.de" style="color: var(--ac-purple); font-weight: 700;">sk@aachenohnelimits.de</a></p>
-          </div>
-          <div>
-            <button class="btn btn-primary" data-action="apply-membership">${de ? 'Antrag anfragen' : 'Inquire Membership'}</button>
-          </div>
-        </div>
-      </div>
-    </section>
-    ${renderFooter()}
-  `;
+  return renderMitmachenPage();
 }
 
 // ─── PRESSE PAGE ─────────────────────────────────────────────────────────────
@@ -1766,7 +1762,7 @@ function renderPressePage() {
         </div>
 
         <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.1rem; margin: 3rem 0 1rem;">${t.contactTitle}</h3>
-        <p class="text-body">Place Branding Aachen e. V.<br/>Grüner Weg 106, 52070 Aachen<br/><a href="mailto:sk@aachenohnelimits.de" style="color: var(--brand-accent);">sk@aachenohnelimits.de</a></p>
+        <p class="text-body">Place Branding Aachen e. V.<br/>Grüner Weg 106, 52070 Aachen<br/><a href="mailto:verein@aachenohnelimits.de" style="color: var(--brand-accent);">verein@aachenohnelimits.de</a></p>
       </div>
     </section>
     ${renderFooter()}
@@ -1786,7 +1782,7 @@ function renderFooter() {
             <div class="logo-img-wrapper" style="height: 80px;">
               <img src="./logos/logo_footer_green.png" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto; object-fit: contain;" />
             </div>
-            <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); margin-top:1rem; max-width:280px;">${de ? 'Trägerinitiative Place Branding Aachen e. V. – Standortkommunikation für die Aachen Area.' : 'Place Branding Aachen e. V. – Regional positioning for the Aachen Area.'}</p>
+            <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); margin-top:1rem; max-width:280px;">${de ? 'Die Standortmarke für die Aachen Area.' : 'The regional brand for the Aachen Area.'}</p>
           </div>
 
           <div class="footer-col">
@@ -1815,7 +1811,7 @@ function renderFooter() {
             <h4>${t.col3Title}</h4>
             <ul class="footer-links">
               <li><a href="#" data-action="submit-story">${de ? 'Story vorschlagen' : 'Suggest a story'}</a></li>
-              <li><a href="#mitgliedschaft" data-page="mitgliedschaft">${de ? 'Mitgliedschaft & Rechner' : 'Membership & Calculator'}</a></li>
+              <li><a href="#mitmachen" data-page="mitmachen">${de ? 'Mitgliedschaft & Rechner' : 'Membership & Calculator'}</a></li>
               <li><a href="#mitmachen" data-page="mitmachen">${de ? 'Mitgliedsanträge (PDF)' : 'Applications (PDF)'}</a></li>
             </ul>
           </div>
@@ -1823,7 +1819,7 @@ function renderFooter() {
           <div class="footer-col">
             <h4>${t.col4Title}</h4>
             <ul class="footer-links">
-              <li><a href="mailto:sk@aachenohnelimits.de">Stefan Kiefer (GF)</a></li>
+              <li><a href="mailto:verein@aachenohnelimits.de">${de ? 'Kontakt' : 'Contact'}</a></li>
               <li><a href="#" data-action="open-newsletter">${de ? 'Newsletter Anmelden' : 'Newsletter Signup'}</a></li>
               <li><a href="#presse" data-page="presse">${de ? 'Mediakit' : 'Media Kit'}</a></li>
             </ul>
