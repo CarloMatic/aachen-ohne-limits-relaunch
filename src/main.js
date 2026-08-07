@@ -464,70 +464,91 @@ const I18N = {
 // ─── APP DATA ────────────────────────────────────────────────────────────────
 const APP_DATA = {
   // 12 externe Story-Teaser basierend auf dem priorisierten Produktionsboard
+  // Externe Story-Teaser & Eigene Story-Platzhalter (INCIRT, Element 3-5, ABIOMED)
   storyTeaser: [
     {
-      id: 'halbleiter-serienfertigung',
-      status: 'externe-quelle',
+      id: 'incirt-chip-design',
+      status: 'eigene-story',
       thema: 'technologie',
-      title_de: 'Vom Halbleiter-Prototyp in die Serienfertigung',
-      title_en: 'From Semiconductor Prototype to Serial Production',
-      teaser_de: 'Forschung und Industrie arbeiten in der Aachen Area daran, den Weg vom Halbleiter-Prototyp in die industrielle Serienfertigung zu beschleunigen. Das zeigt, wie eng wissenschaftliche Infrastruktur und unternehmerische Umsetzung hier zusammenliegen.',
-      teaser_en: 'Research and industry in the Aachen Area are working to accelerate the path from semiconductor prototype to industrial serial production — showing how closely scientific infrastructure and entrepreneurial execution are intertwined here.',
-      aachenBezug_de: 'Forschungsinfrastruktur trifft direkt auf industrielle Umsetzungskompetenz.',
-      aachenBezug_en: 'Research infrastructure meets industrial implementation expertise.',
-      organisation: 'IHK Aachen / Beteiligte Unternehmen',
-      externalUrl: 'https://www.ihk.de/aachen/innovation/innovation/forschungsdialog-rheinland-6955224',
-      ctaLabel_de: 'Projekt bei IHK Aachen ansehen ↗',
-      ctaLabel_en: 'View project at IHK Aachen ↗',
-      featured: true
+      title_de: 'INCIRT: Ultra-Highspeed-Chips aus Aachen für die 6G-Zukunft',
+      title_en: 'INCIRT: Ultra-High-Speed Chips from Aachen for the 6G Future',
+      teaser_de: 'Als Spin-off der RWTH Aachen entwickelt INCIRT integrierte Schaltungen und Hochfrequenz-Datenkonverter für Datenraten im Terabit-Bereich. Die Aachener Chip-Innovation schafft die physikalische Grundlage für kommende 6G-Netze und optische Rechenzentren.',
+      teaser_en: 'As an RWTH Aachen spin-off, INCIRT develops integrated circuits and high-frequency data converters for terabit-level data rates. The Aachen chip innovation creates the physical foundation for future 6G networks and optical data centers.',
+      aachenBezug_de: 'RWTH-Spitzenforschung wird zu global gefragter Chip-Architektur im Aachener Ökosystem.',
+      aachenBezug_en: 'RWTH top research turns into globally sought-after chip architecture in the Aachen ecosystem.',
+      organisation: 'INCIRT GmbH / RWTH Spin-off',
+      externalUrl: 'https://incirt.de/',
+      ctaLabel_de: 'Platzhalter Artikel lesen ↗',
+      ctaLabel_en: 'Read Placeholder Article ↗',
+      featured: true,
+      article_de: `
+        <h3>Wie Aachener Chip-Architektur die Datennetze von morgen antreibt</h3>
+        <p>Mit der rasanten Zunahme weltweiter Datenströme stoßen herkömmliche Halbleiterbausteine an physikalische Grenzen. Die Aachener INCIRT GmbH – hervorgegangen aus dem Lehrstuhl für Integrierte Analogschaltungen der RWTH Aachen – entwickelt ultrahocheffiziente Mixed-Signal-Schaltungen und Datenkonverter mit Abtastraten von über 100 Gigasamples pro Sekunde.</p>
+        <p>Diese integrierten Schaltungen (ICs) ermöglichen es, massive Datenmengen in Millisekunden zwischen optischen Glasfasernetzen, Mobilfunkstationen und Hochleistungssammlern zu wandeln. Durch den Standort in Aachen profitiert INCIRT von der direkten Nähe zu Reinräumen, Testlaboren und den besten Köpfen der Elektrotechnik.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Bedeutung für die Aachen Area:</strong> INCIRT belegt, wie aus universitärer Grundlagenforschung der RWTH Aachen marktführende IP-Cores für den weltweiten Halbleitermarkt entstehen – ein Leuchtturm für das regionale Chip-Ökosystem.</p>
+      `,
+      article_en: `
+        <h3>How Aachen Chip Architecture Powers Tomorrow's Data Networks</h3>
+        <p>With global data traffic surging, conventional semiconductor components hit physical limits. Aachen-based INCIRT GmbH — spun off from RWTH Aachen University — develops ultra-efficient mixed-signal integrated circuits and data converters with sampling rates exceeding 100 Giga-samples per second.</p>
+        <p>These integrated circuits (ICs) enable seamless conversion of massive data volumes between optical fiber networks, mobile base stations, and high-performance hubs. Located in Aachen, INCIRT benefits from immediate proximity to cleanrooms, testing labs, and top electrical engineering talent.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Significance for the Aachen Area:</strong> INCIRT proves how RWTH Aachen research turns into globally leading IP cores for the semiconductor market — a beacon for the regional chip ecosystem.</p>
+      `
     },
     {
-      id: 'laser-ki-makerthon',
-      status: 'externe-quelle',
+      id: 'element-3-5-epitaxy',
+      status: 'eigene-story',
       thema: 'technologie',
-      title_de: 'Wenn Lasertechnik und KI gemeinsam lernen',
-      title_en: 'When Laser Technology and AI Learn Together',
-      teaser_de: 'Die LASER.region.AACHEN bündelt mehr als 60 Industrie- und Forschungspartner. Der Makerthon 2026 verbindet Lasertechnik mit KI und Nachwuchsförderung.',
-      teaser_en: 'LASER.region.AACHEN unites over 60 industry and research partners. The 2026 Makerthon combines laser technology with AI and youth development.',
-      aachenBezug_de: 'Eines der dichtesten Laser- und Photonikkompetenz-Netzwerke Europas.',
-      aachenBezug_en: 'One of Europe\'s densest laser and photonics expertise networks.',
-      organisation: 'LASER.region.AACHEN / RWTH',
-      externalUrl: 'https://laserregionaachen.de/aktuelles-2/makerthon',
-      ctaLabel_de: 'Makerthon bei LASER.region.AACHEN ansehen ↗',
-      ctaLabel_en: 'View Makerthon at LASER.region.AACHEN ↗',
-      featured: true
+      title_de: 'Element 3-5: Neue Epitaxie-Technologie revolutioniert die Halbleiterfertigung',
+      title_en: 'Element 3-5: New Epitaxy Technology Revolutionizes Semiconductor Manufacturing',
+      teaser_de: 'Das High-Tech-Unternehmen Element 3-5 aus Baesweiler in der Aachen Area ermöglicht mit seiner neuartigen Epitaxie-Technologie die energieeffiziente Fertigung von III-V-Halbleitern für Leistungselektronik und MicroLEDs.',
+      teaser_en: 'Baesweiler-based high-tech company Element 3-5 enables energy-efficient production of III-V semiconductors for power electronics and microLEDs with its novel low-temperature epitaxy technology.',
+      aachenBezug_de: 'High-Tech-Anlagenbau und grüne Halbleiter-Innovation aus der Aachen Area.',
+      aachenBezug_en: 'High-tech equipment engineering and green semiconductor innovation from the Aachen Area.',
+      organisation: 'Element 3-5 GmbH / Baesweiler',
+      externalUrl: 'https://element3-5.com/',
+      ctaLabel_de: 'Platzhalter Artikel lesen ↗',
+      ctaLabel_en: 'Read Placeholder Article ↗',
+      featured: true,
+      article_de: `
+        <h3>Energieeffiziente Halbleiterherstellung aus Baesweiler</h3>
+        <p>Die Fertigung von Leistungshalbleitern aus Galliumnitrid (GaN) und Aluminiumnitrid (AlN) erforderte bisher extrem hohe Temperaturen und immensen Energieaufwand. Die Element 3-5 GmbH aus Baesweiler (Aachen Area) hat mit dem ACCELERATOR-System eine bahnbrechende Niedertemperatur-Epitaxie-Technologie entwickelt.</p>
+        <p>Durch die drastische Reduktion des thermischen Budgets sinken nicht nur die Produktionskosten und der CO2-Fußabdruck in der Wafer-Herstellung erheblich; es entstehen auch völlig neue Kombinationsmöglichkeiten von Halbleitermaterialien für Leistungselektronik, 5G/6G-Verstärker und moderne MicroLED-Displays.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Bedeutung für die Aachen Area:</strong> Element 3-5 zeigt, wie Spezialanlagenbau in der Aachen Area technologische Schlüsselprobleme der globalen Energiewende und Mikroelektronik löst.</p>
+      `,
+      article_en: `
+        <h3>Energy-Efficient Semiconductor Manufacturing from Baesweiler</h3>
+        <p>Manufacturing power semiconductors from Gallium Nitride (GaN) and Aluminum Nitride (AlN) previously required extreme temperatures and immense energy consumption. Element 3-5 GmbH in Baesweiler (Aachen Area) developed a breakthrough low-temperature epitaxy technology with its ACCELERATOR system.</p>
+        <p>Drastically reducing the thermal budget significantly lowers production costs and carbon footprints in wafer fabrication while enabling completely new material combinations for power electronics, 5G/6G amplifiers, and microLED displays.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Significance for the Aachen Area:</strong> Element 3-5 demonstrates how specialized equipment manufacturing in the Aachen Area solves key technological bottlenecks in global energy transition and microelectronics.</p>
+      `
     },
     {
-      id: 'deep-tech-transfer',
-      status: 'externe-quelle',
-      thema: 'technologie',
-      title_de: 'Wo Deep Tech nicht im Labor endet',
-      title_en: 'Where Deep Tech Doesn\'t End in the Lab',
-      teaser_de: 'Fraunhofer ILT positioniert Aachen mit Anwendungen rund um Laser, Elektromobilität, Photonik und industrielle Innovation als Transferstandort von internationaler Bedeutung.',
-      teaser_en: 'Fraunhofer ILT positions Aachen as an internationally significant transfer location with applications in laser technology, electromobility, photonics, and industrial innovation.',
-      aachenBezug_de: 'Forschungstransfer als systematische Standortstärke.',
-      aachenBezug_en: 'Research transfer as a systematic regional strength.',
-      organisation: 'Fraunhofer ILT',
-      externalUrl: 'https://www.ilt.fraunhofer.de/',
-      ctaLabel_de: 'Fraunhofer ILT entdecken ↗',
-      ctaLabel_en: 'Discover Fraunhofer ILT ↗',
-      featured: false
-    },
-    {
-      id: 'lava-x-spin-off',
-      status: 'externe-quelle',
+      id: 'abiomed-jnj-impella',
+      status: 'eigene-story',
       thema: 'wissen',
-      title_de: 'Laserschweißen im Vakuum wird zum Unternehmen',
-      title_en: 'Vacuum Laser Welding Becomes a Company',
-      teaser_de: 'LaVa-X hat eine Technologie zum Laserschweißen im Vakuum aus der Forschung in die industrielle Anwendung überführt – ein konkretes Gründungsbeispiel aus dem Aachener Forschungsumfeld.',
-      teaser_en: 'LaVa-X transferred vacuum laser welding technology from research to industrial application — a concrete startup example from Aachen\'s research ecosystem.',
-      aachenBezug_de: 'Spin-off-Weg von der Hochschule in den industriellen Markt.',
-      aachenBezug_en: 'Spin-off journey from university to industrial market.',
-      organisation: 'LaVa-X / FH Aachen Gründungszentrum',
-      externalUrl: 'https://gruendungszentrum.fh-aachen.de/technologieorientierte-gruendungen/',
-      ctaLabel_de: 'Gründung bei FH Aachen ansehen ↗',
-      ctaLabel_en: 'View startup at FH Aachen ↗',
-      featured: true
+      title_de: 'ABIOMED (Johnson & Johnson): Vom Aachener Labor zum weltweiten Lebensretter',
+      title_en: 'ABIOMED (Johnson & Johnson): From Aachen Laboratory to Global Life Saver',
+      teaser_de: 'Aus der biomedizinischen Spitzenforschung an der RWTH Aachen entstand die Impella® – die kleinste Herzpumpe der Welt. Heute führt ABIOMED als Teil von Johnson & Johnson MedTech seinen europäischen Hauptsitz aus Aachen und rettet weltweit Zehntausende von Leben.',
+      teaser_en: 'Originating from cutting-edge biomedical research at RWTH Aachen, the Impella® — the world\'s smallest heart pump — was born. Today, ABIOMED as part of Johnson & Johnson MedTech directs its European HQ from Aachen, saving tens of thousands of lives globally.',
+      aachenBezug_de: 'Biomedizinischer Technologietransfer aus Aachen mit weltweiter Auswirkung.',
+      aachenBezug_en: 'Biomedical technology transfer from Aachen with global impact.',
+      organisation: 'ABIOMED / Johnson & Johnson MedTech',
+      externalUrl: 'https://www.abiomed.de/',
+      ctaLabel_de: 'Platzhalter Artikel lesen ↗',
+      ctaLabel_en: 'Read Placeholder Article ↗',
+      featured: true,
+      article_de: `
+        <h3>Die Impella-Herzpumpe: Aachener Medizintechnik rettet weltweit Leben</h3>
+        <p>Es begann am Helmholtz-Institut für Biomedizinische Technik der RWTH Aachen: Die Vision einer mikroskopisch kleinen, kathetergestützten Herzpumpe, die das geschädigte Herz bei einem akuten Herzinfarkt oder kardiogenen Schock temporär entlastet und die Blutzirkulation aufrechterhält.</p>
+        <p>Aus dieser Aachener Erfindung entwickelte sich die Impella®-Herzpumpe, die heute weltweit als Goldstandard der kardialen Unterstützung gilt. Nach der Übernahme durch Johnson & Johnson MedTech für über 16 Milliarden US-Dollar bleibt Aachen das europäische Herz und der zentrale Forschungs- und Produktionsstandort von ABIOMED Europe.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Bedeutung für die Aachen Area:</strong> ABIOMED ist das Paradebeispiel dafür, wie ein akademisches Spin-off aus Aachen über Jahrzehnte hinweg zum Weltmarktführer heranwächst und globale Konzerne an den Standort bindet.</p>
+      `,
+      article_en: `
+        <h3>The Impella Heart Pump: Aachen Medical Technology Saves Lives Worldwide</h3>
+        <p>It started at the Helmholtz Institute for Biomedical Engineering at RWTH Aachen University: The vision of a microscopic, catheter-based heart pump that temporarily relieves a damaged heart during acute myocardial infarction or cardiogenic shock and maintains blood circulation.</p>
+        <p>From this Aachen invention developed the Impella® heart pump, now considered the global gold standard in cardiac support. Following its acquisition by Johnson & Johnson MedTech for over $16 billion, Aachen remains the European heart and primary research and manufacturing hub for ABIOMED Europe.</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-left: 3px solid var(--brand-accent);"><strong>Significance for the Aachen Area:</strong> ABIOMED is the prime example of how an academic spin-off from Aachen grows over decades into a global market leader, anchoring global corporations to the region.</p>
+      `
     },
     {
       id: 'startup-week-aachen',
@@ -535,8 +556,8 @@ const APP_DATA = {
       thema: 'wissen',
       title_de: 'Eine Woche bringt Aachens Gründungsszene zusammen',
       title_en: 'One Week Unites Aachen\'s Startup Scene',
-      teaser_de: 'Die Startup Week Aachen 2026 bündelte laut digitalHUB mehr als 40 Veranstaltungen in fünf Tagen und machte das Ökosystem gebündelt sichtbar.',
-      teaser_en: 'According to digitalHUB, the 2026 Startup Week Aachen brought together more than 40 events in five days, showcasing the ecosystem at a glance.',
+      teaser_de: 'Die Startup Week Aachen bündelte mehr als 40 Veranstaltungen in fünf Tagen und machte das Ökosystem gebündelt sichtbar.',
+      teaser_en: 'The Aachen Startup Week brought together more than 40 events in five days, showcasing the ecosystem at a glance.',
       aachenBezug_de: 'Gründungsökosystem auf einen Blick sichtbar gemacht.',
       aachenBezug_en: 'Making the startup ecosystem visible at a glance.',
       organisation: 'digitalHUB Aachen',
@@ -551,8 +572,8 @@ const APP_DATA = {
       thema: 'wissen',
       title_de: 'Wie Forschung zur tragfähigen Geschäftsidee wird',
       title_en: 'How Research Becomes a Viable Business Idea',
-      teaser_de: 'RWTH Innovation fungiert als zentrale Transfergesellschaft der RWTH Aachen University und der Uniklinik RWTH Aachen und unterstützt Wissenschaftler und Studierende bei der Überführung von Forschung in Gründungen.',
-      teaser_en: 'RWTH Innovation serves as the central transfer company for RWTH Aachen University and RWTH University Hospital, supporting scientists and students in turning research into startups.',
+      teaser_de: 'RWTH Innovation fungiert als zentrale Transfergesellschaft der RWTH Aachen University und unterstützt Wissenschaftler bei der Überführung von Forschung in Gründungen.',
+      teaser_en: 'RWTH Innovation serves as the central transfer company for RWTH Aachen University, supporting scientists in turning research into startups.',
       aachenBezug_de: 'Institutionalisierter Transferprozess von der Erkenntnis zur Wirkung.',
       aachenBezug_en: 'Institutionalized transfer process from insight to impact.',
       organisation: 'RWTH Innovation / RWTH Aachen',
@@ -562,29 +583,13 @@ const APP_DATA = {
       featured: false
     },
     {
-      id: 'trinationale-hochschulen',
-      status: 'externe-quelle',
-      thema: 'europa',
-      title_de: 'Elf Hochschulen machen aus drei Ländern einen Wissensraum',
-      title_en: 'Eleven Universities Turn Three Countries Into One Knowledge Space',
-      teaser_de: 'Elf Hochschulen aus Deutschland, Belgien und den Niederlanden haben 2026 eine langfristige Zusammenarbeit in Bildung, Forschung und Innovation vereinbart.',
-      teaser_en: 'Eleven universities from Germany, Belgium, and the Netherlands agreed in 2026 on long-term collaboration in education, research, and innovation.',
-      aachenBezug_de: 'Institutionelle Grenzen produktiv gemacht – Europa als gelebte Praxis.',
-      aachenBezug_en: 'Institutional boundaries made productive — Europe as lived practice.',
-      organisation: 'Beteiligte Hochschulen',
-      externalUrl: 'https://www.fh-aachen.de/en/newsroom/article/grenzregion-bietet-einzigartige-chancen',
-      ctaLabel_de: 'Kooperation bei FH Aachen ansehen ↗',
-      ctaLabel_en: 'View cooperation at FH Aachen ↗',
-      featured: true
-    },
-    {
       id: 'interreg-foerderprogramme',
       status: 'externe-quelle',
       thema: 'europa',
       title_de: 'Förderprogramme bringen Unternehmen über Grenzen zusammen',
       title_en: 'Funding Programs Bring Companies Across Borders Together',
-      teaser_de: 'Interreg Maas-Rhein unterstützt grenzüberschreitende Projekte und verfügt in der Förderperiode 2021 bis 2027 über 176 Millionen Euro, davon 125 Millionen Euro aus EU-Mitteln.',
-      teaser_en: 'Interreg Meuse-Rhine supports cross-border projects with €176 million in the 2021–2027 funding period, €125 million from EU funds.',
+      teaser_de: 'Interreg Maas-Rhein unterstützt grenzüberschreitende Projekte und verfügt in der Förderperiode 2021 bis 2027 über 176 Millionen Euro.',
+      teaser_en: 'Interreg Meuse-Rhine supports cross-border projects with €176 million in the 2021–2027 funding period.',
       aachenBezug_de: 'Grenzüberschreitende Zusammenarbeit mit konkreter Finanzierung.',
       aachenBezug_en: 'Cross-border collaboration with concrete funding.',
       organisation: 'Region Aachen / Interreg',
@@ -592,90 +597,23 @@ const APP_DATA = {
       ctaLabel_de: 'Interreg bei Region Aachen ansehen ↗',
       ctaLabel_en: 'View Interreg at Region Aachen ↗',
       featured: false
-    },
-    {
-      id: 'emric-grenzrettung',
-      status: 'externe-quelle',
-      thema: 'europa',
-      title_de: 'Wenn Hilfe im Notfall nicht an der Landesgrenze endet',
-      title_en: 'When Emergency Help Doesn\'t Stop at the Border',
-      teaser_de: 'EMRIC koordiniert die grenzüberschreitende Zusammenarbeit von Rettungsdiensten zwischen Deutschland, Belgien und den Niederlanden – eine der wenigen funktionierenden trinationalen Notfallkooperationen Europas.',
-      teaser_en: 'EMRIC coordinates cross-border emergency service cooperation between Germany, Belgium, and the Netherlands — one of Europe\'s few functioning trinational emergency collaborations.',
-      aachenBezug_de: 'Unmittelbare gesellschaftliche Wirkung über Ländergrenzen hinweg.',
-      aachenBezug_en: 'Immediate societal impact across national borders.',
-      organisation: 'EMRIC / StädteRegion Aachen',
-      externalUrl: 'https://www.emric.info/',
-      ctaLabel_de: 'EMRIC entdecken ↗',
-      ctaLabel_en: 'Discover EMRIC ↗',
-      featured: false
-    },
-    {
-      id: 'grenzforschung-nl',
-      status: 'externe-quelle',
-      thema: 'europa',
-      title_de: 'Gemeinsame Forschung zwischen Aachen und den Niederlanden',
-      title_en: 'Joint Research Between Aachen and the Netherlands',
-      teaser_de: 'AGIT beschreibt die grenzüberschreitende Technologieregion als Wirtschaftsraum mit drei Sprachen und engen Verbindungen zwischen Unternehmen und Forschungszentren.',
-      teaser_en: 'AGIT describes the cross-border technology region as an economic space with three languages and close connections between companies and research centers.',
-      aachenBezug_de: 'Grenzüberschreitendes Innovationsökosystem als Wirtschaftsfaktor.',
-      aachenBezug_en: 'Cross-border innovation ecosystem as an economic factor.',
-      organisation: 'AGIT',
-      externalUrl: 'https://www.agit.de/fuer-die-region/technologieregion-aachen',
-      ctaLabel_de: 'Technologieregion bei AGIT ansehen ↗',
-      ctaLabel_en: 'View technology region at AGIT ↗',
-      featured: false
-    },
-    {
-      id: 'ki-batteriezellen',
-      status: 'externe-quelle',
-      thema: 'technologie',
-      title_de: 'KI beschleunigt die Entwicklung von Batteriezellen',
-      title_en: 'AI Accelerates Battery Cell Development',
-      teaser_de: 'An der RWTH Aachen beschleunigt KI-gestützte Simulation den Entwicklungsprozess für neue Batteriezellen und verbindet so digitale Innovation mit industrieller Energiewende.',
-      teaser_en: 'At RWTH Aachen, AI-driven simulation accelerates the development process for new battery cells, connecting digital innovation with the industrial energy transition.',
-      aachenBezug_de: 'KI trifft auf Produktion und Energiewende am selben Standort.',
-      aachenBezug_en: 'AI meets production and energy transition at the same location.',
-      organisation: 'RWTH Aachen',
-      externalUrl: 'https://www.rwth-aachen.de/',
-      ctaLabel_de: 'Forschung bei RWTH Aachen ansehen ↗',
-      ctaLabel_en: 'View research at RWTH Aachen ↗',
-      featured: false
-    },
-    {
-      id: 'polymer-spinoffs',
-      status: 'externe-quelle',
-      thema: 'wissen',
-      title_de: 'Aus Polymerforschung entstehen neue Spin-offs',
-      title_en: 'New Spin-offs Emerge from Polymer Research',
-      teaser_de: 'Das DWI – Leibniz-Institut für Interaktive Materialien bringt Grundlagenforschung in die Anwendung und hat mehrere Ausgründungen hervorgebracht.',
-      teaser_en: 'DWI – Leibniz Institute for Interactive Materials brings basic research to application and has produced several spin-offs.',
-      aachenBezug_de: 'Vom Grundlagenwissen zum marktfähigen Produkt.',
-      aachenBezug_en: 'From fundamental knowledge to market-ready product.',
-      organisation: 'DWI / Leibniz',
-      externalUrl: 'https://www.dwi.rwth-aachen.de/',
-      ctaLabel_de: 'DWI Leibniz-Institut entdecken ↗',
-      ctaLabel_en: 'Discover DWI Leibniz Institute ↗',
-      featured: false
     }
   ],
 
   // Aachen-Signale
   signals: [
-    { thema_de: 'Halbleiter', thema_en: 'Semiconductors', fact_de: 'Forschung und Industrie arbeiten in Aachen daran, den Weg vom Halbleiter-Prototyp in die Serienfertigung zu beschleunigen.', fact_en: 'Research and industry in Aachen are accelerating the path from semiconductor prototype to serial production.', source: 'IHK Aachen' },
-    { thema_de: 'Laser & Photonik', thema_en: 'Laser & Photonics', fact_de: 'Mehr als 60 Industrie- und Forschungspartner arbeiten in der LASER.region.AACHEN zusammen.', fact_en: 'More than 60 industry and research partners collaborate in LASER.region.AACHEN.', source: 'LASER.region.AACHEN' },
+    { thema_de: 'INCIRT / Chip-Design', thema_en: 'INCIRT / Chip Design', fact_de: 'Aachener RWTH Spin-off entwickelt Ultra-Highspeed-Chips für die weltweite 6G-Kommunikation.', fact_en: 'Aachen RWTH spin-off develops ultra-high-speed chips for global 6G communications.', source: 'INCIRT GmbH' },
+    { thema_de: 'Element 3-5 / Epitaxie', thema_en: 'Element 3-5 / Epitaxy', fact_de: 'Baesweiler Unternehmen revolutioniert die Halbleiterfertigung mit Niedertemperatur-Epitaxie.', fact_en: 'Baesweiler company revolutionizes semiconductor manufacturing with low-temperature epitaxy.', source: 'Element 3-5 GmbH' },
+    { thema_de: 'ABIOMED / MedTech', thema_en: 'ABIOMED / MedTech', fact_de: 'Weltweit kleinste Herzpumpe (Impella) entstand in Aachen – heute Europazentrale von Johnson & Johnson MedTech.', fact_en: 'World\'s smallest heart pump (Impella) originated in Aachen — now European HQ of Johnson & Johnson MedTech.', source: 'ABIOMED Europe' },
     { thema_de: 'Gründung', thema_en: 'Startups', fact_de: 'Die Startup Week Aachen bündelte mehr als 40 Veranstaltungen in fünf Tagen.', fact_en: 'Aachen Startup Week brought together more than 40 events in five days.', source: 'digitalHUB Aachen' },
-    { thema_de: 'Transfer', thema_en: 'Transfer', fact_de: 'RWTH Innovation unterstützt jährlich dutzende Wissenschaftler auf dem Weg von der Forschung zur Gründung.', fact_en: 'RWTH Innovation supports dozens of scientists annually on their path from research to founding a company.', source: 'RWTH Aachen' },
-    { thema_de: 'Europa', thema_en: 'Europe', fact_de: 'Elf Hochschulen aus drei Ländern haben eine langfristige Zusammenarbeit vereinbart.', fact_en: 'Eleven universities from three countries have agreed on long-term collaboration.', source: 'FH Aachen' },
-    { thema_de: 'Grenzkooperation', thema_en: 'Cross-border', fact_de: 'Interreg Maas-Rhein fördert mit 176 Millionen Euro grenzüberschreitende Projekte.', fact_en: 'Interreg Meuse-Rhine supports cross-border projects with €176 million.', source: 'Region Aachen' }
+    { thema_de: 'Transfer', thema_en: 'Transfer', fact_de: 'RWTH Innovation unterstützt jährlich dutzende Wissenschaftler auf dem Weg von der Forschung zur Gründung.', fact_en: 'RWTH Innovation supports dozens of scientists annually on their path from research to founding a company.', source: 'RWTH Aachen' }
   ],
 
-  // Montage-Elemente für Startseite
+  // Montage-Elemente für Startseite (3 Blöcke: INCIRT, Element 3-5, ABIOMED)
   montageElements: [
-    { title_de: 'Halbleiter & Transfer', title_en: 'Semiconductors & Transfer', fact_de: 'Prototyp → Serienfertigung', fact_en: 'Prototype → Serial Production', source: 'IHK Aachen' },
-    { title_de: 'Lasertechnik & Industrie', title_en: 'Laser Technology & Industry', fact_de: '60+ Forschungs- und Industriepartner', fact_en: '60+ research & industry partners', source: 'LASER.region.AACHEN' },
-    { title_de: 'Gründung aus Forschung', title_en: 'Startups from Research', fact_de: 'Vom Labor zum Scale-up', fact_en: 'From lab to scale-up', source: 'RWTH Innovation' },
-    { title_de: 'Trinationale Hochschulen', title_en: 'Trinational Universities', fact_de: '11 Hochschulen · 3 Länder · 1 Wissensraum', fact_en: '11 universities · 3 countries · 1 knowledge space', source: 'FH Aachen' },
-    { title_de: 'Rettung ohne Grenzen', title_en: 'Rescue Without Borders', fact_de: 'Grenzüberschreitende Notfallhilfe', fact_en: 'Cross-border emergency services', source: 'EMRIC' }
+    { title_de: 'INCIRT', title_en: 'INCIRT', fact_de: 'Ultra-Highspeed-Chips für die globale 6G-Kommunikation', fact_en: 'Ultra-high-speed chips for global 6G communications', source: 'INCIRT / RWTH Spin-off' },
+    { title_de: 'Element 3-5', title_en: 'Element 3-5', fact_de: 'Revolutionäre Niedertemperatur-Epitaxie für Halbleiter', fact_en: 'Revolutionary low-temperature epitaxy for semiconductors', source: 'Element 3-5 / Baesweiler' },
+    { title_de: 'ABIOMED (Johnson & Johnson)', title_en: 'ABIOMED (Johnson & Johnson)', fact_de: 'Weltmarktführende Impella-Herzpumpe aus Aachen', fact_en: 'World-leading Impella heart pump from Aachen', source: 'ABIOMED / Johnson & Johnson MedTech' }
   ],
 
   // 5 Launch-News
@@ -852,6 +790,13 @@ function initEventListeners() {
     const link = e.target.closest('[data-page]');
     if (link) { e.preventDefault(); navigateTo(link.dataset.page); mainNav.classList.remove('open'); }
     if (e.target.id === 'modal-close' || e.target.id === 'modal-overlay') closeModal();
+
+    const storyCard = e.target.closest('[data-story-id]');
+    if (storyCard) {
+      e.preventDefault();
+      openStoryModal(storyCard.dataset.storyId);
+      return;
+    }
 
     const extLink = e.target.closest('[data-external-url]');
     if (extLink) { window.open(extLink.dataset.externalUrl, '_blank', 'noopener'); }
@@ -1101,10 +1046,10 @@ function renderHomePage() {
         </div>
 
         ${featured.length > 0 ? `
-          <div class="featured-story-card" data-external-url="${featured[0].externalUrl}" style="cursor: pointer;">
+          <div class="featured-story-card" ${featured[0].status === 'eigene-story' || featured[0].article_de ? `data-story-id="${featured[0].id}"` : `data-external-url="${featured[0].externalUrl}"`} style="cursor: pointer;">
             <div class="featured-story-image" style="background: var(--wireframe-bg); border: 2px dashed var(--wireframe-border); display:flex; align-items:center; justify-content:center; min-height:200px;">
               <div style="padding: 2rem; color: #fff;">
-                <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
+                <span class="status-label ${featured[0].status === 'eigene-story' ? 'eigene-story' : 'externe-quelle'}">${featured[0].status === 'eigene-story' ? (state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story') : (state.lang === 'DE' ? 'Externe Quelle' : 'External Source')}</span>
                 <span class="story-category-tag" style="position:static; margin-left: 0.5rem;">${featured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : featured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
               </div>
             </div>
@@ -1114,7 +1059,7 @@ function renderHomePage() {
               <p class="story-card-excerpt">${featured[0][L('teaser')]}</p>
               <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 0.75rem;">${featured[0][L('aachenBezug')]}</p>
               <div style="margin-top: 1.5rem;">
-                <span class="external-link-indicator">${featured[0][L('ctaLabel')]}</span>
+                <span class="${featured[0].status === 'eigene-story' ? 'btn btn-secondary' : 'external-link-indicator'}">${featured[0][L('ctaLabel')]}</span>
               </div>
             </div>
           </div>
@@ -1290,21 +1235,49 @@ function renderHomePage() {
   `;
 }
 
+function openStoryModal(storyId) {
+  const story = APP_DATA.storyTeaser.find(s => s.id === storyId);
+  if (!story) return;
+  const de = state.lang === 'DE';
+  const title = story[L('title')];
+  const body = story[L('article')] || `<p class="text-body">${story[L('teaser')]}</p>`;
+  openModal(`
+    <div style="max-width: 750px;">
+      <div style="margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+        <span class="status-label eigene-story">${de ? 'Aachen-ohne-Limits Story' : 'Aachen Without Limits Story'}</span>
+        <span class="story-category-tag" style="position:static;">${story.organisation}</span>
+      </div>
+      <h2 class="headline-3deg" style="font-size: 1.8rem; margin-bottom: 1.25rem; text-transform: uppercase; line-height: 1.2;">${title}</h2>
+      <div class="text-body" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-primary);">
+        ${body}
+      </div>
+      <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; gap: 1rem; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <a href="${story.externalUrl}" target="_blank" rel="noopener" class="btn btn-primary">${de ? 'Unternehmenswebsite besuchen ↗' : 'Visit Company Website ↗'}</a>
+        <button onclick="closeModal()" class="btn btn-secondary">${de ? 'Schließen' : 'Close'}</button>
+      </div>
+    </div>
+  `);
+}
+
 // ─── HELPER: Teaser Card ────────────────────────────────────────────────────
 function renderTeaserCard(s) {
   const themaLabel = s.thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : s.thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice');
+  const isEigene = s.status === 'eigene-story' || s.article_de;
+  const statusLabelText = isEigene ? (state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story') : s.status === 'story-vorbereitung' ? (state.lang === 'DE' ? 'In Vorbereitung' : 'In Preparation') : (state.lang === 'DE' ? 'Externe Quelle' : 'External Source');
+  const statusClass = isEigene ? 'eigene-story' : s.status === 'story-vorbereitung' ? 'story-vorbereitung' : 'externe-quelle';
+
   return `
-    <div class="story-card" data-external-url="${s.externalUrl}" style="cursor: pointer;">
+    <div class="story-card" ${isEigene ? `data-story-id="${s.id}"` : `data-external-url="${s.externalUrl}"`} style="cursor: pointer;">
       <div class="story-card-body">
         <div class="story-meta">
-          <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
+          <span class="status-label ${statusClass}">${statusLabelText}</span>
           <span class="story-category-tag" style="position:static; font-size: 0.7rem;">${themaLabel}</span>
         </div>
         <h3 class="story-card-title">${s[L('title')]}</h3>
         <p class="story-card-excerpt">${s[L('teaser')]}</p>
         <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.5rem;">${s[L('aachenBezug')]}</div>
         <div style="margin-top: auto; padding-top: 1rem;">
-          <span class="external-link-indicator">${s[L('ctaLabel')]}</span>
+          <span class="${isEigene ? 'btn btn-secondary' : 'external-link-indicator'}" style="${isEigene ? 'font-size:0.8rem; padding:0.4rem 0.8rem; width:auto; display:inline-block;' : ''}">${s[L('ctaLabel')]}</span>
         </div>
       </div>
     </div>
