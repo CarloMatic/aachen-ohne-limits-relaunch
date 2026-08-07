@@ -1520,14 +1520,15 @@ function renderMitgliederPage() {
 // ─── MITMACHEN PAGE ──────────────────────────────────────────────────────────
 function renderMitmachenPage() {
   const t = I18N[state.lang].mitmachen;
+  const de = state.lang === 'DE';
   const roles = [
     { icon: '📖', title: t.r1Title, text: t.r1Text, cta: t.r1Cta, action: 'submit-story' },
     { icon: '🔗', title: t.r2Title, text: t.r2Text, cta: t.r2Cta, action: 'submit-story' },
+    { icon: '💎', title: de ? 'Ich möchte privat unterstützen' : 'I want to support privately', text: de ? 'Unterstützen Sie die Standortkommunikation der Aachen Area als Fördermitglied oder Privatperson (außerordentliche Mitgliedschaft, 1.000 € / Jahr).' : 'Support the location communication of the Aachen Area as a supporting member (associate membership, €1,000 / year).', cta: de ? 'Außerordentliche Mitgliedschaft beantragen' : 'Apply for associate membership', action: 'apply-membership', tier: 'ausserordentlich' },
     { icon: '📊', title: t.r4Title, text: t.r4Text, cta: t.r4Cta, action: 'submit-story' },
     { icon: '🤝', title: t.r5Title, text: t.r5Text, cta: t.r5Cta, action: 'submit-story' },
     { icon: '⭐', title: t.r7Title, text: t.r7Text, cta: t.r7Cta, page: 'mitgliedschaft' }
   ];
-  const de = state.lang === 'DE';
   return `
     <section class="section-wrapper">
       <div class="container">
@@ -1540,7 +1541,7 @@ function renderMitmachenPage() {
               <div class="role-icon">${r.icon}</div>
               <div class="role-title">${r.title}</div>
               <p class="role-desc">${r.text}</p>
-              ${r.page ? `<a href="#${r.page}" class="btn btn-secondary" data-page="${r.page}">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}">${r.cta}</button>`}
+              ${r.page ? `<a href="#${r.page}" class="btn btn-secondary" data-page="${r.page}">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}" ${r.tier ? `data-tier="${r.tier}"` : ''}>${r.cta}</button>`}
             </div>
           `).join('')}
         </div>
@@ -1782,8 +1783,8 @@ function renderFooter() {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <div class="logo-img-wrapper" style="height: 54px;">
-              <img src="./logos/ACoL_RGB_White.svg" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto;" />
+            <div class="logo-img-wrapper" style="height: 80px;">
+              <img src="./logos/logo_footer_green.png" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto; object-fit: contain;" />
             </div>
             <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); margin-top:1rem; max-width:280px;">${de ? 'Trägerinitiative Place Branding Aachen e. V. – Standortkommunikation für die Aachen Area.' : 'Place Branding Aachen e. V. – Regional positioning for the Aachen Area.'}</p>
           </div>
@@ -1891,12 +1892,16 @@ function closeModal() { document.getElementById('modal-overlay').classList.add('
 
 function openApplicationModal(tier = 'silber') {
   const de = state.lang === 'DE';
+  const displayTier = tier === 'ausserordentlich' 
+    ? (de ? 'Außerordentliche Mitgliedschaft / Fördermitglied (1.000 € / Jahr)' : 'Associate Membership / Supporter (€1,000 / year)')
+    : tier.toUpperCase();
+
   openModal(`
     <h2 class="headline-3deg" style="font-size:1.8rem;">${de ? 'MITGLIEDSCHAFT' : 'MEMBERSHIP'} <span class="accent-word">${de ? 'ANFRAGEN' : 'INQUIRY'}</span></h2>
-    <p class="text-body" style="font-size:0.95rem; margin-bottom:1.5rem;">${de ? 'Gewähltes Paket' : 'Selected tier'}: <strong>${tier.toUpperCase()}</strong></p>
+    <p class="text-body" style="font-size:0.95rem; margin-bottom:1.5rem;">${de ? 'Gewähltes Paket' : 'Selected tier'}: <strong>${displayTier}</strong></p>
     <form onsubmit="event.preventDefault(); alert('${de ? 'Vielen Dank! Ihre Beitrittsanfrage wurde an die Geschäftsführung übermittelt. Wir melden uns innerhalb von 14 Tagen.' : 'Thank you! Your application inquiry has been submitted.'}'); closeModal();">
       <div style="margin-bottom:1rem;">
-        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Unternehmen / Organisation' : 'Company / Organization'}</label>
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Unternehmen / Organisation / Name' : 'Company / Organization / Name'}</label>
         <input type="text" class="calc-input" required style="color:#000; background:#f0f4f8;" />
       </div>
       <div style="margin-bottom:1rem;">

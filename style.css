@@ -254,7 +254,7 @@ body.theme-dark .site-header {
 }
 
 .logo-img-wrapper {
-  height: 58px;
+  height: 72px;
   display: flex;
   align-items: center;
   transition: transform var(--transition-fast);
