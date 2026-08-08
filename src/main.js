@@ -1107,13 +1107,21 @@ function renderHomePage() {
           <h2 class="headline-3deg">${t.montage.title}</h2>
           <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.montage.intro}</p>
         </div>
-        <div class="story-grid">
-          ${eigeneStories.map(s => renderTeaserCard(s)).join('')}
+        <div class="montage-grid">
+          ${eigeneStories.map((s, i) => `
+            <div class="montage-element${i === 0 ? ' montage-featured' : ''}" data-story-id="${s.id}" style="cursor: pointer; position: relative; overflow: hidden; min-height: ${i === 0 ? '320px' : '200px'}; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.85)), url('${s.image}') center/cover no-repeat; border-radius: var(--radius-md);">
+              <div class="montage-content" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; color: #fff;">
+                <div class="montage-fact" style="color: var(--brand-accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem;">${s.organisation}</div>
+                <h3 style="font-size: ${i === 0 ? '1.55rem' : '1.25rem'}; font-weight: 700; margin-bottom: 0.4rem; color: #fff; line-height: 1.25;">${s[L('title')]}</h3>
+                <div class="montage-source" style="font-size: 0.85rem; opacity: 0.9; font-style: italic;">${s[L('aachenBezug')]}</div>
+              </div>
+            </div>
+          `).join('')}
         </div>
       </div>
     </section>
 
-    <!-- 4. Story-Teaser (REFERENZEN OHNE LIMITS) -->
+    <!-- 4. Story-Teaser (REFERENZEN OHNE LIMITS SPOTLIGHT) -->
     <section class="section-wrapper section-dark">
       <div class="container">
         <div class="section-header">
@@ -1139,14 +1147,10 @@ function renderHomePage() {
               </div>
             </div>
           </div>
-
-          <div class="story-grid" style="margin-top: 2rem;">
-            ${externalFeatured.slice(1, 4).map(s => renderTeaserCard(s)).join('')}
-          </div>
         ` : ''}
 
         <div style="text-align: center; margin-top: 3rem;">
-          <a href="#stories" class="btn btn-secondary" data-page="stories">${t.storyTeaser.cta}</a>
+          <a href="#stories" class="btn btn-secondary" data-page="stories">${t.storyTeaser.cta} →</a>
         </div>
       </div>
     </section>
