@@ -18,23 +18,23 @@ const I18N = {
     hero: {
       eyebrow: 'STANDORTGESCHICHTEN AUS DER AACHEN AREA',
       title: 'AACHEN VERSCHIEBT GRENZEN.',
-      subline: 'Menschen, Unternehmen und Forschungseinrichtungen der Aachen Area machen möglich, was vorher nicht möglich war. Aachen ohne Limits findet die stärksten Geschichten, entwickelt sie mit ausgewiesenen Spezialisten und bringt sie national wie international zu den Zielgruppen, für die sie relevant sind.',
+      subline: 'Menschen, Unternehmen und Forschungseinrichtungen der Aachen Area machen möglich, was vorher nicht möglich war. "Aachen ohne Limits" findet die stärksten Geschichten, entwickelt sie mit ausgewiesenen Spezialisten und bringt sie national wie international zu den Zielgruppen, für die sie relevant sind.',
       btnPrimary: 'Stories entdecken',
       btnSecondary: 'Die Idee dahinter'
     },
     directAnswer: {
       title: 'Was ist Aachen ohne Limits?',
-      text: 'Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area. Getragen vom Place Branding Aachen e. V. macht die Initiative belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft sichtbar. Sie entwickelt daraus professionelle Geschichten und verbreitet diese – abhängig von Thema und Zielgruppe – über die eigene Plattform, Social Media, Presse- und Medienarbeit, Partnernetzwerke, Veranstaltungen und weitere geeignete nationale und internationale Kanäle.',
+      text: 'Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area. Getragen von der Unternehmerinitiative Place Branding Aachen e. V. macht die Initiative belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft sichtbar. Sie entwickelt daraus professionelle Geschichten und verbreitet diese – abhängig von Thema und Zielgruppe – über die eigene Plattform, Social Media, Presse- und Medienarbeit, Partnernetzwerke, Veranstaltungen und weitere geeignete nationale und internationale Kanäle.',
       addendum: 'Die Aachen Area bezeichnet den Lebensraum der Menschen, die im Urlaub sagen, dass sie aus der Nähe von Aachen kommen. Sie ist der Bezugsraum der Initiative, keine amtliche Gebietskörperschaft.',
       cta: 'Wie die Initiative arbeitet'
     },
     montage: {
       title: 'DAS BEGINNT HIER.',
-      intro: 'Manche Entwicklungen sind international relevant, werden aber kaum mit Aachen verbunden. Eine erste Auswahl zeigt, welche technologischen, unternehmerischen und europäischen Geschichten in der Aachen Area entstehen.'
+      intro: 'Manche Entwicklungen sind international relevant, werden aber kaum mit Aachen verbunden. Eine erste kleine Auswahl zeigt, welche vielfältigen technologischen, unternehmerischen und europäischen Geschichten in der Aachen Area entstehen - weitere werden folgen.'
     },
     storyTeaser: {
       title: 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN.',
-      intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Wir zeigen eine erste kuratierte Auswahl und führen zu den Organisationen und Menschen, die dahinterstehen.',
+      intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Daher zeigen wir hier auch eine weitere kuratierte Auswahl und führen zu den Organisationen und Menschen, die dahinterstehen.',
       cta: 'Alle Stories ansehen'
     },
     themenraeume: {
@@ -468,6 +468,7 @@ const APP_DATA = {
       externalUrl: 'https://incirt.de/',
       ctaLabel_de: 'Platzhalter Artikel lesen ↗',
       ctaLabel_en: 'Read Placeholder Article ↗',
+      image: './assets/aachen_ki_story.png',
       featured: true,
       article_de: `
         <h3>Wie Aachener Chip-Architektur die Datennetze von morgen antreibt</h3>
@@ -1123,10 +1124,10 @@ function renderHomePage() {
 
         ${externalFeatured.length > 0 ? `
           <div class="featured-story-card" data-external-url="${externalFeatured[0].externalUrl}" style="cursor: pointer;">
-            <div class="featured-story-image" style="background: var(--wireframe-bg); border: 2px dashed var(--wireframe-border); display:flex; align-items:center; justify-content:center; min-height:200px;">
-              <div style="padding: 2rem; color: #fff;">
+            <div class="featured-story-image" style="background: url('./assets/hero_aachen_innovation.png') center/cover no-repeat; min-height:220px; border-radius: var(--radius-md) var(--radius-md) 0 0; position: relative;">
+              <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85));">
                 <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
-                <span class="story-category-tag" style="position:static; margin-left: 0.5rem;">${externalFeatured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : externalFeatured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
+                <span class="story-category-tag" style="position:static; margin-left: 0.5rem; font-size: 0.7rem;">${externalFeatured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : externalFeatured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
               </div>
             </div>
             <div class="featured-story-content">
@@ -1368,7 +1369,10 @@ function renderTeaserCard(s) {
   const statusClass = isEigene ? 'eigene-story' : s.status === 'story-vorbereitung' ? 'story-vorbereitung' : 'externe-quelle';
 
   return `
-    <div class="story-card" ${isEigene ? `data-story-id="${s.id}"` : `data-external-url="${s.externalUrl}"`} style="cursor: pointer;">
+    <div class="story-card" ${isEigene ? `data-story-id="${s.id}"` : `data-external-url="${s.externalUrl}"`} style="cursor: pointer; overflow: hidden;">
+      ${s.image ? `
+        <div class="story-card-image" style="background: url('${s.image}') center/cover no-repeat; height: 160px; border-radius: var(--radius-sm) var(--radius-sm) 0 0; border-bottom: 1px solid var(--border-color);"></div>
+      ` : ''}
       <div class="story-card-body">
         <div class="story-meta">
           <span class="status-label ${statusClass}">${statusLabelText}</span>
