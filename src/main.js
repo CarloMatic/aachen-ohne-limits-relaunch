@@ -29,11 +29,11 @@ const I18N = {
       cta: 'Wie die Initiative arbeitet'
     },
     montage: {
-      title: 'DAS BEGINNT HIER.',
+      title: 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN.',
       intro: 'Manche Entwicklungen sind international relevant, werden aber kaum mit Aachen verbunden. Eine erste kleine Auswahl zeigt, welche vielfältigen technologischen, unternehmerischen und europäischen Geschichten in der Aachen Area entstehen - weitere werden folgen.'
     },
     storyTeaser: {
-      title: 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN.',
+      title: 'REFERENZEN OHNE LIMITS',
       intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Daher zeigen wir hier auch eine weitere kuratierte Auswahl und führen zu den Organisationen und Menschen, die dahinterstehen.',
       cta: 'Alle Stories ansehen'
     },
@@ -119,13 +119,13 @@ const I18N = {
       h1: 'DIE INITIATIVE HINTER AACHEN OHNE LIMITS',
       directAnswer: 'Der Place Branding Aachen e. V. entwickelt und trägt die gemeinsame Standortmarke „Aachen ohne Limits". Der Verein findet, kuratiert, produziert und verbreitet Geschichten aus der Aachen Area und schafft dafür ein langfristiges Netzwerk aus Wirtschaft, Wissenschaft und Institutionen.',
       missionTitle: 'Mission',
-      missionText: 'Die Aachen Area verfügt über eine außergewöhnliche Dichte an wissenschaftlicher, wirtschaftlicher und technologischer Kompetenz. Was bisher fehlt, ist eine langfristige gemeinsame Erzählung, die herausragende Einzelfälle verbindet und daraus ein glaubwürdiges Standortbild entstehen lässt. „Aachen ohne Limits" schließt diese Lücke.',
+      missionText: 'Die Aachen Area verfügt über eine außergewöhnliche Dichte an wissenschaftlicher, wirtschaftlicher und technologischer Kompetenz. Was bisher fehlt, ist eine langfristige gemeinsame Erzählung, die herausragende Einzelfälle verbindet und daraus ein glaubwürdiges Standortbild entstehen lässt. Eine gemeinsame Identität die Stolz macht und daraus das Mindset wachsen lässt groß zu denken. „Aachen ohne Limits" schließt diese Lücke.',
       arbeitTitle: 'Arbeitsweise',
       arbeitText: 'Die Initiative identifiziert außergewöhnliche Leistungen, prüft Fakten und Quellen, ordnet einzelne Entwicklungen in größere Zusammenhänge ein und erzählt die stärksten Geschichten verständlich, menschlich, belegbar und international anschlussfähig.',
       sectionATitle: 'Von der Auswahl bis zur Wirkung',
       sectionAText: 'Die Initiative identifiziert und prüft relevante Geschichten aus der Aachen Area. Ausgewählte Cases werden mit passend ausgewählten Spezialisten entwickelt, produziert und für deutsche sowie internationale Zielgruppen adaptiert. Für jede priorisierte Geschichte entsteht eine geeignete Kombination aus Plattform, Social Media, Presse- und Medienarbeit, Fachmedien, Partner- und Alumni-Netzwerken, Veranstaltungen und – wenn sinnvoll und finanziert – bezahlter Verstärkung. Die erzielte Wirkung wird ausgewertet und fließt in die weitere Arbeit ein.',
       sectionBTitle: 'Ein Jahresbudget von 1 Million Euro aufbauen',
-      sectionBText: 'Das langfristige Ziel ist ein Jahresbudget von 1 Million Euro, das eine kontinuierliche professionelle Standortkommunikation ermöglicht. Finanziert werden sollen damit insbesondere Recherche, Redaktion, kreative Produktion, Übersetzung, PR, Social Media, nationale und internationale Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung. Das Ziel ist noch kein bereits verfügbares Budget.',
+      sectionBText: 'Das langfristige Ziel ist ein Jahresbudget von 1 Million Euro, das eine kontinuierliche professionelle Standortkommunikation ermöglicht. Finanziert werden sollen damit insbesondere Recherche, Redaktion, kreative Produktion, Übersetzung, PR, Social Media, nationale und internationale Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung. Um dieses Ziel zu erreichen müssen wir erst viele werden, dann können wir laut werden.',
       organeTitle: 'Organe & Governance',
       organeText: 'Die Mitglieder sind das höchste Organ im Verein, Vorstand und Geschäftsführung lenken die strategische und redaktionelle Ausrichtung. Die Governance sichert redaktionelle Unabhängigkeit und transparente Entscheidungswege.'
     },
@@ -1399,7 +1399,9 @@ function renderTeaserCard(s) {
 // ─── STORIES PAGE ──────────────────────────────────────────────────────────
 function renderStoriesPage() {
   const t = I18N[state.lang];
-  const teasers = state.activeFilter === 'all' ? APP_DATA.storyTeaser : APP_DATA.storyTeaser.filter(s => s.thema === state.activeFilter);
+  const allTeasers = state.activeFilter === 'all' ? APP_DATA.storyTeaser : APP_DATA.storyTeaser.filter(s => s.thema === state.activeFilter);
+  const eigeneStories = allTeasers.filter(s => s.status === 'eigene-story' || s.article_de);
+  const referenzen = allTeasers.filter(s => s.status !== 'eigene-story' && !s.article_de);
 
   return `
     <section class="section-wrapper">
@@ -1419,28 +1421,48 @@ function renderStoriesPage() {
           <button class="filter-btn ${state.activeFilter === 'europa' ? 'active' : ''}" data-filter="europa">${t.themenraeume.t3Title}</button>
         </div>
 
-        <!-- Teaser Grid -->
-        <div class="story-grid">
-          ${teasers.map(s => renderTeaserCard(s)).join('')}
-        </div>
-
-        <!-- Aachen-Signale Band -->
-        <h3 class="headline-3deg" style="font-size: 1.4rem; margin-top: 4rem;">AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)</h3>
-        <div class="signal-band" style="margin-top: 1.5rem;">
-          ${APP_DATA.signals.map(sig => `
-            <div class="aachen-signal" data-external-url="${sig.externalUrl}" style="cursor: pointer;">
-              <div class="signal-theme">${state.lang === 'DE' ? 'Aachen-Signal · ' : 'Aachen Signal · '}${sig[L('thema')]}</div>
-              <div class="signal-fact">${sig[L('fact')]}</div>
-              <div class="signal-source" style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.8rem;">
-                <span>${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</span>
-                <span class="external-link-indicator">↗</span>
-              </div>
+        <!-- 1. AACHEN-STORIES (Redaktionell produzierte Stories) -->
+        ${eigeneStories.length > 0 ? `
+          <div style="margin-top: 2.5rem;">
+            <h2 class="headline-3deg" style="font-size: 1.4rem; margin-bottom: 1.25rem;">${state.lang === 'DE' ? 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN' : 'STORIES THAT ALREADY BEGIN IN AACHEN'}</h2>
+            <div class="story-grid">
+              ${eigeneStories.map(s => renderTeaserCard(s)).join('')}
             </div>
-          `).join('')}
+          </div>
+        ` : ''}
+
+        <!-- 2. REFERENZEN OHNE LIMITS (Kuratierte externe Quellen) -->
+        ${referenzen.length > 0 ? `
+          <div style="margin-top: 4.5rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="margin-bottom: 1.5rem;">
+              <h2 class="headline-3deg" style="font-size: 1.4rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'REFERENZEN OHNE LIMITS' : 'REFERENCES WITHOUT LIMITS'}</h2>
+              <p style="font-size: 0.95rem; color: var(--text-muted);">${state.lang === 'DE' ? 'Reale Entwicklungen und Quellen aus der Aachen Area, die direkt zu den verantwortlichen Organisationen führen.' : 'Real developments and sources from the Aachen Area linking directly to the responsible organizations.'}</p>
+            </div>
+            <div class="story-grid">
+              ${referenzen.map(s => renderTeaserCard(s)).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- 3. AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN) -->
+        <div style="margin-top: 4.5rem;">
+          <h3 class="headline-3deg" style="font-size: 1.4rem;">${state.lang === 'DE' ? 'AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)' : 'AACHEN SIGNALS (FACTS & NUMBERS)'}</h3>
+          <div class="signal-band" style="margin-top: 1.5rem;">
+            ${APP_DATA.signals.map(sig => `
+              <div class="aachen-signal" data-external-url="${sig.externalUrl}" style="cursor: pointer;">
+                <div class="signal-theme">${state.lang === 'DE' ? 'Aachen-Signal · ' : 'Aachen Signal · '}${sig[L('thema')]}</div>
+                <div class="signal-fact">${sig[L('fact')]}</div>
+                <div class="signal-source" style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.8rem;">
+                  <span>${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</span>
+                  <span class="external-link-indicator">↗</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
         </div>
 
         <!-- Story vorschlagen CTA -->
-        <div style="text-align: center; margin-top: 3rem;">
+        <div style="text-align: center; margin-top: 3.5rem;">
           <button class="btn btn-primary" data-action="submit-story">${t.stories.ctaStory}</button>
         </div>
 
