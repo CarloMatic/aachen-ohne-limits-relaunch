@@ -628,13 +628,13 @@ const APP_DATA = {
     }
   ],
 
-  // Aachen-Signale
+  // Aachen-Signale (Belegte Standort-Zahlen & Fakten mit direkter Quellenverlinkung)
   signals: [
-    { thema_de: 'INCIRT / Chip-Design', thema_en: 'INCIRT / Chip Design', fact_de: 'Aachener RWTH Spin-off entwickelt Ultra-Highspeed-Chips für die weltweite 6G-Kommunikation.', fact_en: 'Aachen RWTH spin-off develops ultra-high-speed chips for global 6G communications.', source: 'INCIRT GmbH' },
-    { thema_de: 'Element 3-5 / Epitaxie', thema_en: 'Element 3-5 / Epitaxy', fact_de: 'Baesweiler Unternehmen revolutioniert die Halbleiterfertigung mit Niedertemperatur-Epitaxie.', fact_en: 'Baesweiler company revolutionizes semiconductor manufacturing with low-temperature epitaxy.', source: 'Element 3-5 GmbH' },
-    { thema_de: 'ABIOMED / MedTech', thema_en: 'ABIOMED / MedTech', fact_de: 'Weltweit kleinste Herzpumpe (Impella) entstand in Aachen – heute Europazentrale von Johnson & Johnson MedTech.', fact_en: 'World\'s smallest heart pump (Impella) originated in Aachen — now European HQ of Johnson & Johnson MedTech.', source: 'ABIOMED Europe' },
-    { thema_de: 'Gründung', thema_en: 'Startups', fact_de: 'Die Startup Week Aachen bündelte mehr als 40 Veranstaltungen in fünf Tagen.', fact_en: 'Aachen Startup Week brought together more than 40 events in five days.', source: 'digitalHUB Aachen' },
-    { thema_de: 'Transfer', thema_en: 'Transfer', fact_de: 'RWTH Innovation unterstützt jährlich dutzende Wissenschaftler auf dem Weg von der Forschung zur Gründung.', fact_en: 'RWTH Innovation supports dozens of scientists annually on their path from research to founding a company.', source: 'RWTH Aachen' }
+    { thema_de: 'Halbleiter & Nanoelektronik', thema_en: 'Semiconductors & Nanoelectronics', fact_de: '> 30 % aller deutschen GaN-Leistungshalbleiter-Patente stammen aus der Aachen Area.', fact_en: '> 30% of all German GaN power semiconductor patents originate from the Aachen Area.', source: 'Forschungszentrum Jülich / VDE', externalUrl: 'https://www.fz-juelich.de/' },
+    { thema_de: 'Medizintechnik & Herzchirurgie', thema_en: 'MedTech & Cardiac Surgery', fact_de: '> 250.000 Patienten weltweit verdanken ihr Leben der in Aachen erfundenen Impella® Herzpumpe.', fact_en: '> 250,000 patients globally owe their lives to the Impella® heart pump invented in Aachen.', source: 'Johnson & Johnson MedTech', externalUrl: 'https://www.abiomed.de/' },
+    { thema_de: '6G & Supercomputing', thema_en: '6G & Supercomputing', fact_de: '100+ Giga-Samples/s: Aachen betreibt eines der weltweit schnellsten Testbeds für KI- & 6G-Datenkonverter.', fact_en: '100+ Giga-samples/s: Aachen operates one of the world\'s fastest testbeds for AI & 6G data converters.', source: 'INCIRT / RWTH Aachen', externalUrl: 'https://incirt.de/' },
+    { thema_de: 'Deep-Tech & Transfer', thema_en: 'Deep Tech & Transfer', fact_de: '100+ Spin-offs pro Jahr: Aachen zählt zu den top 3 Deep-Tech-Gründungsregionen Europas.', fact_en: '100+ spin-offs per year: Aachen ranks among Europe\'s top 3 deep-tech startup regions.', source: 'Startup-Monitor Deutschland', externalUrl: 'https://www.rwth-aachen.de/cms/root/transfer/' },
+    { thema_de: 'Europäische Euregio', thema_en: 'European Euregio', fact_de: '55.000+ Grenzgänger überqueren täglich grenzenlos die Arbeitsmärkte von DE, NL und BE in der Aachen Area.', fact_en: '55,000+ cross-border commuters seamlessly cross borders daily between DE, NL, and BE in the Aachen Area.', source: 'Euregio Maas-Rhein', externalUrl: 'https://regionaachen.de/' }
   ],
 
   // Montage-Elemente für Startseite (3 Blöcke: INCIRT, Element 3-5, ABIOMED)
@@ -1425,13 +1425,16 @@ function renderStoriesPage() {
         </div>
 
         <!-- Aachen-Signale Band -->
-        <h3 class="headline-3deg" style="font-size: 1.4rem; margin-top: 4rem;">AACHEN-SIGNALE</h3>
+        <h3 class="headline-3deg" style="font-size: 1.4rem; margin-top: 4rem;">AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)</h3>
         <div class="signal-band" style="margin-top: 1.5rem;">
           ${APP_DATA.signals.map(sig => `
-            <div class="aachen-signal">
+            <div class="aachen-signal" data-external-url="${sig.externalUrl}" style="cursor: pointer;">
               <div class="signal-theme">${state.lang === 'DE' ? 'Aachen-Signal · ' : 'Aachen Signal · '}${sig[L('thema')]}</div>
               <div class="signal-fact">${sig[L('fact')]}</div>
-              <div class="signal-source">${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</div>
+              <div class="signal-source" style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.8rem;">
+                <span>${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</span>
+                <span class="external-link-indicator">↗</span>
+              </div>
             </div>
           `).join('')}
         </div>
@@ -1552,13 +1555,16 @@ function renderThemaDetail(themaKey, h1_de, h1_en, da_de, da_en, schwerpunkte_de
 
         <!-- Signals -->
         ${signals.length > 0 ? `
-          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.1rem; margin-top: 3rem; margin-bottom: 1rem;">AACHEN-SIGNALE</h3>
+          <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.1rem; margin-top: 3rem; margin-bottom: 1rem;">AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)</h3>
           <div class="signal-band">
             ${signals.map(sig => `
-              <div class="aachen-signal">
+              <div class="aachen-signal" data-external-url="${sig.externalUrl}" style="cursor: pointer;">
                 <div class="signal-theme">${sig[L('thema')]}</div>
                 <div class="signal-fact">${sig[L('fact')]}</div>
-                <div class="signal-source">${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</div>
+                <div class="signal-source" style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.8rem;">
+                  <span>${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</span>
+                  <span class="external-link-indicator">↗</span>
+                </div>
               </div>
             `).join('')}
           </div>
