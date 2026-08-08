@@ -852,8 +852,14 @@ function initEventListeners() {
   });
 
   document.addEventListener('click', (e) => {
-    const link = e.target.closest('[data-page]');
-    if (link) { e.preventDefault(); navigateTo(link.dataset.page); mainNav.classList.remove('open'); }
+    const link = e.target.closest('[data-page], [href="#home"], #logo-link');
+    if (link) {
+      e.preventDefault();
+      const page = link.dataset.page || 'home';
+      navigateTo(page);
+      mainNav.classList.remove('open');
+      return;
+    }
     if (e.target.id === 'modal-close' || e.target.id === 'modal-overlay') closeModal();
 
     const storyCard = e.target.closest('[data-story-id]');
