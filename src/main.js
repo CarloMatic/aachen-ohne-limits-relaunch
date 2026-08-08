@@ -29,13 +29,13 @@ const I18N = {
       cta: 'Wie die Initiative arbeitet'
     },
     montage: {
-      title: 'DAS BEGINNT HIER.',
+      title: 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN.',
       intro: 'Manche Entwicklungen sind international relevant, werden aber kaum mit Aachen verbunden. Eine erste kleine Auswahl zeigt, welche vielfältigen technologischen, unternehmerischen und europäischen Geschichten in der Aachen Area entstehen - weitere werden folgen.'
     },
     storyTeaser: {
-      title: 'STANDORT-HIGHLIGHTS',
-      intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Wir zeigen eine kuratierte Auswahl von Highlights und führen zu den Organisationen und Menschen, die dahinterstehen.',
-      cta: 'Alle Stories & Referenzen im Hub entdecken →'
+      title: 'REFERENZEN OHNE LIMITS',
+      intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Wir zeigen eine kuratierte Auswahl und führen zu den Organisationen und Menschen, die dahinterstehen.',
+      cta: 'Alle Stories & Referenzen entdecken →'
     },
     themenraeume: {
       title: 'DREI RÄUME, IN DENEN AACHEN GRENZEN VERSCHIEBT.',
@@ -1141,22 +1141,8 @@ function renderHomePage() {
         </div>
 
         ${externalFeatured.length > 0 ? `
-          <div class="featured-story-card" data-external-url="${externalFeatured[0].externalUrl}" style="cursor: pointer;">
-            <div class="featured-story-image" style="background: url('${externalFeatured[0].image || './assets/hero_aachen_innovation.png'}') center/cover no-repeat; min-height:240px; border-radius: var(--radius-md) var(--radius-md) 0 0; position: relative;">
-              <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85));">
-                <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
-                <span class="story-category-tag" style="position:static; margin-left: 0.5rem; font-size: 0.7rem;">${externalFeatured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : externalFeatured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
-              </div>
-            </div>
-            <div class="featured-story-content">
-              <div class="story-meta"><span>${externalFeatured[0].organisation}</span></div>
-              <h3 class="story-card-title" style="font-size: 1.5rem; margin-top: 0.2rem; margin-bottom: 0.4rem; line-height: 1.25;">${externalFeatured[0][L('title')]}</h3>
-              <p class="story-card-excerpt" style="margin-top: 0; margin-bottom: 0.5rem; line-height: 1.5;">${externalFeatured[0][L('teaser')]}</p>
-              <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.5rem;">${externalFeatured[0][L('aachenBezug')]}</p>
-              <div style="margin-top: 1.25rem;">
-                <span class="external-link-indicator">${externalFeatured[0][L('ctaLabel')]}</span>
-              </div>
-            </div>
+          <div class="story-grid">
+            ${externalFeatured.map(s => renderTeaserCard(s)).join('')}
           </div>
         ` : ''}
 
@@ -1235,23 +1221,10 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 7. Story gesucht -->
-    <section class="story-gesucht-section section-dark">
-      <div class="container" style="text-align: center;">
-        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
-        <div class="story-gesucht-criteria">
-          <span class="criteria-item">${t.storyGesucht.c1}</span>
-          <span class="criteria-item">${t.storyGesucht.c2}</span>
-          <span class="criteria-item">${t.storyGesucht.c3}</span>
-          <span class="criteria-item">${t.storyGesucht.c4}</span>
-        </div>
-        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
-      </div>
-    </section>
 
-    <!-- 8. Newsletter-Anmeldung Teaser -->
-    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08);">
+
+    <!-- 8. Newsletter-Anmeldung Teaser (extra top padding to clear diagonal clip-path) -->
+    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 7rem;">
       <div class="container">
         <div style="max-width: 800px; margin: 0 auto; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3.5rem 2rem; border-radius: var(--radius-md); backdrop-filter: blur(10px);">
           <span style="color: var(--brand-accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">${state.lang === 'DE' ? 'IMMER INFORMIERT BLEIBEN' : 'STAY INFORMED'}</span>
@@ -1344,6 +1317,21 @@ function renderHomePage() {
             <a href="#mitgliedschaft" class="btn btn-outline" data-page="mitgliedschaft">${t.beteiligung.btnSecondary}</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Story gesucht – before footer -->
+    <section class="story-gesucht-section section-dark">
+      <div class="container" style="text-align: center;">
+        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
+        <div class="story-gesucht-criteria">
+          <span class="criteria-item">${t.storyGesucht.c1}</span>
+          <span class="criteria-item">${t.storyGesucht.c2}</span>
+          <span class="criteria-item">${t.storyGesucht.c3}</span>
+          <span class="criteria-item">${t.storyGesucht.c4}</span>
+        </div>
+        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
       </div>
     </section>
 
