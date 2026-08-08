@@ -1061,6 +1061,7 @@ function L(key) { return key + '_' + state.lang.toLowerCase(); }
 // ─── HOME PAGE ───────────────────────────────────────────────────────────────
 function renderHomePage() {
   const t = I18N[state.lang];
+  const eigeneStories = APP_DATA.storyTeaser.filter(s => s.status === 'eigene-story' || s.article_de).slice(0, 3);
   const externalFeatured = APP_DATA.storyTeaser.filter(s => s.status === 'externe-quelle').slice(0, 4);
   const homeNews = APP_DATA.news.slice(0, 3);
   const membersWithQuotes = APP_DATA.members.filter(m => m[L('quote')]);
