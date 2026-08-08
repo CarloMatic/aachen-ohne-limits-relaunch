@@ -497,6 +497,7 @@ const APP_DATA = {
       externalUrl: 'https://element3-5.com/',
       ctaLabel_de: 'Platzhalter Artikel lesen ↗',
       ctaLabel_en: 'Read Placeholder Article ↗',
+      image: './assets/hero_aachen_innovation.png',
       featured: true,
       article_de: `
         <h3>Energieeffiziente Halbleiterherstellung aus Baesweiler</h3>
@@ -525,6 +526,7 @@ const APP_DATA = {
       externalUrl: 'https://www.abiomed.de/',
       ctaLabel_de: 'Platzhalter Artikel lesen ↗',
       ctaLabel_en: 'Read Placeholder Article ↗',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80',
       featured: true,
       article_de: `
         <h3>Die Impella-Herzpumpe: Aachener Medizintechnik rettet weltweit Leben</h3>
@@ -553,6 +555,7 @@ const APP_DATA = {
       externalUrl: 'https://laserregionaachen.de/aktuelles-2/makerthon',
       ctaLabel_de: 'Makerthon bei LASER.region.AACHEN ansehen ↗',
       ctaLabel_en: 'View Makerthon at LASER.region.AACHEN ↗',
+      image: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=800&auto=format&fit=crop&q=80',
       featured: true
     },
     {
@@ -569,6 +572,7 @@ const APP_DATA = {
       externalUrl: 'https://www.ilt.fraunhofer.de/',
       ctaLabel_de: 'Fraunhofer ILT entdecken ↗',
       ctaLabel_en: 'Discover Fraunhofer ILT ↗',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80',
       featured: true
     },
     {
@@ -585,6 +589,7 @@ const APP_DATA = {
       externalUrl: 'https://www.aachen.digital/',
       ctaLabel_de: 'digitalHUB Aachen besuchen ↗',
       ctaLabel_en: 'Visit digitalHUB Aachen ↗',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80',
       featured: true
     },
     {
@@ -601,6 +606,7 @@ const APP_DATA = {
       externalUrl: 'https://www.rwth-aachen.de/cms/root/transfer/gruendungsunterstuetzung/~iibzo/start-up-gruenden/',
       ctaLabel_de: 'Transfer bei RWTH Aachen ansehen ↗',
       ctaLabel_en: 'View transfer at RWTH Aachen ↗',
+      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&auto=format&fit=crop&q=80',
       featured: true
     },
     {
@@ -617,6 +623,7 @@ const APP_DATA = {
       externalUrl: 'https://regionaachen.de/euregio/grenzueberschreitende-foerderung/interreg-maas-rhein/',
       ctaLabel_de: 'Interreg bei Region Aachen ansehen ↗',
       ctaLabel_en: 'View Interreg at Region Aachen ↗',
+      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&auto=format&fit=crop&q=80',
       featured: false
     }
   ],
