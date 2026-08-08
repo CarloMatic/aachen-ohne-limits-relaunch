@@ -859,6 +859,9 @@ function initEventListeners() {
     const storyBtn = e.target.closest('[data-action="submit-story"]');
     if (storyBtn) openStorySubmissionModal();
 
+    const contactSourceBtn = e.target.closest('[data-action="submit-contact-source"]');
+    if (contactSourceBtn) openContactSourceModal();
+
     const filterBtn = e.target.closest('[data-filter]');
     if (filterBtn) {
       state.activeFilter = filterBtn.dataset.filter;
@@ -1792,14 +1795,6 @@ function renderMitmachenPage() {
   const t = I18N[state.lang].mitmachen;
   const tm = I18N[state.lang].mitgliedschaft;
   const de = state.lang === 'DE';
-  const roles = [
-    { icon: '⭐', title: t.r7Title, text: t.r7Text, cta: t.r7Cta, page: 'mitgliedschaft' },
-    { icon: '📖', title: t.r1Title, text: t.r1Text, cta: t.r1Cta, action: 'submit-story' },
-    { icon: '🔗', title: t.r2Title, text: t.r2Text, cta: t.r2Cta, action: 'submit-story' },
-    { icon: '💎', title: de ? 'Ich möchte privat unterstützen' : 'I want to support privately', text: de ? 'Unterstützen Sie die Standortkommunikation der Aachen Area als außerordentliches Mitglied oder Privatperson (1.000 € / Jahr).' : 'Support the location communication of the Aachen Area as an associate member (€1,000 / year).', cta: de ? 'Außerordentliche Mitgliedschaft beantragen' : 'Apply for associate membership', action: 'apply-membership', tier: 'ausserordentlich' },
-    { icon: '📊', title: t.r4Title, text: t.r4Text, cta: t.r4Cta, action: 'submit-story' },
-    { icon: '🤝', title: t.r5Title, text: t.r5Text, cta: t.r5Cta, action: 'submit-story' }
-  ];
   return `
     <section class="section-wrapper">
       <div class="container">
@@ -1807,14 +1802,53 @@ function renderMitmachenPage() {
           <h1 class="headline-3deg">${t.h1}</h1>
         </div>
         <div class="mitmachen-grid">
-          ${roles.map(r => `
-            <div class="mitmachen-role">
-              <div class="role-icon">${r.icon}</div>
-              <div class="role-title">${r.title}</div>
-              <p class="role-desc">${r.text}</p>
-              ${r.page ? `<a href="#mitgliedschaft-rechner" class="btn btn-secondary">${r.cta}</a>` : `<button class="btn btn-secondary" data-action="${r.action}" ${r.tier ? `data-tier="${r.tier}"` : ''}>${r.cta}</button>`}
-            </div>
-          `).join('')}
+          <!-- 1. Wir möchten Mitglied werden (Jump to Gold, Silber, Bronze on same page) -->
+          <div class="mitmachen-role">
+            <div class="role-icon">⭐</div>
+            <div class="role-title">${t.r7Title}</div>
+            <p class="role-desc">${t.r7Text}</p>
+            <a href="#mitgliedschaft-rechner" class="btn btn-secondary" onclick="document.getElementById('mitgliedschaft-rechner')?.scrollIntoView({behavior:'smooth'})">${t.r7Cta} ↓</a>
+          </div>
+
+          <!-- 2. Ich kenne eine Geschichte -->
+          <div class="mitmachen-role">
+            <div class="role-icon">📖</div>
+            <div class="role-title">${t.r1Title}</div>
+            <p class="role-desc">${t.r1Text}</p>
+            <button class="btn btn-secondary" data-action="submit-story">${t.r1Cta}</button>
+          </div>
+
+          <!-- 3. Ich kann einen Kontakt oder Quelle vermitteln (Eigenes Formular) -->
+          <div class="mitmachen-role">
+            <div class="role-icon">🔗</div>
+            <div class="role-title">${t.r2Title}</div>
+            <p class="role-desc">${t.r2Text}</p>
+            <button class="btn btn-secondary" data-action="submit-contact-source">${t.r2Cta}</button>
+          </div>
+
+          <!-- 4. Ich möchte privat unterstützen (PDF Antrag runterladen) -->
+          <div class="mitmachen-role">
+            <div class="role-icon">💎</div>
+            <div class="role-title">${de ? 'Ich möchte privat unterstützen' : 'I want to support privately'}</div>
+            <p class="role-desc">${de ? 'Unterstützen Sie die Standortkommunikation der Aachen Area als außerordentliches Mitglied oder Privatperson (1.000 € / Jahr).' : 'Support location communication as an associate member (€1,000 / year).'}</p>
+            <a href="./docs/260206_Mitgliedsantrag_Ausserordentlich_PBAeV.pdf" target="_blank" download class="btn btn-secondary">${de ? 'Antrag runterladen 📥' : 'Download Application 📥'}</a>
+          </div>
+
+          <!-- 5. Ich möchte Inhalte nutzen (Noch nicht verlinken) -->
+          <div class="mitmachen-role">
+            <div class="role-icon">📊</div>
+            <div class="role-title">${t.r4Title}</div>
+            <p class="role-desc">${t.r4Text}</p>
+            <span class="btn btn-secondary" style="opacity: 0.6; cursor: default; pointer-events: none;">${de ? 'In Kürze verfügbar' : 'Coming soon'}</span>
+          </div>
+
+          <!-- 6. Wir möchten kooperieren (Mailto Vereins-E-Mail) -->
+          <div class="mitmachen-role">
+            <div class="role-icon">🤝</div>
+            <div class="role-title">${t.r5Title}</div>
+            <p class="role-desc">${t.r5Text}</p>
+            <a href="mailto:verein@aachenohnelimits.de?subject=Kooperationsanfrage%20Aachen%20ohne%20Limits" class="btn btn-secondary">${t.r5Cta} ✉</a>
+          </div>
         </div>
 
         <!-- MITGLIEDSCHAFT & BEITRAGSRECHNER -->
@@ -2285,6 +2319,39 @@ function openStorySubmissionModal() {
         </label>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${de ? 'Geschichte vorschlagen' : 'Submit Suggestion'}</button>
+    </form>
+  `);
+}
+
+function openContactSourceModal() {
+  const de = state.lang === 'DE';
+  openModal(`
+    <h2 class="headline-3deg" style="font-size:1.8rem;">${de ? 'KONTAKT ODER QUELLE' : 'CONTACT OR SOURCE'} <span class="accent-word">${de ? 'VERMITTELN' : 'CONNECT'}</span></h2>
+    <p class="text-body" style="font-size:0.95rem; margin-bottom:1.5rem;">${de ? 'Öffnen Sie unserer Redaktion den Zugang zu Experten, Protagonisten, Kontakten oder wertvollem Material aus der Aachen Area.' : 'Connect our editorial team with experts, protagonists, contacts, or valuable material from the Aachen Area.'}</p>
+    <form onsubmit="event.preventDefault(); alert('${de ? 'Vielen Dank! Ihre Kontaktempfehlung ist bei der Redaktion eingegangen. Wir setzen uns zeitnah mit Ihnen in Verbindung.' : 'Thank you! Your contact recommendation has been received.'}'); closeModal();">
+      <div style="margin-bottom:1rem;">
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Ihr Name' : 'Your Name'}</label>
+        <input type="text" class="calc-input" required style="color:#000; background:#f0f4f8;" placeholder="${de ? 'z. B. Maria Muster' : 'e.g. Jane Doe'}" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Ihre E-Mail-Adresse' : 'Your Email Address'}</label>
+        <input type="email" class="calc-input" required style="color:#000; background:#f0f4f8;" placeholder="name@beispiel.de" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Welcher Kontakt / welche Quelle wird vermittelt?' : 'Which Contact / Source are you connecting?'}</label>
+        <input type="text" class="calc-input" required style="color:#000; background:#f0f4f8;" placeholder="${de ? 'z. B. Prof. Dr. Schmidt (RWTH Aachen) oder Ansprechpartner X' : 'e.g. Prof. Dr. Smith (RWTH Aachen)'}" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label class="calc-label" style="color:var(--text-primary);">${de ? 'Kurze Beschreibung & Bezug zur Aachen Area' : 'Brief Description & Connection to Aachen'}</label>
+        <textarea class="calc-input" rows="3" required style="color:#000; background:#f0f4f8;" placeholder="${de ? 'Welches Wissen, Thema oder Material kann diese Quelle beisteuern?' : 'What knowledge, topic, or material can this source provide?'}"></textarea>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; font-size:0.85rem; color:var(--text-muted); cursor:pointer;">
+          <input type="checkbox" required style="margin-top:0.2rem; flex-shrink:0;" />
+          <span>${de ? 'Ich willige ein, dass meine Angaben zur Kontaktaufnahme durch die Redaktion verarbeitet werden dürfen.' : 'I consent to my data being processed for editorial contact purposes.'}</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">${de ? 'Kontakt / Quelle übermitteln' : 'Submit Contact / Source'}</button>
     </form>
   `);
 }
