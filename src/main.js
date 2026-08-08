@@ -2149,19 +2149,19 @@ function renderPressePage() {
         <p class="text-body" style="margin-bottom: 1.5rem;">${t.logosText}</p>
         <div class="download-grid">
           <div class="download-card">
-            <img src="/logos/ACoL_RGB_Violett.svg" alt="Logo Violett" style="height: 48px; margin-bottom: 1rem;" />
+            <img src="./logos/ACoL_RGB_Violett.svg" alt="Logo Violett" style="height: 48px; margin-bottom: 1rem;" />
             <div style="font-weight: 700; font-size: 0.9rem;">Violett (RGB)</div>
           </div>
           <div class="download-card">
-            <img src="/logos/ACoL_RGB_Green.svg" alt="Logo Green" style="height: 48px; margin-bottom: 1rem;" />
+            <img src="./logos/ACoL_RGB_Green.svg" alt="Logo Green" style="height: 48px; margin-bottom: 1rem;" />
             <div style="font-weight: 700; font-size: 0.9rem;">Green (RGB)</div>
           </div>
           <div class="download-card" style="background: #000;">
-            <img src="/logos/ACoL_RGB_White.svg" alt="Logo White" style="height: 48px; margin-bottom: 1rem;" />
+            <img src="./logos/ACoL_RGB_White.svg" alt="Logo White" style="height: 48px; margin-bottom: 1rem;" />
             <div style="font-weight: 700; font-size: 0.9rem; color: #fff;">White (RGB)</div>
           </div>
           <div class="download-card">
-            <img src="/logos/ACoL_RGB_Black.svg" alt="Logo Black" style="height: 48px; margin-bottom: 1rem;" />
+            <img src="./logos/ACoL_RGB_Black.svg" alt="Logo Black" style="height: 48px; margin-bottom: 1rem;" />
             <div style="font-weight: 700; font-size: 0.9rem;">Black (RGB)</div>
           </div>
         </div>
