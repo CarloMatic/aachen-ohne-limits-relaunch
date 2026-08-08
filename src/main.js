@@ -804,12 +804,17 @@ function updateSponsorGridUI() {
 
 // ─── THEME MANAGEMENT ────────────────────────────────────────────────────────
 function initTheme() {
-  setTheme('light');
+  const saved = localStorage.getItem('pba_theme') || 'dark';
+  setTheme(saved);
 }
 function setTheme(theme) {
   state.theme = theme;
   localStorage.setItem('pba_theme', theme);
   document.body.className = `theme-${theme}`;
+  const logoImg = document.querySelector('.logo-img');
+  if (logoImg) {
+    logoImg.src = theme === 'dark' ? './logos/ACoL_RGB_Green.svg' : './logos/logo_header_purple.png';
+  }
 }
 
 // ─── ROUTER ──────────────────────────────────────────────────────────────────
