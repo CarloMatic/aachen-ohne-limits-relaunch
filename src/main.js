@@ -1062,7 +1062,7 @@ function L(key) { return key + '_' + state.lang.toLowerCase(); }
 function renderHomePage() {
   const t = I18N[state.lang];
   const eigeneStories = APP_DATA.storyTeaser.filter(s => s.status === 'eigene-story' || s.article_de).slice(0, 3);
-  const externalFeatured = APP_DATA.storyTeaser.filter(s => s.status === 'externe-quelle').slice(0, 4);
+  const externalFeatured = APP_DATA.storyTeaser.filter(s => s.status === 'externe-quelle').slice(0, 3);
   const homeNews = APP_DATA.news.slice(0, 3);
   const membersWithQuotes = APP_DATA.members.filter(m => m[L('quote')]);
 
@@ -1223,11 +1223,11 @@ function renderHomePage() {
 
 
 
-    <!-- 8. Newsletter-Anmeldung Teaser (extra top padding to clear diagonal clip-path) -->
-    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 7rem;">
+    <!-- 8. Newsletter-Anmeldung Teaser (extra top padding & spacing to clear diagonal clip-path) -->
+    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8.5rem;">
       <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 3.5rem 2rem; border-radius: var(--radius-md); backdrop-filter: blur(10px);">
-          <span style="color: var(--brand-accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;">${state.lang === 'DE' ? 'IMMER INFORMIERT BLEIBEN' : 'STAY INFORMED'}</span>
+        <div style="max-width: 800px; margin: 1.5rem auto 0; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 4.5rem 2rem 3.5rem; border-radius: var(--radius-md); backdrop-filter: blur(10px);">
+          <span style="display: inline-block; color: var(--brand-accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'IMMER INFORMIERT BLEIBEN' : 'STAY INFORMED'}</span>
           <h2 class="headline-3deg" style="font-size: 2rem; margin: 0.75rem 0 1rem; color: #fff;">${state.lang === 'DE' ? 'STANDORT-IMPULSE DIREKT IN IHRE INBOX' : 'REGIONAL INSIGHTS DIRECT TO YOUR INBOX'}</h2>
           <p class="text-body" style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2rem;">
             ${state.lang === 'DE' ? 'Erhalten Sie regelmäßig kuratierte Erfolge, Hintergründe und Entwicklungen aus der Aachen Area. Kein Spam – jederzeit abbestellbar.' : 'Receive curated achievements, backgrounds, and developments from the Aachen Area. No spam — unsubscribe anytime.'}
@@ -1274,7 +1274,22 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 9. Träger -->
+    <!-- 9. Story gesucht (Schwarzer Block) -->
+    <section class="story-gesucht-section section-dark">
+      <div class="container" style="text-align: center;">
+        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
+        <div class="story-gesucht-criteria">
+          <span class="criteria-item">${t.storyGesucht.c1}</span>
+          <span class="criteria-item">${t.storyGesucht.c2}</span>
+          <span class="criteria-item">${t.storyGesucht.c3}</span>
+          <span class="criteria-item">${t.storyGesucht.c4}</span>
+        </div>
+        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
+      </div>
+    </section>
+
+    <!-- 10. Träger (Weißer Block: MACHEN SIE AACHENS STÄRKEN GEMEINSAM SICHTBAR.) -->
     <section class="section-wrapper traeger-section section-light">
       <div class="container">
         <div class="section-header">
@@ -1300,7 +1315,7 @@ function renderHomePage() {
           <button class="filter-btn ${state.sponsorTab === 'Bronze' ? 'active' : ''}" data-sponsor-tab="Bronze">Bronze (${state.lang === 'DE' ? 'Mittragen' : 'Support'})</button>
         </div>
 
-        <div class="logo-wall-grid" id="home-sponsor-grid-container">
+        <div class="logo-wall-grid" id="home-sponsor-grid-container" style="min-height: 380px; align-content: start;">
           ${APP_DATA.members.filter(m => m.tier === state.sponsorTab).map(m => `
             <div class="member-logo-card ${m.tier === 'Gold' ? 'gold-member' : ''}">
               ${m.tier === 'Gold' ? '<span class="gold-badge-tag">Gold</span>' : m.tier === 'Silber' ? '<span class="gold-badge-tag" style="background: var(--ac-blue);">Silber</span>' : '<span class="gold-badge-tag" style="background: var(--ac-yellow); color: #000;">Bronze</span>'}
@@ -1317,21 +1332,6 @@ function renderHomePage() {
             <a href="#mitgliedschaft" class="btn btn-outline" data-page="mitgliedschaft">${t.beteiligung.btnSecondary}</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Story gesucht – before footer -->
-    <section class="story-gesucht-section section-dark">
-      <div class="container" style="text-align: center;">
-        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
-        <div class="story-gesucht-criteria">
-          <span class="criteria-item">${t.storyGesucht.c1}</span>
-          <span class="criteria-item">${t.storyGesucht.c2}</span>
-          <span class="criteria-item">${t.storyGesucht.c3}</span>
-          <span class="criteria-item">${t.storyGesucht.c4}</span>
-        </div>
-        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
       </div>
     </section>
 
@@ -1380,8 +1380,8 @@ function renderTeaserCard(s) {
           <span class="status-label ${statusClass}">${statusLabelText}</span>
           <span class="story-category-tag" style="position:static; font-size: 0.7rem;">${themaLabel}</span>
         </div>
-        <h3 class="story-card-title" style="margin-top: 0.2rem; margin-bottom: 0.35rem; font-size: 1.15rem; line-height: 1.3;">${s[L('title')]}</h3>
-        <p class="story-card-excerpt" style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.45;">${s[L('teaser')]}</p>
+        <h3 class="story-card-title" style="margin-top: 0.2rem; margin-bottom: 0.15rem; font-size: 1.15rem; line-height: 1.25;">${s[L('title')]}</h3>
+        <p class="story-card-excerpt" style="margin-top: 0; margin-bottom: 0.35rem; font-size: 0.9rem; line-height: 1.4;">${s[L('teaser')]}</p>
         <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.35rem;">${s[L('aachenBezug')]}</div>
         <div style="margin-top: auto; padding-top: 0.75rem;">
           <span class="${isEigene ? 'btn btn-secondary' : 'external-link-indicator'}" style="${isEigene ? 'font-size:0.8rem; padding:0.4rem 0.8rem; width:auto; display:inline-block;' : ''}">${s[L('ctaLabel')]}</span>
