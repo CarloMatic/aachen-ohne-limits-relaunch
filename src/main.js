@@ -852,11 +852,10 @@ function initEventListeners() {
   });
 
   document.addEventListener('click', (e) => {
-    const link = e.target.closest('[data-page], [href="#home"], #logo-link');
+    const link = e.target.closest('[data-page]');
     if (link) {
       e.preventDefault();
-      const page = link.dataset.page || 'home';
-      navigateTo(page);
+      navigateTo(link.dataset.page);
       mainNav.classList.remove('open');
       return;
     }
