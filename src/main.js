@@ -711,13 +711,13 @@ const APP_DATA = {
   // Mitglieder mit korrekter Bronze/Silber/Gold-Klassifizierung
   members: [
     // GOLD
-    { name: 'digitalHUB Aachen', tier: 'Gold', category_de: 'Netzwerk & Digitalisierung', category_en: 'Digital Ecosystem & Network', quote_de: 'Eine starke Standortmarke macht die gebündelte Innovationskraft der Aachen Area international sichtbar.', quote_en: 'A strong regional brand makes the pooled innovation power of the Aachen Area visible internationally.' },
+    { name: 'digitalHUB Aachen', speaker: 'Iris Wilhelmi, digitalHUB Aachen', tier: 'Gold', category_de: 'Netzwerk & Digitalisierung', category_en: 'Digital Ecosystem & Network', quote_de: 'Eine starke Standortmarke macht die gebündelte Innovationskraft der Aachen Area international sichtbar.', quote_en: 'A strong regional brand makes the pooled innovation power of the Aachen Area visible internationally.' },
     { name: 'CARPUS+PARTNER', tier: 'Gold', category_de: 'Architektur & Beratung', category_en: 'Architecture & Consulting' },
     { name: 'INFORM', tier: 'Gold', category_de: 'Software & Logistik-KI', category_en: 'Software & Logistics AI' },
     { name: 'Johnson & Johnson MedTech', tier: 'Gold', category_de: 'Medizintechnik & Gesundheit', category_en: 'Medical Technology & Health' },
-    { name: 'NetAachen', tier: 'Gold', category_de: 'Telekommunikation & IT', category_en: 'Telecommunications & IT', quote_de: 'Starke Netzwerke und moderne Infrastruktur sind das Rückgrat einer zukunftsfähigen Region.', quote_en: 'Strong networks and modern infrastructure are the backbone of a future-proof region.' },
+    { name: 'NetAachen', speaker: 'Andreas Schneider, NetAachen', tier: 'Gold', category_de: 'Telekommunikation & IT', category_en: 'Telecommunications & IT', quote_de: 'Starke Netzwerke und moderne Infrastruktur sind das Rückgrat einer zukunftsfähigen Region.', quote_en: 'Strong networks and modern infrastructure are the backbone of a future-proof region.' },
     { name: 'regio iT', tier: 'Gold', category_de: 'IT-Dienstleistungen & Kommunen', category_en: 'IT Services & Public Sector' },
-    { name: 'IHK Aachen', tier: 'Gold', category_de: 'Wirtschaftskammer', category_en: 'Chamber of Commerce', quote_de: 'Ein starkes Standortbild nützt allen – Wirtschaft, Wissenschaft und den Menschen, die hier leben.', quote_en: 'A strong regional identity benefits everyone — business, science, and the people who live here.' },
+    { name: 'IHK Aachen', speaker: 'Michael Bayer, IHK Aachen', tier: 'Gold', category_de: 'Wirtschaftskammer', category_en: 'Chamber of Commerce', quote_de: 'Ein starkes Standortbild nützt allen – Wirtschaft, Wissenschaft und den Menschen, die hier leben.', quote_en: 'A strong regional identity benefits everyone — business, science, and the people who live here.' },
     { name: 'Interactive Pioneers', tier: 'Gold', category_de: 'Digitalagentur & Technologie', category_en: 'Digital Agency & Tech' },
     { name: 'Landmarken Group', tier: 'Gold', category_de: 'Projektentwicklung & Immobilien', category_en: 'Real Estate & Development' },
     { name: 'Mayersche', tier: 'Gold', category_de: 'Kultur & Handel', category_en: 'Culture & Retail' },
@@ -1274,22 +1274,7 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 9. Story gesucht (Schwarzer Block) -->
-    <section class="story-gesucht-section section-dark">
-      <div class="container" style="text-align: center;">
-        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
-        <div class="story-gesucht-criteria">
-          <span class="criteria-item">${t.storyGesucht.c1}</span>
-          <span class="criteria-item">${t.storyGesucht.c2}</span>
-          <span class="criteria-item">${t.storyGesucht.c3}</span>
-          <span class="criteria-item">${t.storyGesucht.c4}</span>
-        </div>
-        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
-      </div>
-    </section>
-
-    <!-- 10. Träger (Weißer Block: MACHEN SIE AACHENS STÄRKEN GEMEINSAM SICHTBAR.) -->
+    <!-- 9. Mitglieder & Träger (Weißer Block) -->
     <section class="section-wrapper traeger-section section-light">
       <div class="container">
         <div class="section-header">
@@ -1302,7 +1287,7 @@ function renderHomePage() {
             ${membersWithQuotes.map(m => `
               <div class="traeger-quote">
                 <p>„${m[L('quote')]}"</p>
-                <div class="traeger-attribution">— ${m.name}</div>
+                <div class="traeger-attribution">— ${m.speaker || m.name}</div>
               </div>
             `).join('')}
           </div>
@@ -1324,13 +1309,32 @@ function renderHomePage() {
             </div>
           `).join('')}
         </div>
-        <div style="text-align: center; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border-color);">
-          <h3 style="font-family: var(--font-headline); font-size: 1.5rem; margin-bottom: 1rem;">${t.beteiligung.title}</h3>
-          <p style="margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">${t.beteiligung.text}</p>
-          <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-            <a href="#mitmachen" class="btn btn-primary" data-page="mitmachen">${t.beteiligung.btnPrimary}</a>
-            <a href="#mitgliedschaft" class="btn btn-outline" data-page="mitgliedschaft">${t.beteiligung.btnSecondary}</a>
-          </div>
+      </div>
+    </section>
+
+    <!-- 10. Geschichten vorschlagen (Schwarzer Block) -->
+    <section class="story-gesucht-section section-dark">
+      <div class="container" style="text-align: center;">
+        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
+        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
+        <div class="story-gesucht-criteria">
+          <span class="criteria-item">${t.storyGesucht.c1}</span>
+          <span class="criteria-item">${t.storyGesucht.c2}</span>
+          <span class="criteria-item">${t.storyGesucht.c3}</span>
+          <span class="criteria-item">${t.storyGesucht.c4}</span>
+        </div>
+        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
+      </div>
+    </section>
+
+    <!-- 11. Mitglied werden (Weißer Block: MACHEN SIE AACHENS STÄRKEN GEMEINSAM SICHTBAR.) -->
+    <section class="section-wrapper section-light" style="padding: 4.5rem 0;">
+      <div class="container" style="text-align: center;">
+        <h2 class="headline-3deg" style="font-size: 1.8rem; margin-bottom: 1rem;">${t.beteiligung.title}</h2>
+        <p class="text-body" style="margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">${t.beteiligung.text}</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="#mitmachen" class="btn btn-primary" data-page="mitmachen">${t.beteiligung.btnPrimary}</a>
+          <a href="#mitgliedschaft" class="btn btn-outline" data-page="mitgliedschaft">${t.beteiligung.btnSecondary}</a>
         </div>
       </div>
     </section>
