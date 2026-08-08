@@ -1107,21 +1107,13 @@ function renderHomePage() {
           <h2 class="headline-3deg">${t.montage.title}</h2>
           <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.montage.intro}</p>
         </div>
-        <div class="montage-grid">
-          ${APP_DATA.montageElements.map((el, i) => `
-            <div class="montage-element${i === 0 ? ' montage-featured' : ''}" style="background: var(--wireframe-bg); border: 2px dashed var(--wireframe-border); min-height: ${i === 0 ? '280px' : '180px'};">
-              <div class="montage-content">
-                <div class="montage-fact">${el[L('fact')]}</div>
-                <h3>${el[L('title')]}</h3>
-                <div class="montage-source">${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${el.source}</div>
-              </div>
-            </div>
-          `).join('')}
+        <div class="story-grid">
+          ${eigeneStories.map(s => renderTeaserCard(s)).join('')}
         </div>
       </div>
     </section>
 
-    <!-- 4. Story-Teaser (GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN) -->
+    <!-- 4. Story-Teaser (REFERENZEN OHNE LIMITS) -->
     <section class="section-wrapper section-dark">
       <div class="container">
         <div class="section-header">
@@ -1131,7 +1123,7 @@ function renderHomePage() {
 
         ${externalFeatured.length > 0 ? `
           <div class="featured-story-card" data-external-url="${externalFeatured[0].externalUrl}" style="cursor: pointer;">
-            <div class="featured-story-image" style="background: url('./assets/hero_aachen_innovation.png') center/cover no-repeat; min-height:220px; border-radius: var(--radius-md) var(--radius-md) 0 0; position: relative;">
+            <div class="featured-story-image" style="background: url('${externalFeatured[0].image || './assets/hero_aachen_innovation.png'}') center/cover no-repeat; min-height:240px; border-radius: var(--radius-md) var(--radius-md) 0 0; position: relative;">
               <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85));">
                 <span class="status-label externe-quelle">${state.lang === 'DE' ? 'Externe Quelle' : 'External Source'}</span>
                 <span class="story-category-tag" style="position:static; margin-left: 0.5rem; font-size: 0.7rem;">${externalFeatured[0].thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : externalFeatured[0].thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice')}</span>
@@ -1139,10 +1131,10 @@ function renderHomePage() {
             </div>
             <div class="featured-story-content">
               <div class="story-meta"><span>${externalFeatured[0].organisation}</span></div>
-              <h3 class="story-card-title" style="font-size: 1.6rem;">${externalFeatured[0][L('title')]}</h3>
-              <p class="story-card-excerpt">${externalFeatured[0][L('teaser')]}</p>
-              <p style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-top: 0.75rem;">${externalFeatured[0][L('aachenBezug')]}</p>
-              <div style="margin-top: 1.5rem;">
+              <h3 class="story-card-title" style="font-size: 1.5rem; margin-top: 0.2rem; margin-bottom: 0.4rem; line-height: 1.25;">${externalFeatured[0][L('title')]}</h3>
+              <p class="story-card-excerpt" style="margin-top: 0; margin-bottom: 0.5rem; line-height: 1.5;">${externalFeatured[0][L('teaser')]}</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.5rem;">${externalFeatured[0][L('aachenBezug')]}</p>
+              <div style="margin-top: 1.25rem;">
                 <span class="external-link-indicator">${externalFeatured[0][L('ctaLabel')]}</span>
               </div>
             </div>
@@ -1381,14 +1373,14 @@ function renderTeaserCard(s) {
         <div class="story-card-image" style="background: url('${s.image}') center/cover no-repeat; height: 160px; border-radius: var(--radius-sm) var(--radius-sm) 0 0; border-bottom: 1px solid var(--border-color);"></div>
       ` : ''}
       <div class="story-card-body">
-        <div class="story-meta">
+        <div class="story-meta" style="margin-bottom: 0.3rem;">
           <span class="status-label ${statusClass}">${statusLabelText}</span>
           <span class="story-category-tag" style="position:static; font-size: 0.7rem;">${themaLabel}</span>
         </div>
-        <h3 class="story-card-title">${s[L('title')]}</h3>
-        <p class="story-card-excerpt">${s[L('teaser')]}</p>
-        <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.5rem;">${s[L('aachenBezug')]}</div>
-        <div style="margin-top: auto; padding-top: 1rem;">
+        <h3 class="story-card-title" style="margin-top: 0.2rem; margin-bottom: 0.35rem; font-size: 1.15rem; line-height: 1.3;">${s[L('title')]}</h3>
+        <p class="story-card-excerpt" style="margin-top: 0; margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.45;">${s[L('teaser')]}</p>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.35rem;">${s[L('aachenBezug')]}</div>
+        <div style="margin-top: auto; padding-top: 0.75rem;">
           <span class="${isEigene ? 'btn btn-secondary' : 'external-link-indicator'}" style="${isEigene ? 'font-size:0.8rem; padding:0.4rem 0.8rem; width:auto; display:inline-block;' : ''}">${s[L('ctaLabel')]}</span>
         </div>
       </div>
