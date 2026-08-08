@@ -1388,6 +1388,33 @@ function renderTeaserCard(s) {
   `;
 }
 
+// ─── HELPER: Full Width Story Card for Stories Page ─────────────────────────
+function renderFullWidthStoryCard(s) {
+  const themaLabel = s.thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : s.thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice');
+  
+  return `
+    <div class="featured-story-card" data-story-id="${s.id}" style="cursor: pointer; width: 100%; margin-bottom: 2.5rem; border-left: 4px solid var(--brand-accent);">
+      ${s.image ? `
+        <div class="featured-story-image" style="background: url('${s.image}') center/cover no-repeat; min-height: 260px; border-radius: var(--radius-md) var(--radius-md) 0 0; position: relative;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.85));">
+            <span class="status-label eigene-story">${state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story'}</span>
+            <span class="story-category-tag" style="position:static; margin-left: 0.5rem; font-size: 0.7rem;">${themaLabel}</span>
+          </div>
+        </div>
+      ` : ''}
+      <div class="featured-story-content" style="padding: 2rem;">
+        <div class="story-meta" style="margin-bottom: 0.5rem;"><span style="font-weight: 700; color: var(--brand-accent);">${s.organisation}</span></div>
+        <h3 class="story-card-title" style="font-size: 1.65rem; margin-top: 0.2rem; margin-bottom: 0.6rem; line-height: 1.25;">${s[L('title')]}</h3>
+        <p class="story-card-excerpt" style="font-size: 1rem; line-height: 1.6; margin-top: 0; margin-bottom: 0.75rem;">${s[L('teaser')]}</p>
+        <div style="font-size: 0.9rem; color: var(--text-muted); font-style: italic; margin-bottom: 1.25rem;">${s[L('aachenBezug')]}</div>
+        <div>
+          <button class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.25rem;">${s[L('ctaLabel')]}</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 // ─── STORIES PAGE ──────────────────────────────────────────────────────────
 function renderStoriesPage() {
   const t = I18N[state.lang];
@@ -1413,23 +1440,30 @@ function renderStoriesPage() {
           <button class="filter-btn ${state.activeFilter === 'europa' ? 'active' : ''}" data-filter="europa">${t.themenraeume.t3Title}</button>
         </div>
 
-        <!-- 1. AACHEN-STORIES (Redaktionell produzierte Stories) -->
+        <!-- 1. AACHEN-STORIES (Redaktionell produzierte Stories - Volle Breite, untereinander) -->
         ${eigeneStories.length > 0 ? `
-          <div style="margin-top: 2.5rem;">
-            <h2 class="headline-3deg" style="font-size: 1.4rem; margin-bottom: 1.25rem;">${state.lang === 'DE' ? 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN' : 'STORIES THAT ALREADY BEGIN IN AACHEN'}</h2>
-            <div class="story-grid">
-              ${eigeneStories.map(s => renderTeaserCard(s)).join('')}
+          <div style="margin-top: 3rem;">
+            <div style="margin-bottom: 2rem; border-bottom: 2px solid var(--brand-accent); padding-bottom: 1rem;">
+              <span class="status-label eigene-story" style="font-size: 0.75rem;">${state.lang === 'DE' ? 'Eigenständige Redaktion' : 'Independent Editorial'}</span>
+              <h2 class="headline-3deg" style="font-size: 1.8rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'GESCHICHTEN, DIE BEREITS IN AACHEN BEGINNEN' : 'STORIES THAT ALREADY BEGIN IN AACHEN'}</h2>
+              <p class="text-body" style="font-size: 1.05rem; color: var(--text-muted); max-width: 850px;">${state.lang === 'DE' ? 'Ausführliche redaktionelle Storys über Menschen, Unternehmen und wissenschaftliche Durchbrüche aus der Aachen Area.' : 'In-depth editorial stories about people, companies, and scientific breakthroughs from the Aachen Area.'}</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              ${eigeneStories.map(s => renderFullWidthStoryCard(s)).join('')}
             </div>
           </div>
         ` : ''}
 
         <!-- 2. REFERENZEN OHNE LIMITS (Kuratierte externe Quellen) -->
         ${referenzen.length > 0 ? `
-          <div style="margin-top: 4.5rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <div style="margin-bottom: 1.5rem;">
-              <h2 class="headline-3deg" style="font-size: 1.4rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'REFERENZEN OHNE LIMITS' : 'REFERENCES WITHOUT LIMITS'}</h2>
-              <p style="font-size: 0.95rem; color: var(--text-muted);">${state.lang === 'DE' ? 'Reale Entwicklungen und Quellen aus der Aachen Area, die direkt zu den verantwortlichen Organisationen führen.' : 'Real developments and sources from the Aachen Area linking directly to the responsible organizations.'}</p>
+          <div style="margin-top: 5rem; padding: 3rem 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color); border-left: 5px solid var(--ac-green);">
+            <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem;">
+              <span class="status-label externe-quelle" style="font-size: 0.75rem;">${state.lang === 'DE' ? 'Kuratierte Originalquellen' : 'Curated Original Sources'}</span>
+              <h2 class="headline-3deg" style="font-size: 1.8rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'REFERENZEN OHNE LIMITS' : 'REFERENCES WITHOUT LIMITS'}</h2>
+              <p class="text-body" style="font-size: 1rem; color: var(--text-muted); max-width: 850px;">${state.lang === 'DE' ? 'Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.' : 'Highly relevant developments from the Aachen ecosystem not yet produced as full internal stories. We transparently link to the original sources of responsible organizations.'}</p>
             </div>
+            
             <div class="story-grid">
               ${referenzen.map(s => renderTeaserCard(s)).join('')}
             </div>
@@ -1437,9 +1471,14 @@ function renderStoriesPage() {
         ` : ''}
 
         <!-- 3. AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN) -->
-        <div style="margin-top: 4.5rem;">
-          <h3 class="headline-3deg" style="font-size: 1.4rem;">${state.lang === 'DE' ? 'AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)' : 'AACHEN SIGNALS (FACTS & NUMBERS)'}</h3>
-          <div class="signal-band" style="margin-top: 1.5rem;">
+        <div style="margin-top: 5rem;">
+          <div style="margin-bottom: 1.75rem;">
+            <span class="status-label aachen-signal" style="font-size: 0.75rem;">${state.lang === 'DE' ? 'Standort-Radar' : 'Regional Radar'}</span>
+            <h2 class="headline-3deg" style="font-size: 1.6rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'AACHEN-SIGNALE (STANDORT-ZAHLEN & FAKTEN)' : 'AACHEN SIGNALS (FACTS & NUMBERS)'}</h2>
+            <p class="text-body" style="font-size: 0.95rem; color: var(--text-muted); max-width: 800px;">${state.lang === 'DE' ? 'Kurze, verifizierte Zahlen, Daten und Fakten zur wissenschaftlichen und wirtschaftlichen Stärke der Region.' : 'Short, verified numbers, data, and facts showcasing the scientific and economic strength of the region.'}</p>
+          </div>
+
+          <div class="signal-band">
             ${APP_DATA.signals.map(sig => `
               <div class="aachen-signal" data-external-url="${sig.externalUrl}" style="cursor: pointer;">
                 <div class="signal-theme">${state.lang === 'DE' ? 'Aachen-Signal · ' : 'Aachen Signal · '}${sig[L('thema')]}</div>
