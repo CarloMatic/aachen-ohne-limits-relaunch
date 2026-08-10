@@ -1879,10 +1879,23 @@ function renderMitmachenPage() {
   const tm = I18N[state.lang].mitgliedschaft;
   const de = state.lang === 'DE';
   return `
-    <section class="section-wrapper">
+    <section class="section-wrapper" style="padding-top: 2rem;">
       <div class="container">
-        <div class="section-header">
-          <h1 class="headline-3deg">${t.h1}</h1>
+        <!-- Hero Stage with Emotional Community Photo -->
+        <div style="position: relative; border-radius: var(--radius-lg, 16px); overflow: hidden; margin-bottom: 3.5rem; min-height: 420px; display: flex; align-items: flex-end; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15);">
+          <img src="./mitmachen-hero.jpg" alt="Gemeinschaft Aachen ohne Limits" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: brightness(0.85);" />
+          <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,12,0,0.95) 0%, rgba(10,12,0,0.5) 50%, rgba(0,0,0,0.15) 100%);"></div>
+          <div style="position: relative; z-index: 2; padding: 2.5rem; max-width: 820px; color: #fff;">
+            <div style="color: var(--brand-accent); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">
+              GEMEINSAM STARK FÜR AACHEN
+            </div>
+            <h1 class="headline-3deg" style="font-size: 2.4rem; margin: 0 0 0.75rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.7);">
+              ${t.h1}
+            </h1>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.92); margin: 0; max-width: 700px; text-shadow: 0 1px 5px rgba(0,0,0,0.6);">
+              ${de ? 'Aachen ohne Limits lebt von den Menschen, Initiativen und Akteuren der Region. Mach mit und gestalte die Standortkommunikation der Aachen Area aktiv mit!' : 'Aachen without Limits thrives on the people, initiatives, and actors of the region. Join in and shape location communication!'}
+            </p>
+          </div>
         </div>
         <div class="mitmachen-grid">
           <!-- 1. Wir möchten Mitglied werden (Jump to Gold, Silber, Bronze on same page) -->
