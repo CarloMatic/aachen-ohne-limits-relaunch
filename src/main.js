@@ -35,7 +35,7 @@ const I18N = {
     storyTeaser: {
       title: 'REFERENZEN OHNE LIMITS',
       intro: 'Noch sind nicht alle Geschichten auf dieser Plattform ausführlich erzählt. Aber sie existieren bereits. Wir zeigen eine kuratierte Auswahl und führen zu den Organisationen und Menschen, die dahinterstehen.',
-      cta: 'Alle Stories & Referenzen entdecken →'
+      cta: 'Alle Stories & Referenzen entdecken'
     },
     themenraeume: {
       title: 'DREI RÄUME, IN DENEN AACHEN GRENZEN VERSCHIEBT.',
