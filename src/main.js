@@ -2372,7 +2372,7 @@ function openStorySubmissionModal() {
                 💡 Konkrete Geschichte vorschlagen
               </div>
               <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">
-                Ausführlicher 6-Schritte-Leitfaden für die Redaktion (~3 Min. Dauer)
+                Ausführlicher 6-Schritte-Leitfaden (~5 bis 10 Min. Dauer)
               </div>
             </button>
 
@@ -2391,56 +2391,372 @@ function openStorySubmissionModal() {
       <!-- WEG 1: KONKRETE GESCHICHTE VORSCHLAGEN (FULL 6-STEP FORM) -->
       <div id="submission-path-full">
         <!-- Guideline Box -->
-        <div style="background: rgba(172,10,192,0.06); border-left: 4px solid var(--brand-accent); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.6;">
+        <div style="background: rgba(172,10,192,0.06); border-left: 4px solid var(--brand-accent); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6;">
           <strong>💡 Die ideale Aachen-Geschichte:</strong> Sie macht einen konkreten Erfolg sichtbar, zeigt eine überwundene Grenze und erklärt glaubwürdig, warum dieser Erfolg gerade hier gelingen konnte. Stichworte reichen – die redaktionelle Ausarbeitung übernimmt der Verein.
         </div>
 
-              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                Dein Name <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
-              </label>
-              <input type="text" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Vor- und Nachname" />
-            </div>
-            <div>
-              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                E-Mail <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
-              </label>
-              <input type="email" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="name@organisation.de" />
-            </div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-            <div>
-              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                Organisation / Rolle <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
-              </label>
-              <input type="text" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="z. B. digitalHUB Aachen / Innovation Lead" />
-            </div>
-            <div>
-              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                Telefon <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
-              </label>
-              <input type="tel" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="+49 241 ..." />
-            </div>
-          </div>
-
-          <div style="margin-bottom: 1.5rem;">
-            <label style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
-              <input type="checkbox" required style="margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--brand-accent);" />
-              <span>
-                Ja, der Place Branding Aachen e.V. darf mich zu dieser Empfehlung kontaktieren. Eine Veröffentlichung erfolgt erst nach Rücksprache.
-                <br/><em style="display: block; margin-top: 0.35rem;">Hinweis: Mit dem Absenden werden deine Angaben zur Prüfung und Bearbeitung der Empfehlung verarbeitet.</em>
-                <a href="#datenschutz" style="color: var(--brand-accent); text-decoration: underline; display: inline-block; margin-top: 0.25rem;" onclick="alert('Datenschutzhinweis: Sämtliche übermittelten Daten werden ausschließlich zur vertraulichen redaktionellen Prüfung gemäß DSGVO durch den Place Branding Aachen e. V. verwendet.'); return false;">Vollständige Datenschutzerklärung ansehen</a>
-              </span>
-            </label>
-          </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 1.5rem;">
+          <span>⏱️ Dauer: etwa 5 bis 10 Minuten</span>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1.1rem;">
-          GESCHICHTE VORSCHLAGEN
-        </button>
+        <form onsubmit="event.preventDefault(); window.handleStorySubmissionSubmit();">
 
-      </form>
-    </div>
+          <!-- STEP 01 -->
+          <div class="form-step-block" style="margin-bottom: 2.25rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">01</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Die Geschichte einordnen</h3>
+            </div>
+
+            <!-- Question 1.1 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Themenbereich <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Wähle den Schwerpunkt. Die Geschichte darf mehrere Bereiche verbinden.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="themenbereich" value="Wirtschaft" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Wirtschaft & Unternehmertum (Technologie wird Wirkung)</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="themenbereich" value="Forschung" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Forschung, Hochschule & Innovation (Aus Wissen wird Unternehmen)</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="themenbereich" value="Europa" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Grenzüberschreitende Erfolge (Europa wird Praxis)</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="themenbereich" value="Kultur" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Kultur & Gesellschaft</span>
+                </label>
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem;">
+                  <input type="text" placeholder="Anderer Bereich..." class="calc-input" style="flex: 1; color: #000; background: #f0f4f8;" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 1.2 -->
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Wo in der Aachen Area ist die Geschichte verankert? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Zum Beispiel: Ort, Unternehmen, Hochschule, Institut, Verein, Initiative oder Netzwerk.</p>
+              <input type="text" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="z. B. Campus Melaten, Fraunhofer ILT, digitalHUB Aachen..." />
+            </div>
+          </div>
+
+          <!-- STEP 02 -->
+          <div class="form-step-block" style="margin-bottom: 2.25rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">02</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Den erzählenswerten Kern finden</h3>
+            </div>
+
+            <!-- Question 2.1 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Welcher Erfolg sollte auch außerhalb Aachens bekannt sein? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Nenne die Leistung, Idee oder Veränderung in ein bis zwei Sätzen. Was ist daran überraschend, besonders oder zukunftsweisend? Noch keine Werbeüberschrift nötig.</p>
+              <textarea required rows="3" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Beschreibe den konkreten Kernerfolg..."></textarea>
+            </div>
+
+            <!-- Question 2.2 -->
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Welche Grenze wurde dabei verschoben? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Was war vorher schwierig, getrennt, begrenzt oder galt als kaum möglich? Wähle den wichtigsten Punkt und erläutere ihn kurz.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="technisch" style="accent-color: var(--brand-accent);" required />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine technische oder wissenschaftliche Grenze</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="wirtschaftlich" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine wirtschaftliche oder unternehmerische Grenze</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="branchen" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine Grenze zwischen Branchen, Disziplinen oder Organisationen</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="geografisch" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine geografische, sprachliche oder internationale Grenze</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="kulturell" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine kulturelle oder gesellschaftliche Grenze</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="radio" name="grenze" value="denken" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Eine Grenze im Denken oder im Alltag</span>
+                </label>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <input type="text" placeholder="Etwas anderes..." class="calc-input" style="flex: 1; color: #000; background: #f0f4f8;" />
+                </div>
+              </div>
+
+              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">Kurz erklärt:</label>
+              <textarea rows="2" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Erläutere die verschobene Grenze in wenigen Worten..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 03 -->
+          <div class="form-step-block" style="margin-bottom: 2.25rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">03</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Den Aachen-Faktor sichtbar machen</h3>
+            </div>
+
+            <!-- Question 3.1 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Welche Stärke der Region hat den Erfolg möglich gemacht? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld, max. 3)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Wähle höchstens drei Faktoren. Entscheidend ist nicht nur, dass die Geschichte hier spielt, sondern was Aachen konkret beigetragen hat.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="Forschung" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Forschung, Wissen oder Ausbildung</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="Unternehmertum" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Unternehmertum, Industrie oder Handwerk</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="KurzeWege" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Kurze Wege, Netzwerke oder ungewöhnliche Zusammenarbeit</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="International" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Internationale oder grenzüberschreitende Perspektiven</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="Talente" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Talente, Fachkräfte oder engagierte Persönlichkeiten</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="Kulturell" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Kulturelles oder gesellschaftliches Engagement</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="Infrastruktur" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Infrastruktur, Institutionen oder besondere Orte</span>
+                </label>
+                <label class="calc-option-card" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;">
+                  <input type="checkbox" name="aachenFaktor" onchange="window.handleAachenFaktorLimit(this)" value="TraditionZukunft" style="accent-color: var(--brand-accent);" />
+                  <span style="font-size: 0.9rem; font-weight: 600;">Die Verbindung von Tradition und Zukunft</span>
+                </label>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <input type="text" placeholder="Etwas anderes..." class="calc-input" style="flex: 1; color: #000; background: #f0f4f8;" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Question 3.2 -->
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Warum konnte das gerade hier gelingen? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Stell dir vor, das Vorhaben wäre an einem anderen Ort gestartet: Was hätte dort gefehlt? Beschreibe möglichst konkret, wie der gewählte Aachen-Faktor den Unterschied gemacht hat.</p>
+              <textarea required rows="3" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Erkläre den spezifischen Aachen-Beitrag..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 04 -->
+          <div class="form-step-block" style="margin-bottom: 2.25rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">04</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Wirkung und Glaubwürdigkeit sichern</h3>
+            </div>
+
+            <!-- Question 4.1 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Was ist dadurch konkret möglich geworden – und für wen? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Beschreibe die Wirkung: Wer profitiert? Was hat sich verbessert, verändert oder neu eröffnet – in der Region oder darüber hinaus?</p>
+              <textarea required rows="3" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Beschreibe die konkrete Wirkung..."></textarea>
+            </div>
+
+            <!-- Question 4.2 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Woran lässt sich der Erfolg erkennen? <span style="color: var(--brand-accent); font-size: 0.85rem;">(Empfohlen)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Zum Beispiel: Zahl, Meilenstein, Preis, Patent, Gründung, neue Arbeitsplätze, eingesparte Ressourcen, Reichweite, wissenschaftlicher Durchbruch oder eine konkrete Veränderung im Leben von Menschen.</p>
+              <textarea rows="2" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Kennzahlen, Fakten, Nachweise..."></textarea>
+            </div>
+
+            <!-- Question 4.3 -->
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Welche Menschen und Organisationen haben den Erfolg gemeinsam möglich gemacht? <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Nenne alle, die unbedingt erwähnt werden sollten. Besonders interessant sind Verbindungen, die sonst selten zusammenkommen.</p>
+              <input type="text" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Beteiligte Köpfe, Unternehmen, Institute..." />
+            </div>
+          </div>
+
+          <!-- STEP 05 -->
+          <div class="form-step-block" style="margin-bottom: 2.25rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">05</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Material</h3>
+            </div>
+
+            <!-- Question 5.1 -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Wer oder was gibt der Geschichte ein Gesicht? <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Gibt es eine Person, ein konkretes Beispiel, einen Ort oder einen kurzen Satz, an dem die Geschichte lebendig wird?</p>
+              <input type="text" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Personen, Zitate, Schlüsselmomente..." />
+            </div>
+
+            <!-- Question 5.2 -->
+            <div>
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem;">
+                Link oder Material <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Website, Artikel, Studie, Video oder Bild. Dateien können im digitalen Formular zusätzlich hochgeladen werden.</p>
+              <input type="url" class="calc-input" style="color: #000; background: #f0f4f8; margin-bottom: 0.75rem;" placeholder="https://beispiel-link.de..." />
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <span style="font-size: 0.85rem; font-weight: 600;">Datei-Upload:</span>
+                <input type="file" multiple class="calc-input" style="color: var(--text-primary); background: var(--card-bg); padding: 0.5rem;" />
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 06 -->
+          <div class="form-step-block" style="margin-bottom: 2rem; padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+              <span class="step-number" style="width: 36px; height: 36px; border-radius: 50%; background: var(--brand-accent); color: var(--bg-dark); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">06</span>
+              <h3 style="font-family: var(--font-headline); text-transform: uppercase; font-size: 1.2rem; margin: 0;">Kontakt</h3>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
+                  Dein Name <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+                </label>
+                <input type="text" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="Vor- und Nachname" />
+              </div>
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
+                  E-Mail <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+                </label>
+                <input type="email" required class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="name@organisation.de" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
+                  Organisation / Rolle <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+                </label>
+                <input type="text" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="z. B. digitalHUB Aachen / Innovation Lead" />
+              </div>
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
+                  Telefon <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+                </label>
+                <input type="tel" class="calc-input" style="color: #000; background: #f0f4f8;" placeholder="+49 241 ..." />
+              </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" required style="margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--brand-accent);" />
+                <span>
+                  Ja, der Place Branding Aachen e.V. darf mich zu dieser Empfehlung kontaktieren. Eine Veröffentlichung erfolgt erst nach Rücksprache.
+                  <br/><em style="display: block; margin-top: 0.35rem;">Hinweis: Mit dem Absenden werden deine Angaben zur Prüfung und Bearbeitung der Empfehlung verarbeitet.</em>
+                  <a href="#datenschutz" style="color: var(--brand-accent); text-decoration: underline; display: inline-block; margin-top: 0.25rem;" onclick="alert('Datenschutzhinweis: Sämtliche übermittelten Daten werden ausschließlich zur vertraulichen redaktionellen Prüfung gemäß DSGVO durch den Place Branding Aachen e. V. verwendet.'); return false;">Vollständige Datenschutzerklärung ansehen</a>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1.1rem;">
+            GESCHICHTE VORSCHLAGEN
+          </button>
+
+        </form>
+      </div>
+
+      <!-- WEG 2: SCHNELLEN TIPP GEBEN (QUICK FORM) -->
+      <div id="submission-path-quick" style="display: none;">
+        <div style="background: rgba(172,240,0,0.06); border-left: 4px solid var(--ac-green); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.75rem; font-size: 0.95rem; line-height: 1.6;">
+          <strong>⚡ Schneller Tipp:</strong> Du hast einen ersten Hinweis, eine Idee oder möchtest der Redaktion ein spannendes Thema zurufen? Nenne kurz die Kernidee – wir kümmern uns um den Rest.
+        </div>
+
+        <form onsubmit="event.preventDefault(); window.handleQuickTipSubmit();">
+          <div class="form-step-block" style="padding: 1.75rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-bottom: 1.75rem;">
+            <!-- Field 1: Tipp Textarea -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; color: var(--text-primary);">
+                Dein Tipp / Kurzer Hinweis <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+              </label>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                Welchen Erfolg, welche Entwicklung oder welche Person aus der Aachen Area sollte die Redaktion kennen?
+              </p>
+              <textarea required rows="4" class="calc-input" style="color: #000; background: #f0f4f8; width: 100%; font-size: 0.95rem; padding: 0.85rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: var(--font-body);" placeholder="Beschreibe deinen Tipp in wenigen Sätzen..."></textarea>
+            </div>
+
+            <!-- Field 2: Link -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: var(--text-primary);">
+                Link oder Hinweis auf Quelle <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+              </label>
+              <input type="url" class="calc-input" style="color: #000; background: #f0f4f8; width: 100%; font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);" placeholder="https://beispiel-link.de..." />
+            </div>
+
+            <!-- Field 3 & 4: Name & Email -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-primary);">
+                  Dein Name <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+                </label>
+                <input type="text" required class="calc-input" style="color: #000; background: #f0f4f8; width: 100%; font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);" placeholder="Vor- und Nachname" />
+              </div>
+              <div>
+                <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-primary);">
+                  E-Mail <span style="color: #e11d48; font-size: 0.85rem;">* (Pflichtfeld)</span>
+                </label>
+                <input type="email" required class="calc-input" style="color: #000; background: #f0f4f8; width: 100%; font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);" placeholder="name@organisation.de" />
+              </div>
+            </div>
+
+            <!-- Field 5: Organisation -->
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-primary);">
+                Organisation / Rolle <span style="color: var(--text-muted); font-size: 0.85rem;">(Optional)</span>
+              </label>
+              <input type="text" class="calc-input" style="color: #000; background: #f0f4f8; width: 100%; font-size: 0.95rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);" placeholder="z. B. Firma / Funktion" />
+            </div>
+
+            <!-- Field 6: Consent -->
+            <div>
+              <label style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" required style="margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--brand-accent);" />
+                <span>
+                  Ja, der Place Branding Aachen e.V. darf mich zu diesem Tipp kontaktieren. Mit dem Absenden werden deine Angaben zur vertraulichen redaktionellen Prüfung verarbeitet.
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1.1rem;">
+            TIPP ABSENDEN
+          </button>
+        </form>
+      </div>
   `);
 }
 
