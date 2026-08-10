@@ -1138,22 +1138,25 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 4. Story-Teaser (STANDORT-HIGHLIGHTS SPOTLIGHT) -->
+    <!-- 4. Story-Teaser / Referenzen (REFERENZEN OHNE LIMITS WIE AUF STORIESEITE) -->
     <section class="section-wrapper section-dark">
       <div class="container">
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.storyTeaser.title}</h2>
-          <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.storyTeaser.intro}</p>
-        </div>
-
-        ${externalFeatured.length > 0 ? `
-          <div class="story-grid">
-            ${externalFeatured.map(s => renderTeaserCard(s)).join('')}
+        <div style="padding: 3rem 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color); border-left: 5px solid var(--ac-green);">
+          <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem;">
+            <span class="status-label externe-quelle" style="font-size: 0.75rem;">${state.lang === 'DE' ? 'Kuratierte Originalquellen' : 'Curated Original Sources'}</span>
+            <h2 class="headline-3deg" style="font-size: 1.8rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'REFERENZEN OHNE LIMITS' : 'REFERENCES WITHOUT LIMITS'}</h2>
+            <p class="text-body" style="font-size: 1rem; color: var(--text-muted); max-width: 850px;">${state.lang === 'DE' ? 'Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.' : 'Highly relevant developments from the Aachen ecosystem not yet produced as full internal stories. We transparently link to the original sources of responsible organizations.'}</p>
           </div>
-        ` : ''}
 
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="#stories" class="btn btn-secondary" data-page="stories">${t.storyTeaser.cta}</a>
+          ${externalFeatured.length > 0 ? `
+            <div class="story-grid">
+              ${externalFeatured.map(s => renderTeaserCard(s)).join('')}
+            </div>
+          ` : ''}
+
+          <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="#stories" class="btn btn-secondary" data-page="stories">${t.storyTeaser.cta} →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1168,17 +1171,17 @@ function renderHomePage() {
           <div class="themenraum-card" data-page="thema-technologie" style="cursor:pointer;">
             <h3>${t.themenraeume.t1Title}</h3>
             <p>${t.themenraeume.t1Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t1Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t1Cta}</span>
           </div>
           <div class="themenraum-card" data-page="thema-wissen" style="cursor:pointer;">
             <h3>${t.themenraeume.t2Title}</h3>
             <p>${t.themenraeume.t2Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t2Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t2Cta}</span>
           </div>
           <div class="themenraum-card" data-page="thema-europa" style="cursor:pointer;">
             <h3>${t.themenraeume.t3Title}</h3>
             <p>${t.themenraeume.t3Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t3Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t3Cta}</span>
           </div>
         </div>
       </div>
@@ -1375,10 +1378,12 @@ function openStoryModal(storyId) {
 
 // ─── HELPER: Teaser Card ────────────────────────────────────────────────────
 function renderTeaserCard(s) {
-  const themaLabel = s.thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : s.thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice');
   const isEigene = s.status === 'eigene-story' || s.article_de;
+  const themaLabel = s.thema === 'technologie' ? (state.lang === 'DE' ? 'Technologie wird Wirkung' : 'Technology Becomes Impact') : s.thema === 'wissen' ? (state.lang === 'DE' ? 'Aus Wissen wird Unternehmen' : 'Knowledge Becomes Enterprise') : (state.lang === 'DE' ? 'Europa wird Praxis' : 'Europe Becomes Practice');
   const statusLabelText = isEigene ? (state.lang === 'DE' ? 'Aachen-Story' : 'Aachen Story') : s.status === 'story-vorbereitung' ? (state.lang === 'DE' ? 'In Vorbereitung' : 'In Preparation') : (state.lang === 'DE' ? 'Externe Quelle' : 'External Source');
   const statusClass = isEigene ? 'eigene-story' : s.status === 'story-vorbereitung' ? 'story-vorbereitung' : 'externe-quelle';
+
+  const rawLabel = (s[L('ctaLabel')] || '').replace(/[↗→]/g, '').trim();
 
   return `
     <div class="story-card" ${isEigene ? `data-story-id="${s.id}"` : `data-external-url="${s.externalUrl}"`} style="cursor: pointer; overflow: hidden;">
@@ -1498,7 +1503,7 @@ function renderStoriesPage() {
                 <div class="signal-fact">${sig[L('fact')]}</div>
                 <div class="signal-source" style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; font-size:0.8rem;">
                   <span>${state.lang === 'DE' ? 'Quelle' : 'Source'}: ${sig.source}</span>
-                  <span class="external-link-indicator">↗</span>
+                  <span class="external-link-indicator"></span>
                 </div>
               </div>
             `).join('')}
@@ -1560,17 +1565,17 @@ function renderThemenHub() {
           <div class="themenraum-card" data-page="thema-technologie" style="cursor:pointer;">
             <h3>${t.themenraeume.t1Title}</h3>
             <p>${t.themenraeume.t1Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t1Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t1Cta}</span>
           </div>
           <div class="themenraum-card" data-page="thema-wissen" style="cursor:pointer;">
             <h3>${t.themenraeume.t2Title}</h3>
             <p>${t.themenraeume.t2Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t2Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t2Cta}</span>
           </div>
           <div class="themenraum-card" data-page="thema-europa" style="cursor:pointer;">
             <h3>${t.themenraeume.t3Title}</h3>
             <p>${t.themenraeume.t3Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t3Cta} →</span>
+            <span class="themenraum-cta">${t.themenraeume.t3Cta}</span>
           </div>
         </div>
       </div>
