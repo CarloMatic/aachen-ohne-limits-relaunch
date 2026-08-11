@@ -810,16 +810,18 @@ function updateSponsorGridUI() {
 
 // ─── THEME MANAGEMENT ────────────────────────────────────────────────────────
 function initTheme() {
-  const saved = localStorage.getItem('pba_theme') || 'dark';
-  setTheme(saved);
+  try {
+    localStorage.removeItem('pba_theme');
+    localStorage.removeItem('theme');
+  } catch (e) {}
+  setTheme('light');
 }
-function setTheme(theme) {
-  state.theme = theme;
-  localStorage.setItem('pba_theme', theme);
-  document.body.className = `theme-${theme}`;
+function setTheme(theme = 'light') {
+  state.theme = 'light';
+  document.body.className = 'theme-light';
   const logoImg = document.querySelector('.logo-img');
   if (logoImg) {
-    logoImg.src = theme === 'dark' ? './logos/ACoL_RGB_Green.svg' : './logos/logo_header_purple.png';
+    logoImg.src = './logos/logo_header_purple.png';
   }
 }
 
