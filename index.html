@@ -6,7 +6,10 @@
   <title>Aachen ohne Limits | Geschichten aus der Aachen Area</title>
   <meta name="description" content="Entdecken Sie Menschen, Unternehmen und Forschung aus der Aachen Area, die technologische, unternehmerische und europäische Grenzen verschieben." />
   
-  <!-- Performance: Resource Preconnect -->
+  <!-- Performance & Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://www.youtube.com" />
   <link rel="dns-prefetch" href="https://www.youtube.com" />
 
@@ -23,7 +26,7 @@
     "alternateName": "Aachen ohne Limits",
     "url": "https://carlomatic.github.io/aachen-ohne-limits-relaunch/",
     "logo": "https://carlomatic.github.io/aachen-ohne-limits-relaunch/logos/logo_header_purple.png",
-    "description": "Der Place Branding Aachen e. V. entwickelt und trägt die Standortmarke „Aachen ohne Limits". Gemeinsam mit Unternehmen und Institutionen macht die Initiative belegbare Leistungen, Menschen und Kooperationen aus der Aachen Area sichtbar.",
+    "description": "Der Place Branding Aachen e. V. entwickelt und trägt die Standortmarke „Aachen ohne Limits\". Gemeinsam mit Unternehmen und Institutionen macht die Initiative belegbare Leistungen, Menschen und Kooperationen aus der Aachen Area sichtbar.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Grüner Weg 106",
@@ -46,20 +49,20 @@
   <!-- Accessibility: Skip Link -->
   <a href="#app-root" class="sr-only focus:not-sr-only" style="position: absolute; top: -9999px; left: 1rem; z-index: 9999; padding: 0.5rem 1rem; background: var(--brand-accent); color: var(--bg-dark); font-weight: 700; border-radius: var(--radius-sm);" onfocus="this.style.top='1rem'" onblur="this.style.top='-9999px'">Zum Hauptinhalt springen</a>
 
-  <!-- Header / Navigation -->
+  <!-- Header / Navigation (Floating Pill Navbar as per Desktop.png) -->
   <header id="site-header" class="site-header">
     <div class="header-container">
       <a href="#home" class="brand-logo-link" id="logo-link" data-page="home">
-        <!-- Official Logo SVG Switch (Violett for Light, Green for Dark) -->
         <div class="logo-img-wrapper">
-          <img src="./logos/logo_header_purple.png" alt="Aachen ohne Limits Logo" class="logo-img" style="height: 100%; width: auto; object-fit: contain;" />
+          <img src="./logos/logo_header_purple.png" alt="Aachen ohne Limits Logo" class="logo-img" />
         </div>
       </a>
 
-      <!-- Navigation Links – Phase 1 Launch Architecture -->
+      <!-- Navigation Links -->
       <nav class="main-nav" id="main-nav">
         <ul class="nav-list">
           <li><a href="#stories" class="nav-link" data-page="stories">Stories</a></li>
+          <li><a href="#themen" class="nav-link" data-page="themen">Themen</a></li>
           <li><a href="#news" class="nav-link" data-page="news">News</a></li>
           <li><a href="#initiative" class="nav-link" data-page="initiative">Initiative</a></li>
           <li><a href="#mitglieder" class="nav-link" data-page="mitglieder">Mitglieder</a></li>
@@ -71,16 +74,16 @@
       <div class="header-actions">
         <!-- Language Switch DE / EN -->
         <button id="lang-switch" class="btn-lang" title="Sprache wechseln / Switch Language">
+          <span class="lang-globe">🌐</span>
           <span class="lang-code active">DE</span>
           <span class="lang-divider">/</span>
           <span class="lang-code">EN</span>
         </button>
 
-
         <!-- Primary Conversion CTA – "Mitgliedschaft" -->
-        <a href="#mitgliedschaft" class="btn btn-primary" data-page="mitgliedschaft">
+        <a href="#mitgliedschaft" class="btn btn-primary btn-pill header-cta-btn" data-page="mitgliedschaft">
           <span class="btn-text">Mitgliedschaft</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
         <!-- Mobile Hamburger Button -->

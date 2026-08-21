@@ -1066,286 +1066,407 @@ function renderCurrentPage() {
 // ─── HELPER: Lang key ────────────────────────────────────────────────────────
 function L(key) { return key + '_' + state.lang.toLowerCase(); }
 
-// ─── HOME PAGE ───────────────────────────────────────────────────────────────
+// ─── HOME PAGE (1:1 matching Desktop.png design) ─────────────────────────────
 function renderHomePage() {
-  const t = I18N[state.lang];
-  const eigeneStories = APP_DATA.storyTeaser.filter(s => s.status === 'eigene-story' || s.article_de).slice(0, 3);
-  const externalFeatured = APP_DATA.storyTeaser.filter(s => s.status === 'externe-quelle').slice(0, 3);
-  const homeNews = APP_DATA.news.slice(0, 3);
-  const membersWithQuotes = APP_DATA.members.filter(m => m[L('quote')]);
+  const de = state.lang === 'DE';
+  const members = APP_DATA.members.filter(m => m.tier === (state.sponsorTab || 'Gold'));
 
   return `
-    <!-- 1. Hero – Markenthese -->
-    <section class="hero-section">
+    <!-- 1. HERO SEKTION (Top Visual Banner with white title overlay + Purple GRENZEN below) -->
+    <section class="hero-section-desktop">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="subline-caps" style="color: var(--brand-accent); margin-bottom: 1rem; letter-spacing: 0.15em; font-size: 0.8rem;">${t.hero.eyebrow}</div>
-            <h1 class="headline-3deg hero-title">${t.hero.title}</h1>
-            <p class="hero-subline">${t.hero.subline}</p>
-            <div class="hero-actions">
-              <a href="#stories" class="btn btn-primary" data-page="stories">
-                <span>${t.hero.btnPrimary}</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#initiative" class="btn btn-secondary" data-page="initiative">
-                <span>${t.hero.btnSecondary}</span>
-              </a>
-            </div>
-          </div>
-          <div class="hero-media">
-            <div class="hero-video-wrapper">
-              <iframe 
-                src="https://www.youtube.com/embed/jbbHinXzIuU?rel=0&modestbranding=1" 
-                title="Aachen ohne Limits" 
-                loading="lazy"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md);"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <!-- Top Visual Banner with Autoplaying Background YouTube Video & Slanted Cut -->
+        <div class="hero-top-visual">
+          <div class="hero-visual-media">
+            <iframe 
+              class="hero-video-bg"
+              src="https://www.youtube-nocookie.com/embed/jbbHinXzIuU?autoplay=1&mute=1&loop=1&playlist=jbbHinXzIuU&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&playsinline=1&enablejsapi=1"
+              title="Aachen ohne Limits Hero Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <div class="hero-visual-overlay"></div>
 
-    <!-- 2. Direct Answer & Kuratierte Montage -->
-    <section class="section-wrapper section-light">
-      <div class="container">
-        <div class="direct-answer-card" style="margin-bottom: 3.5rem; padding: 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border-left: 4px solid var(--brand-accent);">
-          <h2 class="headline-3deg" style="font-size: 1.6rem; margin-bottom: 1rem; text-transform: uppercase;">${t.directAnswer.title}</h2>
-          <p class="text-body" style="font-size: 1.05rem; line-height: 1.7;">${t.directAnswer.text}</p>
-          <p class="text-body" style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem;">${t.directAnswer.addendum}</p>
-          <div style="margin-top: 1.25rem;">
-            <a href="#initiative" class="btn btn-secondary" data-page="initiative">${t.directAnswer.cta} →</a>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.montage.title}</h2>
-          <p class="text-body" style="margin-top: 1rem; max-width: 700px;">${t.montage.intro}</p>
-        </div>
-        <div class="montage-grid">
-          ${eigeneStories.map((s, i) => `
-            <div class="montage-element${i === 0 ? ' montage-featured' : ''}" data-story-id="${s.id}" style="cursor: pointer; position: relative; overflow: hidden; min-height: ${i === 0 ? '320px' : '200px'}; background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.85)), url('${s.image}') center/cover no-repeat; border-radius: var(--radius-md);">
-              <div class="montage-content" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; color: #fff;">
-                <div class="montage-fact" style="color: var(--brand-accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem;">${s.organisation}</div>
-                <h3 style="font-size: ${i === 0 ? '1.55rem' : '1.25rem'}; font-weight: 700; margin-bottom: 0.4rem; color: #fff; line-height: 1.25;">${s[L('title')]}</h3>
-                <div class="montage-source" style="font-size: 0.85rem; opacity: 0.9; font-style: italic;">${s[L('aachenBezug')]}</div>
+            <!-- "AACHEN VERSCHIEBT" sits in white directly on the video along the 3-degree slope -->
+            <div class="hero-video-headline-wrap">
+              <div class="hero-headline-overlay headline-3deg">
+                AACHEN VERSCHIEBT
               </div>
             </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Story-Teaser / Referenzen (REFERENZEN OHNE LIMITS WIE AUF STORIESEITE) -->
-    <section class="section-wrapper section-dark">
-      <div class="container">
-        <div style="padding: 3rem 2.5rem; background: var(--bg-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color); border-left: 5px solid var(--ac-green);">
-          <div style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem;">
-            <span class="status-label externe-quelle" style="font-size: 0.75rem;">${state.lang === 'DE' ? 'Kuratierte Originalquellen' : 'Curated Original Sources'}</span>
-            <h2 class="headline-3deg" style="font-size: 1.8rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'REFERENZEN OHNE LIMITS' : 'REFERENCES WITHOUT LIMITS'}</h2>
-            <p class="text-body" style="font-size: 1rem; color: var(--text-muted); max-width: 850px;">${state.lang === 'DE' ? 'Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.' : 'Highly relevant developments from the Aachen ecosystem not yet produced as full internal stories. We transparently link to the original sources of responsible organizations.'}</p>
           </div>
+        </div>
 
-          ${externalFeatured.length > 0 ? `
-            <div class="story-grid">
-              ${externalFeatured.map(s => renderTeaserCard(s)).join('')}
+        <!-- 2-Column Hero Grid below video banner -->
+        <div class="hero-desktop-grid">
+          <!-- Left Column: "GRENZEN." in Purple on the 3° tilt directly below -->
+          <div class="hero-brand-statement">
+            <div class="hero-display-purple headline-3deg">
+              GRENZEN.
             </div>
-          ` : ''}
+            <div class="subline-caps hero-eyebrow-caps">STANDORTGESCHICHTEN AUS DER AACHEN AREA</div>
+          </div>
 
-          <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="#stories" class="btn btn-secondary" data-page="stories">${t.storyTeaser.cta} →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Themenräume -->
-    <section class="section-wrapper section-light">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.themenraeume.title}</h2>
-        </div>
-        <div class="themenraum-grid">
-          <div class="themenraum-card" data-page="thema-technologie" style="cursor:pointer;">
-            <h3>${t.themenraeume.t1Title}</h3>
-            <p>${t.themenraeume.t1Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t1Cta}</span>
-          </div>
-          <div class="themenraum-card" data-page="thema-wissen" style="cursor:pointer;">
-            <h3>${t.themenraeume.t2Title}</h3>
-            <p>${t.themenraeume.t2Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t2Cta}</span>
-          </div>
-          <div class="themenraum-card" data-page="thema-europa" style="cursor:pointer;">
-            <h3>${t.themenraeume.t3Title}</h3>
-            <p>${t.themenraeume.t3Text}</p>
-            <span class="themenraum-cta">${t.themenraeume.t3Cta}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. Arbeitsweise -->
-    <section class="section-wrapper section-dark">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.arbeitsweise.title}</h2>
-          <p class="text-body" style="margin-top: 1rem; max-width: 750px; color: rgba(255,255,255,0.85);">${t.arbeitsweise.intro}</p>
-        </div>
-        <div class="arbeitsweise-grid">
-          ${[1,2,3,4,5,6].map(n => `
-            <div class="arbeitsweise-step">
-              <div class="step-number">${n}</div>
-              <div class="step-title">${t.arbeitsweise['s'+n+'Title']}</div>
-              <div class="step-desc">${t.arbeitsweise['s'+n+'Desc']}</div>
+          <!-- Right Column: Intro Copy & Action Buttons -->
+          <div class="hero-intro-text">
+            <h3 class="hero-subhead-bold">STANDORTGESCHICHTEN<br>AUS DER AACHEN AREA</h3>
+            <p class="hero-paragraph">
+              Aachen ohne Limits ist die gemeinsame Standortmarke für Aachen und die Aachen Area – getragen von der Unternehmerinitiative Place Branding Aachen e. V. Sie macht sichtbar, was Menschen, Unternehmen und Forschungseinrichtungen der Region möglich machen: belegbare Leistungen aus Wirtschaft, Wissenschaft, Technologie und Gesellschaft, verdichtet zu den stärksten Geschichten des Standorts.
+            </p>
+            <p class="hero-paragraph">
+              Gemeinsam mit ausgewiesenen Spezialisten entwickelt die Initiative daraus professionelle Stories und bringt sie – abhängig von Thema und Zielgruppe – national wie international dorthin, wo sie relevant sind: über die eigene Plattform, Social Media, Presse- und Medienarbeit, Partnernetzwerke, Veranstaltungen und weitere geeignete Kanäle.
+            </p>
+            <div class="hero-actions-row">
+              <a href="#stories" class="btn btn-primary btn-pill" data-page="stories">STORIES ENTDECKEN</a>
+              <a href="#initiative" class="btn btn-outline btn-pill" data-page="initiative">DIE IDEE DAHINTER</a>
             </div>
-          `).join('')}
-        </div>
-        <p class="text-body" style="text-align: center; margin-top: 2.5rem; font-style: italic; color: rgba(255,255,255,0.7); max-width: 700px; margin-left: auto; margin-right: auto;">${t.arbeitsweise.closing}</p>
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="#initiative" class="btn btn-secondary" data-page="initiative">${t.arbeitsweise.cta}</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6b. Ambitionsblock (Zielbild 1 Million Euro) -->
-    <section class="section-wrapper section-light" id="ambition">
-      <div class="container">
-        <div class="section-header">
-          <div class="subline-caps" style="color: var(--brand-accent); margin-bottom: 0.5rem; letter-spacing: 0.15em; font-size: 0.8rem;">${t.ambition.eyebrow}</div>
-          <h2 class="headline-3deg">${t.ambition.title}</h2>
-        </div>
-        <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; font-size: 1.05rem; line-height: 1.7;">
-          <p class="text-body">${t.ambition.mainText}</p>
-          <p class="text-body">${t.ambition.specialistsText}</p>
-          <div style="background: rgba(172,10,192,0.05); padding: 1.5rem 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--brand-accent); font-size: 0.95rem;">
-            ${t.ambition.transparencyText}
-          </div>
-          <div style="margin-top: 1rem; text-align: center;">
-            <a href="#mitmachen" class="btn btn-primary" data-page="mitmachen">${t.ambition.cta} →</a>
           </div>
         </div>
       </div>
     </section>
 
-
-
-    <!-- 8. Newsletter-Anmeldung Teaser (extra top padding & spacing to clear diagonal clip-path) -->
-    <section class="section-wrapper section-dark" style="position: relative; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8.5rem;">
+    <!-- 2. GESCHICHTEN DIE BEREITS IN AACHEN BEGINNEN (Dark Carousel Card) -->
+    <section class="section-wrapper story-start-section">
       <div class="container">
-        <div style="max-width: 800px; margin: 1.5rem auto 0; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 4.5rem 2rem 3.5rem; border-radius: var(--radius-md); backdrop-filter: blur(10px);">
-          <span style="display: inline-block; color: var(--brand-accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">${state.lang === 'DE' ? 'IMMER INFORMIERT BLEIBEN' : 'STAY INFORMED'}</span>
-          <h2 class="headline-3deg" style="font-size: 2rem; margin: 0.75rem 0 1rem; color: #fff;">${state.lang === 'DE' ? 'STANDORT-IMPULSE DIREKT IN IHRE INBOX' : 'REGIONAL INSIGHTS DIRECT TO YOUR INBOX'}</h2>
-          <p class="text-body" style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 2rem;">
-            ${state.lang === 'DE' ? 'Erhalten Sie regelmäßig kuratierte Erfolge, Hintergründe und Entwicklungen aus der Aachen Area. Kein Spam – jederzeit abbestellbar.' : 'Receive curated achievements, backgrounds, and developments from the Aachen Area. No spam — unsubscribe anytime.'}
+        <div class="dark-feature-card">
+          <div class="dark-feature-header">
+            <span class="counter-badge">01 ──── 05</span>
+            <h2 class="dark-feature-title">
+              GESCHICHTEN DIE BEREITS<br>
+              <span class="text-accent-green">IN AACHEN BEGINNEN</span>
+            </h2>
+            <a href="#stories" class="btn btn-pill-glass" data-page="stories">MEHR STORIES</a>
+          </div>
+
+          <div class="story-carousel-row">
+            <!-- Featured Large Card -->
+            <div class="story-preview-card" data-story-id="incirt-chips" style="cursor: pointer;">
+              <div class="story-preview-img-wrap">
+                <img src="./assets/aachen_ki_story.png" alt="INCIRT Chips Aachen" class="story-preview-img" />
+                <button class="story-action-badge" aria-label="Story ansehen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="6" cy="18" r="2.5"/>
+                    <circle cx="18" cy="18" r="2.5"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="story-preview-meta">
+                <span class="badge-neon-green">ELEMENT 3-4 GMBH</span>
+                <h3 class="story-preview-title">INCIRT: Ultra-Highspeed-Chips aus Aachen für die 6G-Zukunft</h3>
+                <p class="story-preview-desc">RWTH-Spitzenforschung wird zu global gefragter Chip-Architektur im Aachener Ökosystem.</p>
+              </div>
+            </div>
+
+            <!-- Second Partially Visible Card -->
+            <div class="story-preview-card story-preview-card-secondary" data-story-id="abiomed-impella" style="cursor: pointer;">
+              <div class="story-preview-img-wrap">
+                <img src="./assets/hero_aachen_innovation.png" alt="Aachen Innovation" class="story-preview-img" />
+              </div>
+              <div class="story-preview-meta">
+                <span class="badge-neon-green">ABIOMED EUROPE</span>
+                <h3 class="story-preview-title">Impella: Kleinste Herzpumpe der Welt</h3>
+                <p class="story-preview-desc">Vom Aachener Universitätsklinikum zum weltweiten Standard in der Kardiologie.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. REFERENZEN OHNE LIMITS (Weiß / 2-Spalten) -->
+    <section class="section-wrapper section-light references-section">
+      <div class="container">
+        <div class="references-header">
+          <div class="references-header-text">
+            <span class="subline-caps">Kuratierte Originalquellen</span>
+            <h2 class="headline-references">REFERENZEN OHNE LIMITS</h2>
+            <p class="references-intro">
+              Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.
+            </p>
+          </div>
+          <div class="references-header-action">
+            <a href="#stories" class="btn btn-primary btn-pill" data-page="stories">ALLE REFERENZEN</a>
+          </div>
+        </div>
+
+        <div class="references-content-grid">
+          <!-- Left Column: Landscape Image -->
+          <div class="references-media-col">
+            <img src="./assets/interreg-maasrhein.jpg" alt="Aachen Landschaft" class="references-feature-img" />
+          </div>
+
+          <!-- Right Column: 3 Stacked Cards -->
+          <div class="references-cards-col">
+            <div class="ref-link-card ref-card-purple" data-page="stories" style="cursor: pointer;">
+              <div class="ref-card-inner">
+                <h4>Supply-constrained markets</h4>
+                <p>Regions characterized by geographical boundaries, cost-related obstacles, and/or complex political barriers.</p>
+              </div>
+              <span class="ref-card-arrow">→</span>
+            </div>
+
+            <div class="ref-link-card" data-page="stories" style="cursor: pointer;">
+              <div class="ref-card-inner">
+                <h4>Supply-constrained markets</h4>
+                <p>Regions characterized by geographical boundaries, cost-related obstacles, and/or complex political barriers.</p>
+              </div>
+              <span class="ref-card-arrow">→</span>
+            </div>
+
+            <div class="ref-link-card" data-page="stories" style="cursor: pointer;">
+              <div class="ref-card-inner">
+                <h4>Supply-constrained markets</h4>
+                <p>Regions characterized by geographical boundaries, cost-related obstacles, and/or complex political barriers.</p>
+              </div>
+              <span class="ref-card-arrow">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DREI RÄUME, IN DENEN AACHEN GRENZEN VERSCHIEBT (Gestapelte Fächerkarten) -->
+    <section class="section-wrapper topic-stack-section">
+      <div class="container">
+        <div class="topic-stack-header text-center">
+          <h2 class="topic-stack-headline">
+            <span class="stack-headline-black">DREI RÄUME, <span class="text-purple">IN DENEN</span></span><br>
+            <span class="stack-headline-purple headline-3deg">AACHEN GRENZEN VERSCHIEBT.</span>
+          </h2>
+        </div>
+
+        <div class="stacked-cards-wrapper">
+          <!-- Card 01: Hellgrün -->
+          <div class="stack-card stack-card-green" data-page="thema-technologie" style="cursor: pointer;">
+            <div class="stack-card-content">
+              <h3>Technologie wird<br>Wirkung</h3>
+              <p>Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem.</p>
+            </div>
+            <div class="stack-card-num">01</div>
+          </div>
+
+          <!-- Card 02: Dunkelgrau/Anthrazit -->
+          <div class="stack-card stack-card-dark" data-page="thema-wissen" style="cursor: pointer;">
+            <div class="stack-card-content">
+              <h3>Aus Wissen wird<br>Unternehmen</h3>
+              <p>Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.</p>
+            </div>
+            <div class="stack-card-num">02</div>
+          </div>
+
+          <!-- Card 03: Full-Width Leuchtend Violett -->
+          <div class="stack-card stack-card-purple" data-page="thema-europa" style="cursor: pointer;">
+            <div class="stack-card-content">
+              <h3>Europa wird Praxis</h3>
+              <p>Noch nicht als eigene Story produzierte, aber hochrelevante Entwicklungen aus dem Aachener Ökosystem. Wir führen transparent zu den Originalseiten der beteiligten Organisationen.</p>
+              <div class="stack-card-cta-link">Mehr entdecken →</div>
+            </div>
+            <div class="stack-card-num">03</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. EINE GUTE GESCHICHTE REICHT NICHT. SIE MUSS DIE RICHTIGEN MENSCHEN ERREICHEN. -->
+    <section class="section-wrapper story-reach-section">
+      <div class="container">
+        <div class="reach-banner-header">
+          <h2 class="reach-title-top">
+            EINE <span class="badge-purple-box">GUTE</span><br>
+            <span class="badge-purple-box">GESCHICHTE</span><br>
+            REICHT NICHT.
+          </h2>
+          <h3 class="reach-title-subline headline-3deg">SIE MUSS DIE RICHTIGEN MENSCHEN ERREICHEN.</h3>
+        </div>
+
+        <div class="reach-content-grid">
+          <!-- Left: Image -->
+          <div class="reach-image-col">
+            <img src="./assets/fraunhofer-ilt.jpg" alt="Aachen Produktion & Forschung" class="reach-feature-img" />
+          </div>
+
+          <!-- Right: Process Steps Card -->
+          <div class="reach-steps-col">
+            <div class="reach-step-row">
+              <span class="reach-num text-purple">01</span>
+              <div class="reach-step-text">
+                <h4>FINDEN UND PRÜFEN</h4>
+                <p>Wir identifizieren relevante Leistungen, Menschen und Kooperationen und prüfen Fakten, Quellen, Rechte und ihre Bedeutung für die Aachen Area.</p>
+              </div>
+            </div>
+
+            <div class="reach-step-row">
+              <span class="reach-num text-purple">02</span>
+              <div class="reach-step-text">
+                <h4>FINDEN UND PRÜFEN</h4>
+                <p>Wir identifizieren relevante Leistungen, Menschen und Kooperationen und prüfen Fakten, Quellen, Rechte und ihre Bedeutung für die Aachen Area.</p>
+              </div>
+            </div>
+
+            <div class="reach-step-row reach-step-light">
+              <span class="reach-num text-light-purple">03</span>
+              <div class="reach-step-text">
+                <h4>FINDEN UND PRÜFEN</h4>
+                <p>Wir identifizieren relevante Leistungen, Menschen und Kooperationen und prüfen Fakten, Quellen, Rechte und ihre Bedeutung für die Aachen Area.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DAMIT AACHEN DAUERHAFT GEHÖRT WIRD: 1 MILLION EURO JAHRES BUDGET -->
+    <section class="section-wrapper million-budget-section" id="ambition">
+      <div class="container text-center">
+        <!-- Banner Image (Eye focus) -->
+        <div class="budget-eye-banner-wrap">
+          <img src="./assets/aachen_ki_story.png" alt="Aachen Fokus" class="budget-eye-img" />
+        </div>
+
+        <div class="budget-subline-top">
+          DAMIT AACHEN <span class="text-purple headline-3deg">DAUERHAFT GEHÖRT WIRD:</span>
+        </div>
+
+        <h2 class="huge-million-headline">
+          <span class="million-black">1 MILLION EURO</span><br>
+          <span class="million-purple headline-3deg">JAHRES BUDGET</span>
+        </h2>
+
+        <div class="budget-text-grid">
+          <p>
+            Internationale Wahrnehmung entsteht nicht durch einzelne Posts oder eine einmalige Kampagne. Unser langfristiges Ziel ist deshalb, gemeinsam mit Mitgliedern und Partnern ein Jahresbudget von 1 Million Euro aufzubauen. Dieses Budget soll eine kontinuierliche, professionelle Standortkommunikation ermöglichen: von Recherche und Redaktion über Film, Fotografie, Design und Übersetzung bis zu PR, Social Media, internationaler Distribution, Partnerschaften, Plattformbetrieb und Wirkungsmessung.
           </p>
+          <p>
+            Dafür soll jede Geschichte das Team bekommen, das sie braucht. Je nach Case wählt Aachen ohne Limits ausgewiesene Fachleute aus Redaktion, Strategie, Film, Fotografie, Design, Animation, Daten, Übersetzung, PR, Social Media und Distribution zusammenbringen. Entscheidend sind nachweisbare Qualität, Themenkompetenz, Zielgruppenverständnis und internationale Erfahrung.
+          </p>
+        </div>
 
-          <div id="home-newsletter-container">
-            <form onsubmit="event.preventDefault(); window.handleHomeNewsletterSubmit();" style="display: flex; gap: 0.75rem; max-width: 550px; margin: 0 auto; flex-wrap: wrap;">
-              <input type="email" required placeholder="${state.lang === 'DE' ? 'Ihre E-Mail-Adresse eingeben...' : 'Enter your email address...'}" style="flex: 1; min-width: 240px; padding: 0.85rem 1.25rem; border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; font-size: 0.95rem;" />
-              <button type="submit" class="btn btn-primary" style="white-space: nowrap;">
-                <span>${state.lang === 'DE' ? 'Newsletter abonnieren' : 'Subscribe'}</span>
-              </button>
+        <div class="budget-info-card">
+          <p>
+            Die 1 Million Euro ist ein strategisches Ausbauziel – kein bereits verfügbares Budget und kein Versprechen, jede eingereichte Geschichte zu produzieren. Mit wachsender Finanzierung wächst die Fähigkeit, mehr relevante Cases hochwertig zu erzählen, für unterschiedliche Märkte aufzubereiten und dort zu verbreiten, wo sie für Aachen Wirkung entfalten können.
+          </p>
+        </div>
+
+        <div class="budget-cta-wrap">
+          <a href="#mitgliedschaft" class="btn btn-primary btn-pill" data-page="mitgliedschaft">WERDE TEIL DAVON</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. IMMER INFORMIERT BLEIBEN (Newsletter Banner) -->
+    <section class="section-wrapper newsletter-dark-section">
+      <div class="container">
+        <div class="newsletter-card-dark">
+          <div class="newsletter-col-left">
+            <div class="newsletter-brand-badge headline-3deg">
+              IMMER<br>INFORMIERT<br>BLEIBEN
+            </div>
+          </div>
+          <div class="newsletter-col-right">
+            <h3>STANDORT-IMPULSE DIREKT IN IHRE INBOX</h3>
+            <p>Erhalten Sie regelmäßig kuratierte Erfolge, Hintergründe und Entwicklungen aus der Aachen Area. Kein Spam – jederzeit abbestellbar.</p>
+            <form class="newsletter-inline-form" onsubmit="event.preventDefault(); window.handleHomeNewsletterSubmit();">
+              <input type="email" required placeholder="Ihre E-Mail..." class="newsletter-pill-field" />
+              <button type="submit" class="btn btn-pill-green">NEWSLETTER ABONNIEREN</button>
             </form>
-            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 1rem;">
-              ${state.lang === 'DE' ? 'Mit der Anmeldung willigen Sie in die Datenverarbeitung gemäß unserer Datenschutzerklärung ein.' : 'By subscribing, you agree to our data processing terms.'}
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. News -->
-    <section class="section-wrapper section-dark">
+    <!-- 8. GEMEINSAM WIRD AUS SICHTBARKEIT WIRKUNG (Testimonials + Member Logos) -->
+    <section class="section-wrapper social-proof-section section-light">
       <div class="container">
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.newsHome.title}</h2>
-        </div>
-        <div class="story-grid">
-          ${homeNews.map(n => `
-            <div class="story-card">
-              <div class="story-card-body">
-                <div class="story-meta">
-                  <span class="story-category-tag" style="position:static;">${n[L('category')]}</span>
-                  <span>${n[L('date')]}</span>
-                </div>
-                <h3 class="story-card-title">${n[L('title')]}</h3>
-                <p class="story-card-excerpt">${n[L('excerpt')]}</p>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="#news" class="btn btn-secondary" data-page="news">${t.newsHome.cta}</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. Mitglieder & Träger (Weißer Block) -->
-    <section class="section-wrapper traeger-section section-light">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="headline-3deg">${t.traeger.title}</h2>
-          <p class="text-body" style="margin-top: 1rem;">${t.traeger.text}</p>
-        </div>
-
-        ${membersWithQuotes.length > 0 ? `
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-            ${membersWithQuotes.map(m => `
-              <div class="traeger-quote">
-                <p>„${m[L('quote')]}"</p>
-                <div class="traeger-attribution">— ${m.speaker || m.name}</div>
-              </div>
-            `).join('')}
+        <div class="proof-header-row">
+          <div>
+            <span class="subline-caps">Starke Partner</span>
+            <h2 class="headline-proof">GEMEINSAM WIRD AUS<br>SICHTBARKEIT WIRKUNG.</h2>
+            <p class="proof-lead-text">
+              Mitglieder finanzieren keine garantierte Einzelwerbung. Sie bauen gemeinsam die redaktionelle, kreative und distributive Infrastruktur auf, mit der relevante Geschichten der Aachen Area professionell produziert und national wie international sichtbar gemacht werden können.
+            </p>
           </div>
-        ` : ''}
-
-        <!-- Sponsor Tabs (Gold, Silber, Bronze) -->
-        <div class="filter-bar" style="justify-content: center; margin-bottom: 2rem;">
-          <button class="filter-btn ${state.sponsorTab === 'Gold' ? 'active' : ''}" data-sponsor-tab="Gold">Gold (${state.lang === 'DE' ? 'Mitprägen' : 'Lead'})</button>
-          <button class="filter-btn ${state.sponsorTab === 'Silber' ? 'active' : ''}" data-sponsor-tab="Silber">Silber (${state.lang === 'DE' ? 'Mitgestalten' : 'Shape'})</button>
-          <button class="filter-btn ${state.sponsorTab === 'Bronze' ? 'active' : ''}" data-sponsor-tab="Bronze">Bronze (${state.lang === 'DE' ? 'Mittragen' : 'Support'})</button>
+          <div>
+            <a href="#mitglieder" class="btn btn-primary btn-pill" data-page="mitglieder">MITGLIEDER</a>
+          </div>
         </div>
 
-        <div class="logo-wall-grid" id="home-sponsor-grid-container" style="min-height: 380px; align-content: start;">
-          ${APP_DATA.members.filter(m => m.tier === state.sponsorTab).map(m => `
-            <div class="member-logo-card ${m.tier === 'Gold' ? 'gold-member' : ''}">
-              ${m.tier === 'Gold' ? '<span class="gold-badge-tag">Gold</span>' : m.tier === 'Silber' ? '<span class="gold-badge-tag" style="background: var(--ac-blue);">Silber</span>' : '<span class="gold-badge-tag" style="background: var(--ac-yellow); color: #000;">Bronze</span>'}
-              <div class="member-name">${m.name}</div>
-              <div class="member-type">${m[L('category')]}</div>
+        <!-- 3 Testimonial Cards with Photos -->
+        <div class="testimonials-three-grid">
+          <div class="testi-card">
+            <div class="testi-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80" alt="Jenny Wilson" class="testi-avatar" />
+            </div>
+            <div class="testi-content">
+              <p class="testi-quote-text">“Flow transformed my energy use. Efficient, green tech, outstanding service!”</p>
+              <div class="testi-name">Jenny Wilson</div>
+              <div class="testi-role">Solar energy service</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80" alt="Jenny Wilson" class="testi-avatar" />
+            </div>
+            <div class="testi-content">
+              <p class="testi-quote-text">“Flow transformed my energy use. Efficient, green tech, outstanding service!”</p>
+              <div class="testi-name">Jenny Wilson</div>
+              <div class="testi-role">Solar energy service</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80" alt="Jenny Wilson" class="testi-avatar" />
+            </div>
+            <div class="testi-content">
+              <p class="testi-quote-text">“Flow transformed my energy use. Efficient, green tech, outstanding service!”</p>
+              <div class="testi-name">Jenny Wilson</div>
+              <div class="testi-role">Solar energy service</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier Tabs (Gold, Silber, Bronze) -->
+        <div class="tier-pills-row">
+          <button class="tier-tab-btn ${state.sponsorTab === 'Gold' || !state.sponsorTab ? 'active' : ''}" data-sponsor-tab="Gold">🪙 GOLD MITGLIEDER</button>
+          <button class="tier-tab-btn ${state.sponsorTab === 'Silber' ? 'active' : ''}" data-sponsor-tab="Silber">SILBER</button>
+          <button class="tier-tab-btn ${state.sponsorTab === 'Bronze' ? 'active' : ''}" data-sponsor-tab="Bronze">BRONZE</button>
+        </div>
+
+        <!-- Modern Logo Wall Grid -->
+        <div class="modern-logo-grid" id="home-sponsor-grid-container">
+          ${members.map(m => `
+            <div class="modern-logo-card">
+              <div class="modern-logo-placeholder">
+                <span class="logo-symbol">✣</span>
+                <span class="logo-text-sample">${m.name}</span>
+              </div>
+              <span class="modern-logo-tag">${m.tier.toUpperCase()}</span>
             </div>
           `).join('')}
         </div>
       </div>
     </section>
 
-    <!-- 10. Geschichten vorschlagen (Schwarzer Block) -->
-    <section class="story-gesucht-section section-dark">
-      <div class="container" style="text-align: center;">
-        <h2 class="headline-3deg" style="color: #fff;">${t.storyGesucht.title}</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 1.5rem auto;">${t.storyGesucht.text}</p>
-        <div class="story-gesucht-criteria">
-          <span class="criteria-item">${t.storyGesucht.c1}</span>
-          <span class="criteria-item">${t.storyGesucht.c2}</span>
-          <span class="criteria-item">${t.storyGesucht.c3}</span>
-          <span class="criteria-item">${t.storyGesucht.c4}</span>
-        </div>
-        <button class="btn btn-primary" data-action="submit-story" style="margin-top: 2rem;">${t.storyGesucht.cta}</button>
-      </div>
-    </section>
-
-    <!-- 11. Mitglied werden (Weißer Block: MACHEN SIE AACHENS STÄRKEN GEMEINSAM SICHTBAR.) -->
-    <section class="section-wrapper section-light" style="padding: 4.5rem 0;">
-      <div class="container" style="text-align: center;">
-        <h2 class="headline-3deg" style="font-size: 1.8rem; margin-bottom: 1rem;">${t.beteiligung.title}</h2>
-        <p class="text-body" style="margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; font-size: 1.05rem;">${t.beteiligung.text}</p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-          <a href="#mitmachen" class="btn btn-primary" data-page="mitmachen">${t.beteiligung.btnPrimary}</a>
-          <a href="#mitgliedschaft" class="btn btn-outline" data-page="mitgliedschaft">${t.beteiligung.btnSecondary}</a>
+    <!-- 9. WELCHE GESCHICHTE AUS DER AACHEN AREA SOLLTE DIE WELT KENNEN? -->
+    <section class="section-wrapper discovery-banner-section">
+      <div class="container">
+        <div class="discovery-banner-card">
+          <div class="discovery-banner-content">
+            <h2 class="discovery-banner-headline">
+              WELCHE GESCHICHTE AUS DER AACHEN AREA<br>
+              SOLLTE DIE WELT KENNEN?
+            </h2>
+            <p class="discovery-banner-p">
+              Machen Sie Aachens Stärken sichtbar – mit einer Geschichte, einem Kontakt oder Ihrer Mitgliedschaft. Wir suchen belegbare Leistungen, mutige Menschen und Kooperationen, die Grenzen verschieben. Ein Vorschlag ist keine Veröffentlichungsgarantie, sondern der mögliche Anfang einer redaktionellen Prüfung. Auswahl und Umfang richten sich nach Relevanz, Quellenlage, Rechten und verfügbaren Ressourcen.
+            </p>
+            <div class="discovery-banner-actions">
+              <a href="#mitgliedschaft" class="btn btn-primary btn-pill" data-page="mitgliedschaft">MITGLIED WERDEN</a>
+              <button class="btn btn-pill-green" data-action="submit-story">STORY VORSCHLAGEN</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2192,69 +2313,88 @@ function renderPressePage() {
   `;
 }
 
-// ─── FOOTER ──────────────────────────────────────────────────────────────────
+// ─── FOOTER (Desktop.png Modern Card Design) ─────────────────────────────────
 function renderFooter() {
-  const t = I18N[state.lang].footer;
-  const n = I18N[state.lang].nav;
   const de = state.lang === 'DE';
   return `
-    <footer class="site-footer">
+    <footer class="site-footer-modern">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <div class="logo-img-wrapper" style="height: 80px;">
-              <img src="./logos/logo_footer_green.png" alt="Aachen ohne Limits Logo" style="height: 100%; width: auto; object-fit: contain;" />
+        <div class="footer-card-inner">
+          <div class="footer-columns-grid">
+            <!-- Col 1: Logo -->
+            <div class="footer-logo-col">
+              <img src="./logos/logo_header_purple.png" alt="Aachen ohne Limits Logo" class="footer-brand-logo" />
             </div>
-            <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); margin-top:1rem; max-width:280px;">${de ? 'Die Standortmarke für die Aachen Area.' : 'The regional brand for the Aachen Area.'}</p>
+
+            <!-- Col 2: Platform -->
+            <div class="footer-nav-col">
+              <h5>Platform</h5>
+              <ul class="footer-link-list">
+                <li><a href="#stories" data-page="stories">Platform</a></li>
+                <li><a href="#themen" data-page="themen">Solutions</a></li>
+                <li><a href="#initiative" data-page="initiative">How it works</a></li>
+                <li><a href="#mitmachen" data-page="mitmachen">Pricing</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Platform (Duplicate Column as shown in Design) -->
+            <div class="footer-nav-col">
+              <h5>Platform</h5>
+              <ul class="footer-link-list">
+                <li><a href="#stories" data-page="stories">Platform</a></li>
+                <li><a href="#themen" data-page="themen">Solutions</a></li>
+                <li><a href="#initiative" data-page="initiative">How it works</a></li>
+                <li><a href="#mitmachen" data-page="mitmachen">Pricing</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 4: Company -->
+            <div class="footer-nav-col">
+              <h5>Company</h5>
+              <ul class="footer-link-list">
+                <li><a href="#initiative" data-page="initiative">Company</a></li>
+                <li><a href="#initiative" data-page="initiative">About</a></li>
+                <li><a href="#initiative" data-page="initiative">Our Mission</a></li>
+                <li><a href="#mitmachen" data-page="mitmachen">Careers <span class="badge-hiring">HIRING</span></a></li>
+                <li><a href="mailto:verein@aachenohnelimits.de">Contact</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 5: Resources -->
+            <div class="footer-nav-col">
+              <h5>Resources</h5>
+              <ul class="footer-link-list">
+                <li><a href="#news" data-page="news">Resources</a></li>
+                <li><a href="#news" data-page="news">Blog</a></li>
+                <li><a href="#presse" data-page="presse">Help Center</a></li>
+                <li><a href="mailto:verein@aachenohnelimits.de">Support</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 6: Social Buttons -->
+            <div class="footer-social-col">
+              <a href="https://facebook.com/aachenohnelimits" target="_blank" rel="noopener" class="btn-social-follow">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                <span>Follow us on Facebook</span>
+              </a>
+              <a href="https://instagram.com/aachenohnelimits" target="_blank" rel="noopener" class="btn-social-follow">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                <span>Follow us on Instagram</span>
+              </a>
+              <a href="https://linkedin.com/company/aachen-ohne-limits" target="_blank" rel="noopener" class="btn-social-follow">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>Follow us on LinkedIn</span>
+              </a>
+            </div>
           </div>
 
-          <div class="footer-col">
-            <h4>${t.col1Title}</h4>
-            <ul class="footer-links">
-              <li><a href="#stories" data-page="stories">${n.stories}</a></li>
-              <li><a href="#news" data-page="news">${n.news}</a></li>
-              <li><a href="#presse" data-page="presse">${de ? 'Presse & Mediakit' : 'Press & Kit'}</a></li>
-            </ul>
+          <!-- Giant Wordmark at Bottom of Card -->
+          <div class="footer-giant-wordmark headline-3deg">
+            AACHEN OHNE LIMITS
           </div>
 
-          <div class="footer-col">
-            <h4>${t.col2Title}</h4>
-            <ul class="footer-links">
-              <li><a href="#initiative" data-page="initiative">${de ? 'Mission & Arbeitsweise' : 'Mission & Approach'}</a></li>
-              <li><a href="#entstehung" data-page="entstehung">${de ? 'Entstehung' : 'Origin'}</a></li>
-              <li><a href="#initiative" data-page="initiative">${de ? 'Vorstand & Geschäftsführung' : 'Board & Management'}</a></li>
-              <li><a href="./docs/260611_Satzung_PBA.pdf" target="_blank">${de ? 'Satzung (PDF)' : 'Statutes (PDF)'} ↗</a></li>
-              <li><a href="./docs/260128_Beitragsordnung_PBA.pdf" target="_blank">${de ? 'Beitragsordnung (PDF)' : 'Fee Schedule (PDF)'} ↗</a></li>
-              <li><a href="./docs/260128_Markenordnung_PBA.pdf" target="_blank">${de ? 'Markenordnung (PDF)' : 'Brand Guidelines (PDF)'} ↗</a></li>
-              <li><a href="./docs/260128_Leistungsuebersicht_PBA.pdf" target="_blank">${de ? 'Leistungsübersicht (PDF)' : 'Services (PDF)'} ↗</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>${t.col3Title}</h4>
-            <ul class="footer-links">
-              <li><a href="#" data-action="submit-story">${de ? 'Story vorschlagen' : 'Suggest a story'}</a></li>
-              <li><a href="#mitmachen" data-page="mitmachen">${de ? 'Mitgliedschaft & Rechner' : 'Membership & Calculator'}</a></li>
-              <li><a href="#mitmachen" data-page="mitmachen">${de ? 'Mitgliedsanträge (PDF)' : 'Applications (PDF)'}</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>${t.col4Title}</h4>
-            <ul class="footer-links">
-              <li><a href="mailto:verein@aachenohnelimits.de">${de ? 'Kontakt' : 'Contact'}</a></li>
-              <li><a href="#" data-action="open-newsletter">${de ? 'Newsletter Anmelden' : 'Newsletter Signup'}</a></li>
-              <li><a href="#presse" data-page="presse">${de ? 'Mediakit' : 'Media Kit'}</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div>${t.rights}</div>
-          <div style="display:flex; gap:1.5rem;">
-            <a href="#">${t.imprint}</a>
-            <a href="#">${t.privacy}</a>
-            <a href="#">${t.cookies}</a>
+          <div class="footer-copyright-line">
+            <span>© 2024 Flow. All rights reserved. • Place Branding Aachen e. V.</span>
           </div>
         </div>
       </div>
