@@ -1072,7 +1072,7 @@ function renderHomePage() {
   const members = APP_DATA.members.filter(m => m.tier === (state.sponsorTab || 'Gold'));
 
   return `
-    <!-- 1. HERO SEKTION (Top Visual Banner with white title overlay + Purple GRENZEN below) -->
+    <!-- 1. HERO SEKTION (Top Visual Banner with single-line AACHEN VERSCHIEBT over video + Purple GRENZEN below) -->
     <section class="hero-section-desktop">
       <div class="container">
         <!-- Top Visual Banner with Autoplaying Background YouTube Video & Slanted Cut -->
@@ -1088,7 +1088,7 @@ function renderHomePage() {
             ></iframe>
             <div class="hero-visual-overlay"></div>
 
-            <!-- "AACHEN VERSCHIEBT" sits in white directly on the video along the 3-degree slope -->
+            <!-- "AACHEN VERSCHIEBT" sits in white directly on the video along the 3-degree slope with natural word spacing -->
             <div class="hero-video-headline-wrap">
               <div class="hero-headline-overlay headline-3deg">
                 AACHEN VERSCHIEBT
@@ -1125,7 +1125,7 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 2. GESCHICHTEN DIE BEREITS IN AACHEN BEGINNEN (Dark Carousel Card) -->
+    <!-- 2. GESCHICHTEN DIE BEREITS IN AACHEN BEGINNEN (Dark Carousel Card - 2 Full Stories + 3rd Peeked, Real Case Photos) -->
     <section class="section-wrapper story-start-section">
       <div class="container">
         <div class="dark-feature-card">
@@ -1138,11 +1138,11 @@ function renderHomePage() {
             <a href="#stories" class="btn btn-pill-glass" data-page="stories">MEHR STORIES</a>
           </div>
 
-          <div class="story-carousel-row">
-            <!-- Featured Large Card -->
-            <div class="story-preview-card" data-story-id="incirt-chips" style="cursor: pointer;">
+          <div class="story-carousel-track">
+            <!-- Story 1: Element 3-5 / INCIRT Chips -->
+            <div class="story-preview-card" data-story-id="element35-accelerator" style="cursor: pointer;">
               <div class="story-preview-img-wrap">
-                <img src="./assets/aachen_ki_story.png" alt="INCIRT Chips Aachen" class="story-preview-img" />
+                <img src="./assets/incirt-chip.jpg" alt="INCIRT Chips Aachen" class="story-preview-img" />
                 <button class="story-action-badge" aria-label="Story ansehen">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                     <circle cx="6" cy="6" r="2.5"/>
@@ -1153,21 +1153,89 @@ function renderHomePage() {
                 </button>
               </div>
               <div class="story-preview-meta">
-                <span class="badge-neon-green">ELEMENT 3-4 GMBH</span>
+                <span class="badge-neon-green">ELEMENT 3-5 GMBH</span>
                 <h3 class="story-preview-title">INCIRT: Ultra-Highspeed-Chips aus Aachen für die 6G-Zukunft</h3>
                 <p class="story-preview-desc">RWTH-Spitzenforschung wird zu global gefragter Chip-Architektur im Aachener Ökosystem.</p>
               </div>
             </div>
 
-            <!-- Second Partially Visible Card -->
-            <div class="story-preview-card story-preview-card-secondary" data-story-id="abiomed-impella" style="cursor: pointer;">
+            <!-- Story 2: Abiomed Impella -->
+            <div class="story-preview-card" data-story-id="abiomed-jnj-impella" style="cursor: pointer;">
               <div class="story-preview-img-wrap">
-                <img src="./assets/hero_aachen_innovation.png" alt="Aachen Innovation" class="story-preview-img" />
+                <img src="./assets/abiomed-medtech.jpg" alt="Abiomed Impella Medizintechnik" class="story-preview-img" />
+                <button class="story-action-badge" aria-label="Story ansehen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="6" cy="18" r="2.5"/>
+                    <circle cx="18" cy="18" r="2.5"/>
+                  </svg>
+                </button>
               </div>
               <div class="story-preview-meta">
-                <span class="badge-neon-green">ABIOMED EUROPE</span>
+                <span class="badge-neon-green">ABIOMED / JOHNSON & JOHNSON</span>
                 <h3 class="story-preview-title">Impella: Kleinste Herzpumpe der Welt</h3>
-                <p class="story-preview-desc">Vom Aachener Universitätsklinikum zum weltweiten Standard in der Kardiologie.</p>
+                <p class="story-preview-desc">Vom Aachener Universitätsklinikum zum weltweiten Goldstandard in der Kardiologie.</p>
+              </div>
+            </div>
+
+            <!-- Story 3: Laser & KI -->
+            <div class="story-preview-card" data-story-id="laser-ki-makerthon" style="cursor: pointer;">
+              <div class="story-preview-img-wrap">
+                <img src="./assets/laser-region.jpg" alt="Laser & KI Aachen" class="story-preview-img" />
+                <button class="story-action-badge" aria-label="Story ansehen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="6" cy="18" r="2.5"/>
+                    <circle cx="18" cy="18" r="2.5"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="story-preview-meta">
+                <span class="badge-neon-green">LASER.REGION.AACHEN</span>
+                <h3 class="story-preview-title">Wenn Lasertechnik und KI gemeinsam lernen</h3>
+                <p class="story-preview-desc">Über 60 Partner bündeln Photonik- und KI-Kompetenz für europäische Spitzenforschung.</p>
+              </div>
+            </div>
+
+            <!-- Story 4: Fraunhofer ILT -->
+            <div class="story-preview-card" data-story-id="fraunhofer-ilt-transfer" style="cursor: pointer;">
+              <div class="story-preview-img-wrap">
+                <img src="./assets/fraunhofer-ilt.jpg" alt="Fraunhofer ILT Transfer" class="story-preview-img" />
+                <button class="story-action-badge" aria-label="Story ansehen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="6" cy="18" r="2.5"/>
+                    <circle cx="18" cy="18" r="2.5"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="story-preview-meta">
+                <span class="badge-neon-green">FRAUNHOFER ILT</span>
+                <h3 class="story-preview-title">Wo Deep Tech nicht im Labor endet</h3>
+                <p class="story-preview-desc">Systematischer Forschungstransfer von der Grundlagenforschung in die Industrieanwendung.</p>
+              </div>
+            </div>
+
+            <!-- Story 5: digitalHUB Aachen -->
+            <div class="story-preview-card" data-story-id="digitalhub-aachen" style="cursor: pointer;">
+              <div class="story-preview-img-wrap">
+                <img src="./assets/digitalhub-aachen.jpg" alt="digitalHUB Aachen" class="story-preview-img" />
+                <button class="story-action-badge" aria-label="Story ansehen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="6" cy="18" r="2.5"/>
+                    <circle cx="18" cy="18" r="2.5"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="story-preview-meta">
+                <span class="badge-neon-green">DIGITALHUB AACHEN</span>
+                <h3 class="story-preview-title">Eine Woche bringt Aachens Gründungsszene zusammen</h3>
+                <p class="story-preview-desc">Startup Week Aachen macht das Innovationsökosystem der Dreiländerregion gebündelt sichtbar.</p>
               </div>
             </div>
           </div>
@@ -1317,7 +1385,7 @@ function renderHomePage() {
       </div>
     </section>
 
-    <!-- 6. DAMIT AACHEN DAUERHAFT GEHÖRT WIRD: 1 MILLION EURO JAHRES BUDGET -->
+    <!-- 6. DAMIT AACHEN DAUERHAFT GEHÖRT WIRD: 1 MILLION EURO BUDGET FÜR SICHTBARKEIT -->
     <section class="section-wrapper million-budget-section" id="ambition">
       <div class="container text-center">
         <!-- Banner Image (Eye focus) -->
@@ -1330,8 +1398,8 @@ function renderHomePage() {
         </div>
 
         <h2 class="huge-million-headline">
-          <span class="million-black">1 MILLION EURO</span><br>
-          <span class="million-purple headline-3deg">JAHRES BUDGET</span>
+          <span class="million-black">1 MILLION EURO</span>
+          <span class="million-purple headline-3deg">BUDGET FÜR SICHTBARKEIT</span>
         </h2>
 
         <div class="budget-text-grid">

@@ -469,13 +469,13 @@ ul, ol {
   box-shadow: var(--card-shadow);
   margin-bottom: 0;
   background: #0A0C00;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.2vw), 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5.24vw), 0 100%);
 }
 
 .hero-visual-media {
   position: relative;
   width: 100%;
-  height: clamp(360px, 46vw, 660px);
+  height: clamp(380px, 48vw, 680px);
   overflow: hidden;
 }
 
@@ -502,30 +502,35 @@ ul, ol {
 .hero-visual-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.55) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.6) 100%);
   pointer-events: none;
 }
 
-/* "AACHEN VERSCHIEBT" sits in white directly on the slanted edge with 0 gap */
+/* "AACHEN VERSCHIEBT" sits in white directly on the 3-degree slant with 0 gap, spanning from extreme left to right */
 .hero-video-headline-wrap {
   position: absolute;
-  bottom: clamp(0.2rem, 0.6vw, 0.8rem);
-  left: clamp(1rem, 2.5vw, 3.5rem);
-  right: clamp(1rem, 2.5vw, 3.5rem);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   pointer-events: none;
   z-index: 5;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-headline-overlay {
   font-family: var(--font-headline);
-  font-size: var(--fs-giant);
+  font-size: clamp(3.2rem, 8.95vw, 9.6rem);
   font-weight: 800;
   color: #FFFFFF;
-  line-height: 0.82;
-  letter-spacing: -0.03em;
+  line-height: 0.76;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.75);
+  white-space: nowrap;
   display: block;
+  width: 100%;
   transform: rotate(-3deg);
   transform-origin: left bottom;
   margin: 0;
@@ -534,10 +539,12 @@ ul, ol {
 
 .hero-desktop-grid {
   display: grid;
-  grid-template-columns: 1.18fr 0.82fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(2rem, 4vw, 5rem);
   align-items: start;
-  margin-top: calc(-1.2vw - 0.2rem);
+  margin-top: clamp(0.5rem, 1vw, 1.5rem);
+  position: relative;
+  z-index: 10;
 }
 
 .hero-brand-statement {
@@ -548,12 +555,13 @@ ul, ol {
 .hero-display-purple {
   display: block;
   font-family: var(--font-headline);
-  font-size: calc(var(--fs-giant) * 1.05);
+  font-size: clamp(3.2rem, 8.95vw, 9.6rem);
   font-weight: 800;
   color: var(--ac-purple);
-  line-height: 0.84;
-  letter-spacing: -0.03em;
+  line-height: 0.85;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
+  white-space: nowrap;
   margin: 0;
   padding: 0;
   transform: rotate(-3deg);
@@ -571,7 +579,7 @@ ul, ol {
 .hero-intro-text {
   display: flex;
   flex-direction: column;
-  padding-top: clamp(0.5rem, 1.2vw, 1.8rem);
+  padding-top: 0;
 }
 
 .hero-subhead-bold {
@@ -646,16 +654,45 @@ ul, ol {
   color: #FFFFFF;
 }
 
-.story-carousel-row {
-  display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  gap: var(--space-lg);
-  align-items: stretch;
+.story-carousel-track {
+  display: flex;
+  gap: clamp(1.25rem, 2vw, 2.25rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: clamp(1rem, 1.4vw, 1.6rem);
+  margin-inline: calc(-1 * clamp(0.5rem, 1vw, 1rem));
+  padding-inline: clamp(0.5rem, 1vw, 1rem);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ac-green) rgba(255, 255, 255, 0.08);
+  -webkit-overflow-scrolling: touch;
 }
 
+.story-carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.story-carousel-track::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+.story-carousel-track::-webkit-scrollbar-thumb {
+  background: var(--ac-green);
+  border-radius: var(--radius-full);
+}
+
+/* 2 full stories visible on desktop, 3rd story partially peeked */
 .story-preview-card {
+  flex: 0 0 calc((100% - clamp(1.25rem, 2vw, 2.25rem) * 2) / 2.32);
+  min-width: 320px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
+  transition: transform var(--transition-fast);
+}
+
+.story-preview-card:hover {
+  transform: translateY(-4px);
 }
 
 .story-preview-img-wrap {
@@ -676,7 +713,7 @@ ul, ol {
 }
 
 .story-preview-card:hover .story-preview-img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .story-action-badge {
@@ -697,7 +734,7 @@ ul, ol {
 }
 
 .story-action-badge:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .badge-neon-green {
@@ -723,11 +760,6 @@ ul, ol {
   font-size: var(--fs-body);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.45;
-}
-
-.story-preview-card-secondary {
-  opacity: 0.85;
-  overflow: hidden;
 }
 
 /* ==========================================================================
@@ -1691,12 +1723,22 @@ ul, ol {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .story-preview-card {
+    flex: 0 0 calc((100% - 1.25rem) / 1.45);
+    min-width: 280px;
+  }
+
   .footer-columns-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 48rem) { /* ~768px */
+  .story-preview-card {
+    flex: 0 0 84%;
+    min-width: 260px;
+  }
+
   .main-nav {
     position: fixed;
     top: clamp(4rem, 6vw, 5.5rem);
